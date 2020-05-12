@@ -1,0 +1,35 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="main">
+<img  width="100%" src="../../../assets/top_bar.png" alt="top_bar">
+  
+<div class="container">
+    <div style="text-align:center">
+        <br><br>
+        <img width="300" id="logo" src={{imageUrl}}>
+        <h3>Let's begin with registering you</h3>
+        <br>
+        <progressBar></progressBar>
+    </div>
+
+    <form class="passForm" id="passForm">
+        <br>
+        <label>Password*</label>
+        <input class="w3-input w3-border" (oninput)="userTypeSelection()" type="password" ng-model="pass" ng-disabled="!edit" placeholder="ex: Alex">
+        
+        <br>
+        <label>Re-enter Password*</label>
+        <input class="w3-input w3-border" (oninput)="userTypeSelection()" type="password" ng-model="pass2" ng-disabled="!edit" placeholder="ex: Lamy">
+        <br>
+    </form>
+
+
+
+    <div style="text-align:center">
+        <br><br>
+        <button (click)="nextButton()" [disabled]="((disableNextButton$ | async))" >Next</button>
+
+        <p>Already have an account? <a href="url">Sign in</a> </p>
+        <br><br>
+    </div>
+</div>
+<registerFooter></registerFooter>

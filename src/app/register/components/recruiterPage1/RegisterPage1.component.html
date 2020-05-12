@@ -1,0 +1,54 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="main">
+<img  width="100%" src="../../../assets/top_bar.png" alt="top_bar">
+  
+<div class="container">
+    <div style="text-align:center">
+        <br><br>
+        <img width="300" id="logo" src={{imageUrl}}>
+        <h3>Let's begin with registering you</h3>
+        <br>
+        <progressBar></progressBar>
+    </div>
+
+    <form class="introForm" id="introForm">
+        <br>
+        <label>First Name*</label>
+        <input class="w3-input w3-border" type="text" ng-model="fName" ng-disabled="!edit" placeholder="ex: Alex">
+        
+        <div *ngIf="errors.fNameMissing">
+                First name is required!
+        </div>
+        <br>
+        <label>Last Name*</label>
+        <input required class="w3-input w3-border" type="text" ng-model="lName" ng-disabled="!edit" placeholder="ex: Lamy">
+        <div *ngIf="errors.password">
+                Last name is required!
+        </div>
+        <br>
+        
+        <label>Personal Email*</label>
+        <input required class="w3-input w3-border" type="text" ng-model="personalEmail" placeholder="ex: yourname@mail.com">
+        <div *ngIf="errors.personalEmail">
+                Personal Email is required!
+        </div>
+        <br>
+        <label>Company Email*</label>
+        <input required class="w3-input w3-border" type="text" ng-model="companyEmail" placeholder="ex: yourname@company.com">
+        <div *ngIf="errors.companyEmail">
+                Company Email is required!
+        </div>
+        <br>
+        <label>Phone Number</label>
+        <input class="w3-input w3-border" type="text" ng-model="phoneNum" placeholder="+1 1234567890">
+        <br>
+    </form>
+    <div style="text-align:center">
+        <br><br>
+        <button (click)="nextButton()" [disabled]="((disableNextButton$ | async))" >Next</button>
+
+        <p>Already have an account? <a href="url">Sign in</a> </p>
+        <br><br>
+    </div>
+</div>
+<registerFooter></registerFooter>

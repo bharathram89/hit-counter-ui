@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="main" style="text-align:center">
+<img  width="100%" src="../../../assets/top_bar.png" alt="top_bar">
+  
+<div class="container">
+    <br><br>
+    <img width="300" id="logo" src={{imageUrl}}>
+    <h3>First, Who are you here?</h3>
+    <br><br>
+    <div class="userTypeSelection">
+            <div class="inputGroup">
+                <input (click)="userTypeSelection()" id="radio1" value="Candidate" name="radio" type="radio"/>
+                <label for="radio1">I am a Candidate</label>
+            </div>
+            <br>
+            <div class="inputGroup">
+                <input (click)="userTypeSelection()" id="radio2" value="Recruiter" name="radio" type="radio"/>
+                <label for="radio2">I am a Recruiter</label>
+            </div>
+            <!-- <input><label>I am a Candidate</label>
+        <br>
+        <button>I am a Recruiter</button>
+        <br> -->
+    </div>
+    <br><br>
+    <button (click)="nextButton()" [disabled]="((disableNextButton$ | async))" >Next</button>
+
+    <p>Already have an account? <a href="url">Sign in</a> </p>
+    <br><br>
+</div>
+<registerFooter></registerFooter>

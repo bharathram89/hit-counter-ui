@@ -1,0 +1,31 @@
+ul {
+  @media (min-width: 768px){
+                  
+  }
+  @media (min-width: 992px){
+   
+  }
+  @media (min-width: 1200px){
+    
+  }
+  @media (min-width: 1535px){
+   
+  }
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  margin: 0 auto;
+  display: table;
+}
+
+li {
+  float: left;
+}
+
+li a { 
+  display: block;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}

@@ -1,54 +1,146 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div id="main">
-<img  width="100%" src="../../../assets/top_bar.png" alt="top_bar">
-  
-<div class="container">
-    <div style="text-align:center">
-        <br><br>
-        <img width="300" id="logo" src={{imageUrl}}>
-        <h3>Let's begin with registering you</h3>
-        <br>
-        <progressBar></progressBar>
+    <img width="100%" src="../../../assets/top_bar.png" alt="top_bar">
+
+    <div class="container">
+        <div style="text-align:center">
+            <br><br>
+            <img width="300" id="logo" src={{imageUrl}}>
+            <h3>Let's begin with registering you</h3>
+            <br>
+            <progressBar></progressBar>
+        </div>
+
+        <form [formGroup]="profile" (ngSubmit)="onSubmit()">
+
+
+            <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
+                <div class="form-group ">
+
+                    <label for="fname ">First Name</label>
+                    <input id="fname " class="form-control " formControlName="fname" placeholder="ex: Alex" required>
+
+                    <div *ngIf="fname.invalid && (fname.dirty || fname.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="fname.errors?.required ">
+                            First Name is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+
+                    <label for="lname ">Last Name</label>
+                    <input id="lname " class="form-control " placeholder="ex: Lamy" formControlName="lname" required>
+
+                    <div *ngIf="lname.invalid && (lname.dirty || lname.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="lname.errors?.required ">
+                            Last Name is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+
+                    <label for="pemail ">Personal Email</label>
+                    <input id="pemail " class="form-control " formControlName="pemail" placeholder="ex: yourname@mail.com" required>
+
+                    <div *ngIf="pemail.invalid && (pemail.dirty || pemail.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="pemail.errors?.required ">
+                            Personal Email is required.
+                        </div>
+                        <div *ngIf="pemail.errors?.pattern ">
+                            Please enter a valid email address
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+
+                    <label for="cemail ">Company Email</label>
+                    <input id="cemail " class="form-control " formControlName="cemail" placeholder="ex: yourname@mail.com" required>
+
+                    <div *ngIf="cemail.invalid && (cemail.dirty || cemail.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="cemail.errors?.required ">
+                            Company Email is required.
+                        </div>
+                        <div *ngIf="pemail.errors?.pattern ">
+                            Please enter a valid email address
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+
+                    <label for="phone ">Phone Number</label>
+                    <input id="phone " class="form-control " placeholder="+1 1234567890" formControlName="phone">
+                    <div *ngIf="phone.errors?.pattern ">
+                        Please enter a valid email phone number
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- <div class="form-group ">
+                    <label for="power ">Hero Power</label>
+                    <select id="power " class="form-control " formControlName="power " required>
+                  <option *ngFor="let p of powers " [value]="p ">{{p}}</option>
+                </select>
+
+                    <div *ngIf="power.invalid && power.touched " class="alert alert-danger ">
+                        <div *ngIf="power.errors.required ">Power is required.</div>
+                    </div>
+                </div> -->
+
+            <button type="submit " class="btn btn-default " [disabled]="profile.invalid">Submit</button>
+
+        </form>
     </div>
 
-    <form class="introForm" id="introForm">
-        <br>
-        <label>First Name*</label>
-        <input class="w3-input w3-border" type="text" ng-model="fName" ng-disabled="!edit" placeholder="ex: Alex">
-        
-        <div *ngIf="errors.fNameMissing">
-                First name is required!
-        </div>
-        <br>
-        <label>Last Name*</label>
-        <input required class="w3-input w3-border" type="text" ng-model="lName" ng-disabled="!edit" placeholder="ex: Lamy">
-        <div *ngIf="errors.password">
-                Last name is required!
-        </div>
-        <br>
-        
-        <label>Personal Email*</label>
-        <input required class="w3-input w3-border" type="text" ng-model="personalEmail" placeholder="ex: yourname@mail.com">
-        <div *ngIf="errors.personalEmail">
-                Personal Email is required!
-        </div>
-        <br>
-        <label>Company Email*</label>
-        <input required class="w3-input w3-border" type="text" ng-model="companyEmail" placeholder="ex: yourname@company.com">
-        <div *ngIf="errors.companyEmail">
-                Company Email is required!
-        </div>
-        <br>
-        <label>Phone Number</label>
-        <input class="w3-input w3-border" type="text" ng-model="phoneNum" placeholder="+1 1234567890">
-        <br>
-    </form>
-    <div style="text-align:center">
-        <br><br>
-        <button (click)="nextButton()" [disabled]="((disableNextButton$ | async))" >Next</button>
 
-        <p>Already have an account? <a href="url">Sign in</a> </p>
-        <br><br>
-    </div>
+    <!-- <form class="introForm " [formGroup]="profileForm " id="introForm ">
+            <br>
+            <label>First Name*</label>
+            <input class="w3-input w3-border " formControlName="firstName " id="firstName " type="text " ng-model="firstName " ng-disabled="!edit " placeholder="ex: Alex ">
+
+            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched) ">
+
+                <div *ngIf="firstName.errors.required ">
+                    Name is required.
+                </div>
+            </div>
+
+            <br>
+            <label>Last Name*</label>
+            <input required class="w3-input w3-border " formControlName="lastName " type="text " ng-model="lastName " ng-disabled="!edit " placeholder="ex: Lamy ">
+
+            <br>
+
+            <label>Personal Email*</label>
+            <input required class="w3-input w3-border " formControlName="pEmail " type="text " ng-model="personalEmail " placeholder="ex: yourname@mail.com ">
+
+            <br>
+            <label>Company Email*</label>
+            <input required class="w3-input w3-border " formControlName="wEmail " type="text " ng-model="companyEmail " placeholder="ex: yourname@company.com ">
+
+
+            <div style="text-align:center ">
+                <br>
+                <label>Phone Number</label>
+                <input class="w3-input w3-border " type="text " formControlName="phone " ng-model="phoneNum " placeholder="+1 1234567890 ">
+                <br>
+                <br><br>
+                <button (click)="validateEntries($event) " [disabled]="((disableNextButton$ | async)) ">Next</button>
+
+                <p>Already have an account? <a href="url ">Sign in</a> </p>
+                <br><br>
+            </div>
+        </form> -->
+    <!-- <div style="text-align:center "> -->
+
+    <!-- </div> -->
 </div>
 <registerFooter></registerFooter>

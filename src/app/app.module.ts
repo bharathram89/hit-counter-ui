@@ -9,6 +9,7 @@ import { ProgressBar } from './register/components/globalComponents/progressBar/
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routing.module'
 import { RegisterModelService } from './services/model.service'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,8 @@ import { RegisterModelService } from './services/model.service'
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [RegisterModelService],

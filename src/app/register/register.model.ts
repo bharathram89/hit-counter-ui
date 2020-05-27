@@ -7,6 +7,7 @@ export class RegisterVO {
     public password:string,
     public personalEmail:string,
     public companyEmail:string,
-    public phoneNumber: string
+    public phoneNumber: string,
+    public profileImage: File
   ) {}
 }

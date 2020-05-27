@@ -26,11 +26,18 @@ export class RegisterModelService {
     public setPersonalEmail$(value){
         this.currentModel$.subscribe(data=>{data.personalEmail = value});
     }
+    public setPassword$(value){
+        this.currentModel$.subscribe(data=>{data.password = value});
+    }
     public setCompanyEmail$(value){
         this.currentModel$.subscribe(data=>{data.companyEmail = value});
     }
     public setPhoneNumber$(value){
         this.currentModel$.subscribe(data=>{data.phoneNumber = value});
     }
+    public setProfileImage$(value){
+        this.currentModel$.subscribe(data=>{data.profileImage = value});
+    }
+    
     
 }

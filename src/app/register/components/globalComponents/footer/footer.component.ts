@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'registerFooter',
@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class RegisterFooter {
+  cookieLawSeen: boolean;
+
+  // @ViewChild('cookieLaw') 
+  // cookieLawEl: any;
+
   constructor(){
+    // this.cookieLawSeen = this.cookieLawEl.cookieLawSeen;
     // var checkboxes = $("input[type='checkbox']");
     // this.disableNextButton$ = new Subject<boolean>(false);
   } 
@@ -16,4 +22,7 @@ export class RegisterFooter {
     // this.disableNextButton$.next(true);
   }
 
+  // dismiss(): void {
+  //   this.cookieLawEl.dismiss();
+  // }
 }

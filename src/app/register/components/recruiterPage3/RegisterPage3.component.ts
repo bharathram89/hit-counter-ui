@@ -7,20 +7,23 @@ import { ValueTransformer } from '@angular/compiler/src/util';
 import { RegisterVO } from '../../register.model';
 import { validateConfig } from '@angular/router/src/config';
 import { FormGroup, FormControl,Validators, EmailValidator } from '@angular/forms';
-
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
 @Component({
-  selector: 'register2',
-  templateUrl: './RegisterPage2.component.html',
-  styleUrls: ['./RegisterPage2.component.scss']
+  selector: 'register3',
+  templateUrl: './RegisterPage3.component.html',
+  styleUrls: ['./RegisterPage3.component.scss']
 })
-export class RegisterPage2 {;
+export class RegisterPage3 {;
 
   public modelSvc: RegisterModelService;
 
-  hero = { password: '', confirmPassword: ''};
+  hero = { address: '', zip: '',link:'',image:''};
 
   profile: FormGroup;
 
+  selectedFile: ImageSnippet;
 
   imageUrl = '../../../assets/logo.png'
   constructor(modelSvc: RegisterModelService,private router: Router){
@@ -31,14 +34,18 @@ export class RegisterPage2 {;
 
   ngOnInit() {
     this.profile = new FormGroup({
-      'password': new FormControl(this.hero.password, [
+      'address': new FormControl(this.hero.address, [
         Validators.required,
         Validators.pattern("^(?=.*[a-z])(?=.*[A-Z]).{3,20}$")
         //[A-Z]+[0-9]+[@#\$&]*
       ]),
-      'confirmPassword': new FormControl(this.hero.confirmPassword, [
+      'zip': new FormControl(this.hero.zip, [
         Validators.required
-      ])
+      ]),
+      'link': new FormControl(this.hero.link, [
+        Validators.required
+      ]),
+      'image': new FormControl(null, [Validators.required])
     },this.checkPasswords);
   }
   checkPasswords(g: FormGroup) { // here we have the 'passwords' group
@@ -47,13 +54,23 @@ export class RegisterPage2 {;
     let confirmPass = g.value.confirmPassword;
     return pass === confirmPass ? null : { notSame: true }
   }
-  get password() { return this.profile.get('password'); }
+  get address() { return this.profile.get('address'); }
 
-  get confirmPassword() { return this.profile.get('confirmPassword'); }
-  
-  onSubmit() {
-    this.modelSvc.setPassword$(this.profile.value.confirmPassword);
-    this.router.navigate(['registerRecruiter3']);
+  get link() { return this.profile.get('link'); }
+
+  get zip() { return this.profile.get('zip'); }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.modelSvc.setProfileImage$(file);
+    });
+
+    reader.readAsDataURL(file);
   }
 }
 

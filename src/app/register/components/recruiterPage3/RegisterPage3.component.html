@@ -1,0 +1,68 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="main">
+    <img width="100%" src="../../../assets/top_bar.png" alt="top_bar">
+
+    <div class="container">
+        <div style="text-align:center">
+            <br><br>
+            <img width="300" id="logo" src={{imageUrl}}>
+            <h3>Let's begin with registering you</h3>
+            <br>
+            <progressBar></progressBar>
+        </div>
+
+
+        <form [formGroup]="profile" (ngSubmit)="onSubmit()">
+
+
+            <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
+                <div class="form-group ">
+
+                    <label for="address">Address</label>
+                    <input id="address " class="form-control " formControlName="address" placeholder="ex: Aeiou" required>
+
+                    <div *ngIf="address.invalid && (address.dirty || address.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="address.errors?.required ">
+                            Address is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+
+                    <label for="zip">Zip Code</label>
+                    <input id="zip" class="form-control " placeholder="ex: Aeiou" formControlName="zip" required>
+
+                    <div *ngIf="zip.invalid && (zip.dirty || zip.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="zip.errors?.required ">
+                            Confirm Password is required.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group ">
+
+                    <label for="link">Linkedin Url</label>
+                    <input id="link" class="form-control " placeholder="ex: Aeiou" formControlName="zip" required>
+
+                    <div *ngIf="link.invalid && (link.dirty || link.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="link.errors?.required ">
+                            Linkedin Url is required.
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- <app-file-upload formControlName="image" [progress]="progress"></app-file-upload> -->
+
+                <button type="submit " class="btn btn-default" [disabled]="profile.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+<registerFooter></registerFooter>

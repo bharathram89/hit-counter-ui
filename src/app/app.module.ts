@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RegisterPage0 }from './register/components/recruiterPage0/RegisterPage0.component';
 import { RegisterPage1 }from './register/components/recruiterPage1/RegisterPage1.component';
 import { RegisterPage2 }from './register/components/recruiterPage2/RegisterPage2.component';
+import { RegisterPage3 }from './register/components/recruiterPage3/RegisterPage3.component';
 import { AppComponent } from './app.component';
 import { RegisterFooter } from './register/components/globalComponents/footer/footer.component'
 import { ProgressBar } from './register/components/globalComponents/progressBar/progressBar.component'
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterPage0,
     RegisterPage1,
     RegisterPage2,
+    RegisterPage3,
 
     //register global 
     RegisterFooter,

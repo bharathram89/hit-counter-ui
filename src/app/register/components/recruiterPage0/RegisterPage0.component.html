@@ -24,9 +24,16 @@
         </div>
         <br><br>
         <button (click)="nextButton()" [disabled]="((disableNextButton$ | async))">Next</button>
-
-        <button (click)="signInWithGoogle()">Google Sign in</button>
-        <button (click)="signInWithFB()">Facebok Sign in</button>
+        <div class="container mt-5">
+            <h2>Google Login</h2>
+            <div class="row mt-5">
+                <div class="col-md-4 mt-2 m-auto ">
+                    <button class="loginBtn loginBtn--google" #loginRef>
+                      Login with Google
+                    </button>
+                </div>
+            </div>
+        </div>
         <!-- <meta name="google-signin-scope " content="profile email ">
         <meta name="google-signin-client_id " content="YOUR_CLIENT_ID.apps.googleusercontent.com "> -->
 

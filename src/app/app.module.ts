@@ -11,6 +11,40 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routing.module'
 import { RegisterModelService } from './services/model.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import {
+  SocialLoginModule, 
+  AuthServiceConfig,
+  GoogleLoginProvider, 
+  FacebookLoginProvider, 
+  LinkedinLoginProvider
+} from 'ng4-social-login';
+ 
+
+
+// import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+// import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+ 
+ 
+const CONFIG = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('380914575563-o5mslfbj2klk7tdhdmr2rdogk9ugq86d.apps.googleusercontent.com')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('Facebook-App-Id')
+  },
+  {
+    id: LinkedinLoginProvider.PROVIDER_ID,
+    provider: new LinkedinLoginProvider('LINKEDIN_CLIENT_ID')
+  }
+],false);
+ 
+ 
+export function provideConfig() {
+  return CONFIG;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,11 +61,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    SocialLoginModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [RegisterModelService],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  },{
+      provide:RegisterModelService, 
+      useClass:RegisterModelService
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,7 @@ import { ValueTransformer } from '@angular/compiler/src/util';
 import { RegisterVO } from '../../register.model';
 import { validateConfig } from '@angular/router/src/config';
 import { FormGroup, FormControl,Validators, EmailValidator } from '@angular/forms';
+import { AuthService } from 'ng4-social-login';
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
 }
@@ -26,13 +27,16 @@ export class RegisterPage3 {;
   selectedFile: ImageSnippet;
 
   imageUrl = '../../../assets/logo.png'
-  constructor(modelSvc: RegisterModelService,private router: Router){
+  constructor(modelSvc: RegisterModelService,private router: Router,private authService: AuthService){
     this.modelSvc = modelSvc;
     // var checkboxes = $("input[type='checkbox']");
     // this.disableNextButton$ = new Subject<boolean>(false);
   } 
 
   ngOnInit() {
+    this.authService.authState.subscribe(data=>{
+      console.log(data,"google data")
+    })
     this.profile = new FormGroup({
       'address': new FormControl(this.hero.address, [
         Validators.required,

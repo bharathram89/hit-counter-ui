@@ -1,5 +1,3 @@
-
-
 /**
 
       @media (min-width: 768px){
@@ -17,24 +15,31 @@
 **/
 
 .container {
+    text-align: center;
+}
+
+.container {
     background-color: rgb(245, 245, 245);
     width: 44.5%;
     margin: auto;
     height: 100%;
 }
+
 button {
-  width:30%;
-  background-color: orange;
+    width: 30%;
+    background-color: orange;
 }
 
 .passForm {
     width: 44.5%;
     margin: auto;
 }
-.introForm.label{
-  text-align: left;
+
+.introForm.label {
+    text-align: left;
 }
-#logo{
-  width: 50%;
-  margin: auto;
+
+#logo {
+    width: 50%;
+    margin: auto;
 }

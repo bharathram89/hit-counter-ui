@@ -24,7 +24,12 @@
         </div>
         <br><br>
         <button (click)="nextButton()" [disabled]="((disableNextButton$ | async))">Next</button>
-        <button (click)="signInWithGoogle()">google</button>
+        <br>
+        <button (click)="signInWithGoogle()" [disabled]="((disableNextButton$ | async))">google</button>
+        <br>
+        <button (click)="signInWithGoogle()" [disabled]="((disableNextButton$ | async))">facebook</button>
+        <br>
+        <button (click)="signInWithGoogle()" [disabled]="((disableNextButton$ | async))">linkdin</button>
         <div *ngIf="googleErrors$?.loginFailed ==true">
             Couldnt sign in with google
         </div>
@@ -38,4 +43,5 @@
         <p>Already have an account? <a href="url ">Sign in</a> </p>
         <br><br>
     </div>
+    <cookie-law></cookie-law>
     <registerFooter></registerFooter>

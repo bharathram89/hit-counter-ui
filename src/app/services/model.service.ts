@@ -38,6 +38,16 @@ export class RegisterModelService {
     public setProfileImage$(value){
         this.currentModel$.subscribe(data=>{data.profileImage = value});
     }
+    public setAddrress$(value){
+        this.currentModel$.subscribe(data=>{data.address = value});
+    }
+    public setZipCode$(value){
+        this.currentModel$.subscribe(data=>{data.zipcode = value});
+    }
+    public setlinkdin$(value){
+        this.currentModel$.subscribe(data=>{data.linkdin = value});
+    }
+
     
     
 }

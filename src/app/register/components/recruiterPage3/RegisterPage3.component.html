@@ -32,14 +32,16 @@
                 <div class="form-group ">
 
                     <label for="zip">Zip Code</label>
-                    <input id="zip" class="form-control " placeholder="ex: Aeiou" formControlName="zip" required>
+                    <input id="zip" class="form-control " placeholder="ex: Aeiou" formControlName="zip" maxlength="5" required>
 
                     <div *ngIf="zip.invalid && (zip.dirty || zip.touched) " class="alert alert-danger ">
 
                         <div *ngIf="zip.errors?.required ">
-                            Confirm Password is required.
+                            Zip Code is required.
                         </div>
-
+                        <div *ngIf="zip.errors?.pattern ">
+                            Zip Code is invalid.
+                        </div>
                     </div>
 
                 </div>
@@ -47,19 +49,30 @@
                 <div class="form-group ">
 
                     <label for="link">Linkedin Url</label>
-                    <input id="link" class="form-control " placeholder="ex: Aeiou" formControlName="zip" required>
+                    <input id="link" class="form-control " placeholder="ex: Aeiou" formControlName="link" required>
 
                     <div *ngIf="link.invalid && (link.dirty || link.touched) " class="alert alert-danger ">
 
                         <div *ngIf="link.errors?.required ">
                             Linkedin Url is required.
                         </div>
+                        <div *ngIf="link.errors?.pattern ">
+                            Linkedin Url is malformed.
+                        </div>
 
                     </div>
 
                 </div>
-                <!-- <app-file-upload formControlName="image" [progress]="progress"></app-file-upload> -->
+                <label class="image-upload-container btn btn-bwm">
+                    <span>Select Image</span>
+                    <input formControlName="image"  #imageInput
+                           type="file"
+                           accept="image/*"
+                           (change)="processFile(imageInput)">
+                  </label>
 
+                <br>
+                <!-- <app-file-upload formControlName="image" [progress]="progress"></app-file-upload> -->
                 <button type="submit " class="btn btn-default" [disabled]="profile.invalid">Submit</button>
             </div>
         </form>

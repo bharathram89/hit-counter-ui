@@ -6,7 +6,7 @@ import { RegisterModelService } from '../../../services/model.service';
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { RegisterVO } from '../../register.model';
 import { validateConfig } from '@angular/router/src/config';
-import { FormGroup, FormControl,Validators, EmailValidator } from '@angular/forms';
+import { FormGroup, FormControl,Validators, EmailValidator, AbstractControl, ValidatorFn } from '@angular/forms';
 import { AuthService } from 'ng4-social-login';
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -21,7 +21,7 @@ export class RegisterPage3 {;
   public modelSvc: RegisterModelService;
 
   hero = { address: '', zip: '',link:'',image:''};
-
+  pfData:RegisterVO;
   profile: FormGroup;
 
   selectedFile: ImageSnippet;
@@ -34,29 +34,42 @@ export class RegisterPage3 {;
   } 
 
   ngOnInit() {
+     
+    this.modelSvc.getRegisterVO$().subscribe(data=>{
+      if(data == null){
+      this.router.navigate(['registerRecruiter0']);
+      }else{
+        this.pfData= data;
+      }
+    })
     this.authService.authState.subscribe(data=>{
-      console.log(data,"google data")
+      console.log(data,"google data");
     })
     this.profile = new FormGroup({
       'address': new FormControl(this.hero.address, [
-        Validators.required,
-        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z]).{3,20}$")
+        Validators.required
         //[A-Z]+[0-9]+[@#\$&]*
       ]),
       'zip': new FormControl(this.hero.zip, [
-        Validators.required
+        Validators.required,//
+        Validators.pattern(".*[0-9]{5,5}$")
       ]),
       'link': new FormControl(this.hero.link, [
-        Validators.required
+        Validators.required,
+        Validators.pattern("^(?=.*linkedin.com).{6,90}$")
       ]),
-      'image': new FormControl(null, [Validators.required])
-    },this.checkPasswords);
+      'image': new FormControl(this.hero.image, [
+        Validators.required
+      ])
+    });
   }
-  checkPasswords(g: FormGroup) { // here we have the 'passwords' group
-  // console.log(g,"here") this is form group values
-    let pass = g.value.password;
-    let confirmPass = g.value.confirmPassword;
-    return pass === confirmPass ? null : { notSame: true }
+  onSubmit() {
+    console.log(this.profile.value,"flow",)
+    this.modelSvc.setAddrress$(this.profile.value.address);
+    this.modelSvc.setZipCode$(this.profile.value.zip);
+    this.modelSvc.setlinkdin$(this.profile.value.linkedin);
+    this.modelSvc.setProfileImage$(this.profile.value.image)
+    // this.router.navigate(['registerRecruiter3']);
   }
   get address() { return this.profile.get('address'); }
 
@@ -64,14 +77,16 @@ export class RegisterPage3 {;
 
   get zip() { return this.profile.get('zip'); }
 
+  get image() { return this.profile.get('image'); }
+  
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {
-
+console.log
       this.selectedFile = new ImageSnippet(event.target.result, file);
-      this.modelSvc.setProfileImage$(file);
+      this.modelSvc.setProfileImage$(this.selectedFile);
     });
 
     reader.readAsDataURL(file);

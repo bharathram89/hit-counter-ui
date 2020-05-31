@@ -28,6 +28,13 @@ export class RegisterPage1 {
   } 
 
   ngOnInit() {
+
+    this.modelSvc.getRegisterVO$().subscribe(data=>{
+      if(data == null){
+
+      this.router.navigate(['registerRecruiter0']);
+      }
+    })
     this.profile = new FormGroup({
       'fname': new FormControl(this.hero.fname, [
         Validators.required

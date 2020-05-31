@@ -39,7 +39,7 @@ export class RegisterPage0 {
     var selected_option = $('input[type=radio]:checked').attr('value');
 
     // console.log(selected_option);
-    var regiserModel = new RegisterVO(selected_option,null,null,null,null,null,null,null);
+    var regiserModel = new RegisterVO(selected_option,null,null,null,null,null,null,null,null,null,null);
     this.modelSvc.setRegisterVO$(regiserModel);
     this.router.navigate(['registerRecruiter1']);
     //create register object and proceed to next route
@@ -48,16 +48,26 @@ export class RegisterPage0 {
 
   }
 
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+  signInWithLinkedIN(): void {
+    this.authService.signIn(LinkedinLoginProvider.PROVIDER_ID);
+  }
   signInWithGoogle(): void {
     let x = this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     // if(x.)
     x.then((user) => {
       console.log(user,"user")
       if(user !== null){
-        this.googleErrors$.next(false)
+    //create register object and proceed to next route
+    var selected_option = $('input[type=radio]:checked').attr('value');
+    var regiserModel = new RegisterVO(selected_option,null,null,null,null,null,null,null,null,null,null);
+    this.modelSvc.setRegisterVO$(regiserModel);
+        this.googleErrors$.next(true)
         this.router.navigate(['registerRecruiter3'])
       }else{
-        this.googleErrors$.next(true)
+        this.googleErrors$.next(false)
         console.log('google login didnt work')
       }
       

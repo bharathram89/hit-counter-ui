@@ -29,11 +29,16 @@ export class RegisterPage2 {;
     // this.disableNextButton$ = new Subject<boolean>(false);
   } 
 
-  ngOnInit() {
+  ngOnInit() {    
+    this.modelSvc.getRegisterVO$().subscribe(data=>{
+      if(data == null){
+      this.router.navigate(['registerRecruiter0']);
+      }
+    })
     this.profile = new FormGroup({
       'password': new FormControl(this.hero.password, [
         Validators.required,
-        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z]).{3,20}$")
+        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z]).{5}$")
         //[A-Z]+[0-9]+[@#\$&]*
       ]),
       'confirmPassword': new FormControl(this.hero.confirmPassword, [
@@ -52,7 +57,7 @@ export class RegisterPage2 {;
   get confirmPassword() { return this.profile.get('confirmPassword'); }
   
   onSubmit() {
-    this.modelSvc.setPassword$(this.profile.value.confirmPassword);
+    this.modelSvc.setPassword$(this.profile.value.confirmPassword);//need to encode
     this.router.navigate(['registerRecruiter3']);
   }
 }

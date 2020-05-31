@@ -11,7 +11,8 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routing.module'
 import { RegisterModelService } from './services/model.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { CookieLawModule } from 'angular2-cookie-law';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   SocialLoginModule, 
   AuthServiceConfig,
@@ -62,6 +63,8 @@ export function provideConfig() {
   imports: [
     BrowserModule,
     SocialLoginModule,
+    CookieLawModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)

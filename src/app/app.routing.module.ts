@@ -6,6 +6,7 @@ import { RegisterPage2 } from './register/components/recruiterPage2/RegisterPage
 import { RegisterPage1 } from './register/components/recruiterPage1/RegisterPage1.component'
 import { AppComponent } from './app.component';
 import { RegisterPage3 } from './register/components/recruiterPage3/RegisterPage3.component';
+import { SignOn } from './non_secure/recruiterPage1/SignOn.component';
 export const routes: Routes = [
   {
     path: '',
@@ -27,6 +28,10 @@ export const routes: Routes = [
   {
     path: 'registerRecruiter3',
     component: RegisterPage3
+  },
+  {
+    path: 'signOn',
+    component: SignOn
   },
   { path: '**', redirectTo: '' }
 ];

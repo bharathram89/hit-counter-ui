@@ -13,6 +13,7 @@ import { RegisterModelService } from './services/model.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieLawModule } from 'angular2-cookie-law';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignOn } from './non_secure/recruiterPage1/SignOn.component';
 import {
   SocialLoginModule, 
   AuthServiceConfig,
@@ -58,7 +59,10 @@ export function provideConfig() {
 
     //register global 
     RegisterFooter,
-    ProgressBar
+    ProgressBar,
+
+    //NON Secure
+    SignOn
   ],
   imports: [
     BrowserModule,

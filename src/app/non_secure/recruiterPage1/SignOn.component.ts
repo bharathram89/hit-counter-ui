@@ -2,17 +2,17 @@ import { Component, NgZone } from '@angular/core';
 import { Observable, Subject, BehaviorSubject} from 'rxjs/Rx';
 import { Route, Router } from '@angular/router';
 import * as $ from "jquery";
-import { RegisterModelService } from '../../../services/model.service';
+import { RegisterModelService } from '../../services/model.service';
 import { ValueTransformer } from '@angular/compiler/src/util';
-import { RegisterVO } from '../../register.model';
+import { RegisterVO } from '../../register/register.model';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'register2',
-  templateUrl: './RegisterPage1.component.html',
-  styleUrls: ['./RegisterPage1.component.scss']
+  selector: 'signOn',
+  templateUrl: './SignOn.component.html',
+  styleUrls: ['./SignOn.component.scss']
 })
-export class RegisterPage1 {
+export class SignOn {
 
   
   hero = { fname: '',lname: '' ,pemail: "",cemail:"", phone:"",password:"",confirmPassword:""};
@@ -56,7 +56,7 @@ export class RegisterPage1 {
 
       if(data === null){
         console.log(data,"ireouting out")
-        this.router.navigate(['registerRecruiter0']);
+        // this.router.navigate(['registerRecruiter0']);
         // this.router.navigate(['registerRecruiter0']);
       }else{
         this.currentUser = data.userType;

@@ -6,52 +6,25 @@
         <div style="text-align:center">
             <br><br>
             <img width="300" id="logo" src={{imageUrl}}>
-            <h3>Let's begin with registering you</h3>
+            <h3>Email Confirmation sent to you!</h3>
             <br>
-            <progressBar></progressBar>
+            <!-- <progressBar></progressBar> -->
+            <hr>
+            <div>
+                <p>Congratulations! you have completed the first step.</p>
+                <br>
+                <p>Lookout for email from skipped.io it will help you proceed in your registration process.</p>
+                <p>If you have not recieved an email, click below button to resend verification Email.</p>
+                <br>
+                <br>
+
+                <button (click)="resendEmail()" class="btn btn-default" >Resend Email</button>
+                <button (ngClick)="goHome()" class="btn btn-default" >Back To Skipped Home</button>
+            </div>
         </div>
 
 
-        <form [formGroup]="profile" (ngSubmit)="onSubmit()">
 
-
-            <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
-                <div class="form-group ">
-
-                    <label for="password">Password</label>
-                    <input id="password " class="form-control " formControlName="password" type="password" placeholder="ex: Aeiou" required>
-
-                    <div *ngIf="password.invalid && (password.dirty || password.touched) " class="alert alert-danger ">
-
-                        <div *ngIf="password.errors?.required ">
-                            Password is required.
-                        </div>
-                        <div *ngIf="password.errors?.pattern ">
-                            password needs to have atleast 1 upper case letter and 1 lower and min length of 5
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group ">
-
-                    <label for="confirmPassword ">Confirm Password</label>
-                    <input id="confirmPassword " class="form-control " placeholder="ex: Aeiou" type="password" formControlName="confirmPassword" required>
-
-                    <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) " class="alert alert-danger ">
-
-                        <div *ngIf="confirmPassword.errors?.required ">
-                            Confirm Password is required.
-                        </div>
-
-                    </div>
-
-                </div>
-                <div *ngIf="profile.errors?.notSame">
-                    Password needs to match
-                </div>
-                <button type="submit " class="btn btn-default" [disabled]="profile.invalid">Submit</button>
-            </div>
-        </form>
     </div>
 </div>
 <registerFooter></registerFooter>

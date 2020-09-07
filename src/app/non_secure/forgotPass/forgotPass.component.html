@@ -1,0 +1,56 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="main">
+    <img width="100%" src="../../../assets/top_bar.png" alt="top_bar">
+
+    <div class="container">
+        <div style="text-align:center">
+            <br><br>
+            <img width="300" id="logo" src={{imageUrl}}>
+            <h3>Forgot password?</h3>
+            <br>
+            <p>Enter your registered email address below to recieve a link to reset your password</p>
+            <hr class="top_bar">
+            <br>
+        </div>
+
+        <form class="main" [formGroup]="profile" (ngSubmit)="onSubmit()">
+
+
+            <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
+            
+                <div class="form-group ">
+
+                    <label for="email">Registered Email*:</label>
+                    <br>
+                    <input id="email " class="form-control " formControlName="email" placeholder="ex: sample@email.com" required>
+
+                    <div *ngIf="email.invalid && (email.dirty || email.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="email.errors?.required ">
+                            Email is required.
+                        </div>
+                        <div *ngIf="email.errors?.email ">
+                            EMail is invalid.
+                        </div>
+                    </div>
+                </div>
+<br>
+              
+<br>
+                <button type="submit " class="btn btn-default " [disabled]="profile.invalid">Confirm</button>
+                <br>
+                <a href='/signOn' type="cancel " class="btn btn-default " >Cancel</a>
+            
+            
+            
+            
+            </div>
+<br>
+<p id="sentMessage" style="display: none;">Email Sent!.</p>
+                <p id="sendFailed" style="display: none;">Failed to send Email Please <a href="contactUs">contact us</a> for us to help you further.  </p>
+                <br>
+        </form>
+    </div>
+
+</div>
+<registerFooter></registerFooter>

@@ -13,7 +13,7 @@ import { RegisterModelService } from './services/model.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieLawModule } from 'angular2-cookie-law';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SignOn } from './non_secure/recruiterPage1/SignOn.component';
+import { SignOn } from './non_secure/signOn/SignOn.component';
 import {
   SocialLoginModule, 
   AuthServiceConfig,
@@ -21,6 +21,15 @@ import {
   FacebookLoginProvider, 
   LinkedinLoginProvider
 } from 'ng4-social-login';
+import { AcntVerified } from './non_secure/acntVerified/acntVerified.component';
+import { ResendVerificationEmail } from './non_secure/resendVerificationEmail/resendVerificationEmail.component';
+import { ForgotPass } from './non_secure/forgotPass/forgotPass.component';
+import { ResetPass } from './non_secure/resetPass/resetPass.component';
+import { Profile } from './secure/profile/profile.component';
+import { SecureFooter } from './secure/global/secureFooter/secureFooter.component';
+import { SecureLeftNav } from './secure/global/secureLeftNav/secureLeftNav.component';
+import { SecureHeader } from './secure/global/secureHeader/secureHeader.component';
+import { UserObjService } from './services/userObj.service';
  
 
 
@@ -62,7 +71,19 @@ export function provideConfig() {
     ProgressBar,
 
     //NON Secure
-    SignOn
+    SignOn,
+    AcntVerified,
+    ResendVerificationEmail,
+    ForgotPass,
+    ResetPass,
+
+    //Secure global
+    SecureFooter,
+    SecureHeader,
+    SecureLeftNav,
+
+    //Secure
+    Profile
   ],
   imports: [
     BrowserModule,
@@ -79,6 +100,9 @@ export function provideConfig() {
   },{
       provide:RegisterModelService, 
       useClass:RegisterModelService
+    },{
+      provide:UserObjService, 
+      useClass:UserObjService
     }],
   bootstrap: [AppComponent]
 })

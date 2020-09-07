@@ -1,0 +1,71 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="main">
+    <img width="100%" src="../../../assets/top_bar.png" alt="top_bar">
+
+    <div class="container">
+        <div style="text-align:center">
+            <br><br>
+            <img width="300" id="logo" src={{imageUrl}}>
+            <h3>Welcome back!</h3>
+            <br>
+            <hr class="top_bar">
+            <br>
+        </div>
+
+        <form class="main" [formGroup]="profile" (ngSubmit)="onSubmit()">
+
+
+            <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
+            
+                <div class="form-group ">
+
+                    <label for="email">Email*</label>
+                    <br>
+                    <input id="email " class="form-control " formControlName="email" placeholder="ex: sample@email.com" required>
+
+                    <div *ngIf="email.invalid && (email.dirty || email.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="email.errors?.required ">
+                            Email is required.
+                        </div>
+                        <div *ngIf="email.errors?.email ">
+                            EMail is invalid.
+                        </div>
+                    </div>
+                </div>
+<br>
+                <div class="form-group ">
+
+                    <label for="pass">Password*</label>
+                    <br>
+                    <input id="pass" class="form-control " placeholder="ex: password"  type="password" formControlName="pass" required>
+
+                    <div *ngIf="pass.invalid && (pass.dirty || pass.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="pass.errors?.required ">
+                            Password is required.
+                        </div>
+                        
+                    </div>
+
+                </div>
+<br>
+                <button type="submit " class="btn btn-default " [disabled]="profile.invalid">Sign In</button>
+            
+                <p id="signOnFailed" style="display: none;">Username or Password is incorrect please try again</p>
+            
+            
+            </div>
+<br>
+<p id="forgotPassword" > Dont have an account? <a href="/registerRecruiter0">Sign up!</a></p>
+ 
+            <p id="forgotPassword" > Forgot Password?<a href="/forgotPass">click here</a></p>
+ 
+            <p id="sendFailed" >Already Registered but didnt get confirmation email? <a href="/resendVerification">click here</a>  </p>
+                
+
+        </form>
+    </div>
+
+</div>
+<registerFooter></registerFooter>

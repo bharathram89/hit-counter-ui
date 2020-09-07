@@ -54,16 +54,20 @@ export class RegisterPage2 {;
       }) 
       .then((response) => {
         console.log(response);
-        this.router.navigate(['registerRecruiter2']);
+        $('#sentMessage').removeAttr('style')
+
+        $('#sendFailed').css("display:none");
+        //show message saying email resent
       })
       .catch((error) => {
+        $('#sendFailed').removeAttr('style')
         console.log(error);
       });
     })
     
   }
-  goHome() {
-    this.router.navigate(['home']);
+  signOn() {
+    this.router.navigate(['signOn']);
   }
 }
 

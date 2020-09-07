@@ -1,0 +1,47 @@
+
+
+/**
+
+      @media (min-width: 768px){
+                  
+      }
+      @media (min-width: 992px){
+       
+      }
+      @media (min-width: 1200px){
+        
+      }
+      @media (min-width: 1535px){
+        
+      }
+**/
+.container {
+    background-color: rgb(245, 245, 245);
+    width: 44.5%;
+    margin: auto;
+}
+.top_bar{
+  width: 70%;
+  margin: auto;
+  background-color: orange;
+  border-radius: 5px;
+}
+.main {
+  width: 44.5%;
+  margin: auto;
+}
+button {
+  width:30%;
+  background-color: orange;
+}
+.introForm {
+    width: 44.5%;
+    margin: auto;
+}
+.introForm.label{
+  text-align: left;
+}
+#logo{
+  width: 50%;
+  margin: auto;
+}

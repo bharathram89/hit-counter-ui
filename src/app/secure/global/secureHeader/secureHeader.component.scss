@@ -1,0 +1,35 @@
+
+
+/**
+
+      @media (min-width: 768px){
+                  
+      }
+      @media (min-width: 992px){
+       
+      }
+      @media (min-width: 1200px){
+        
+      }
+      @media (min-width: 1535px){
+        
+      }
+**/
+/* Add a black background color to the top navigation bar */
+
+.header{
+    height: 10%;
+    width: 100%;
+    margin-top: 0;
+    position: fixed;
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    background-color:royalblue; /* Black*/
+}
+.header img{
+      height: 100%;
+}
+.header .a{
+      text-align: center;
+      
+}

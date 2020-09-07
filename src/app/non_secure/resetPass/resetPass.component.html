@@ -1,0 +1,74 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="main">
+    <img width="100%" src="../../../assets/top_bar.png" alt="top_bar">
+
+    <div class="container">
+        <div style="text-align:center">
+            <br><br>
+            <img width="300" id="logo" src={{imageUrl}}>
+            <h3>Reset Password</h3>
+            <br>
+            <hr class="top_bar">
+            <br>
+        </div>
+
+        <form class="main" [formGroup]="profile" (ngSubmit)="onSubmit()">
+
+
+            <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
+            
+               
+<br>
+                <div class="form-group ">
+
+                    <label for="pass">Password*</label>
+                    <br>
+                    <input id="pass" class="form-control " placeholder="ex: password"  type="password" formControlName="pass" required>
+
+                    <div *ngIf="pass.invalid && (pass.dirty || pass.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="pass.errors?.required ">
+                            Password is required.
+                        </div>
+                        <div *ngIf="pass.errors?.pattern ">
+                            password needs to have atleast 1 upper case letter and 1 lower and min length of 5
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <br>
+                <div class="form-group ">
+    
+                    <label for="confirmPassword ">Confirm Password</label>
+                    <input id="confirmPassword " class="form-control " placeholder="ex: Aeiou" type="password" formControlName="confirmPassword" required>
+
+                    <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) " class="alert alert-danger ">
+
+                        <div *ngIf="confirmPassword.errors?.required ">
+                            Confirm Password is required.
+                        </div>
+
+                    </div>
+
+                </div>
+                <div *ngIf="profile.errors?.notSame">
+                    Password needs to match
+                </div>
+<br>
+                <button type="submit " class="btn btn-default " [disabled]="profile.invalid">Update Password</button>
+            
+            
+            
+            
+            </div>
+<br>
+            <p id="resetSuccessful" style="display: none;"> Password Reset was successful<a href="/signOn">click here</a> to go to sign On</p>
+ 
+            <p id="resetFailed" style="display: none;"> Password Reset Failed try again or <a href="/contactUs">click here</a> to get in touch with us</p>
+                
+        </form>
+    </div>
+
+</div>
+<registerFooter></registerFooter>

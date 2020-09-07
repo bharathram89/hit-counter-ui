@@ -1,5 +1,5 @@
 import { TestBed, async } from '@angular/core/testing';
-import { SignOn } from './RegisterPage1.component';
+import { SignOn } from './SignOn.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({

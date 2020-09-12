@@ -31,7 +31,7 @@ export class ResetPass {
 
   ngOnInit() {
 
-    if(window.location.search.includes('userName')){
+    if(!window.location.search.includes('userName')){
       this.router.navigate(['signOn'])
     }
     this.profile= new FormGroup({

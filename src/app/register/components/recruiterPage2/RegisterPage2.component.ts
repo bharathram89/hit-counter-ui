@@ -39,10 +39,12 @@ export class RegisterPage2 {;
       let head;
       if(data.userType == 'Recruiter'){
         head = {
+          type:'rec',
           userName:data["companyEmail"]
         }
       }else{
         head = {
+          type:'can',
           userName:data["personalEmail"]
         }
       }

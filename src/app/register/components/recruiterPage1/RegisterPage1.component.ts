@@ -88,26 +88,70 @@ export class RegisterPage1 {
     this.modelSvc.setPersonalEmail$(this.profile.value.pemail);
     this.modelSvc.setCompanyEmail$(this.profile.value.cemail);
     this.modelSvc.setPhoneNumber$(this.profile.value.phone);
-    $.ajax({
-      method:'POST',
-        url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/users/createRecruiter",
-        headers: {
-              first_name: this.profile.value.fname,
-              last_name: this.profile.value.lname,
-              org_email: this.profile.value.cemail,
-              contact_number: this.profile.value.phone,
+
+
+    this.modelSvc.getRegisterVO$().subscribe(data=>{
+      if(data.userType =='Recruiter'){
+
+        $.ajax({
+          method:'POST',
+            url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/users/createRecruiter",
+            headers: {
+                  first_name: this.profile.value.fname,
+                  last_name: this.profile.value.lname,
+                  org_email: this.profile.value.cemail,
+                  contact_number: this.profile.value.phone,
+                  password:this.profile.value.confirmPassword
+                }
+        }) 
+        .then((response) => {
+          console.log(response);
+          this.router.navigate(['registerRecruiter2']);
+        })
+        .catch((error) => {
+          $('#create_fail_msg').removeAttr('style')
+          console.log(error);
+        });
+        
+      }else if(data.userType == 'Candidate'){
+        var head;
+          if(this.profile.value.phone===''){
+            head =  {
+              firstname: this.profile.value.fname,
+              lastname: this.profile.value.lname,
+              pemail: this.profile.value.pemail,
               password:this.profile.value.confirmPassword
             }
-    }) 
-    .then((response) => {
-      console.log(response);
-      this.router.navigate(['registerRecruiter2']);
+          }else{
+            head =  {
+              firstname: this.profile.value.fname,
+              lastname: this.profile.value.lname,
+              pemail: this.profile.value.pemail,
+              contactnumber:this.profile.value.phone,
+              password:this.profile.value.confirmPassword
+            }
+          }
+      
+
+        $.ajax({
+          method:'POST',
+            url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/users/candidate",
+            headers: head
+        }) 
+        .then((response) => {
+          console.log(response);
+          this.router.navigate(['registerRecruiter2']);
+        })
+        .catch((error) => {
+          $('#create_fail_msg').removeAttr('style')
+          console.log(error);
+        });
+      }else{
+
+      }
     })
-    .catch((error) => {
-      $('#create_fail_msg').removeAttr('style')
-      console.log(error);
-    });
-    
+
+
     
   }
   get fname() { return this.profile.get('fname'); }

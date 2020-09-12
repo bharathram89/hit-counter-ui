@@ -92,17 +92,27 @@ export class RegisterPage1 {
 
     this.modelSvc.getRegisterVO$().subscribe(data=>{
       if(data.userType =='Recruiter'){
-
-        $.ajax({
-          method:'POST',
-            url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/users/createRecruiter",
-            headers: {
-                  first_name: this.profile.value.fname,
+        var head;
+        if(this.profile.value.phone===''){
+          head =  {
+            first_name: this.profile.value.fname,
+            last_name: this.profile.value.lname,
+            org_email: this.profile.value.cemail,
+            password:this.profile.value.confirmPassword
+          }
+        }else{
+          head =  {
+            first_name: this.profile.value.fname,
                   last_name: this.profile.value.lname,
                   org_email: this.profile.value.cemail,
                   contact_number: this.profile.value.phone,
                   password:this.profile.value.confirmPassword
-                }
+          }
+        }
+        $.ajax({
+          method:'POST',
+            url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/users/createRecruiter",
+            headers: head
         }) 
         .then((response) => {
           console.log(response);

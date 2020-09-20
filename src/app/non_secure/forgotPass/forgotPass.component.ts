@@ -15,7 +15,7 @@ import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, Va
 export class ForgotPass {
 
   
-  hero = { email:"", pass:""};
+  hero = { email:""};
 
   profile: FormGroup;
   currentUser: String;
@@ -52,6 +52,7 @@ export class ForgotPass {
     })
     .catch((error) => {
       $('#sendFailed').removeAttr('style')
+      $('#sentMessage').css("display:none");
       console.log(error);
     });
   }

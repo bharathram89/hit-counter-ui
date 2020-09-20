@@ -36,8 +36,7 @@ export class SignOn {
         Validators.email
       ]),
       'pass': new FormControl(this.hero.pass, [
-        Validators.required,
-        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z]).{5,}$")
+        Validators.required
         //[A-Z]+[0-9]+[@#\$&]*
       ])
     });

@@ -1,47 +1,67 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div id="main" style="text-align:center">
-    <img width="100%" src="../../../assets/top_bar.png" alt="top_bar">
-
-    <div class="container">
-        <br><br>
-        <img width="300" id="logo" src={{imageUrl}}>
-        <h3>First, Who are you here?</h3>
-        <br><br>
-        <div class="userTypeSelection">
-            <div class="inputGroup">
-                <input (click)="userTypeSelection()" id="radio1" value="Candidate" name="radio" type="radio" />
-                <label for="radio1">I am a Candidate</label>
-            </div>
-            <br>
-            <div class="inputGroup">
-                <input (click)="userTypeSelection()" id="radio2" value="Recruiter" name="radio" type="radio" />
-                <label for="radio2">I am a Recruiter</label>
-            </div>
-            <!-- <input><label>I am a Candidate</label>
-        <br>
-        <button>I am a Recruiter</button>
-        <br> -->
-        </div>
-        <br><br>
-        <button (click)="nextButton()" [disabled]="((disableNextButton$ | async))">Next</button>
-        <br>
-        <button (click)="signInWithGoogle()" [disabled]="((disableNextButton$ | async))">google</button>
-        <br>
-        <button (click)="signInWithGoogle()" [disabled]="((disableNextButton$ | async))">facebook</button>
-        <br>
-        <button (click)="signInWithGoogle()" [disabled]="((disableNextButton$ | async))">linkdin</button>
-        <div *ngIf="googleErrors$?.loginFailed ==true">
-            Couldnt sign in with google
-        </div>
-        <!-- <meta name="google-signin-scope " content="profile email ">
-        <meta name="google-signin-client_id " content="YOUR_CLIENT_ID.apps.googleusercontent.com "> -->
-
-        <!-- <div class="g-signin2 " data-onsuccess="onSignIn " data-theme="dark "></div> -->
 
 
+<main role="main" class="main">
 
-        <p>Already have an account? <a href="/signOn">Sign in</a> </p>
-        <br><br>
-    </div>
-    <cookie-law></cookie-law>
-    <registerFooter></registerFooter>
+	<div class="color-bar row p-0 m-0">
+		<div class="col-3"></div>
+		<div class="col-6"></div>
+		<div class="col-3"></div>
+	</div>
+
+	<div class="container-fluid row justify-content-center p-0 m-0">
+		<div class="col-md-6 p-0 p-md-0">
+			<div class="small-panel bg-light">
+				
+				<div class="top-panel">
+					<div class="text-center">
+						<a class="navbar-brand ml-2" href="https://skipped.io"><img src="./assets/logo/logo_color.png" alt="skipped.io"/></a>
+					</div>
+				</div>
+				<br/>
+				<br/>
+				<br/>
+				<div class="body-panel pl-2 pr-2 m-auto">
+                    
+                    
+					
+					<h5 class="text-center">First, Who are you here?</h5>
+					<hr class="hr-theme2"/>
+					<br/>
+					<br/>
+					
+					<div class="my-form-holder login-form-holder text-left">
+                        <div class="userTypeSelection">
+                            <div class="inputGroup">
+                                <input (click)="userTypeSelection()" id="radio1" value="Candidate" name="radio" type="radio" />
+                                <label for="radio1">I am a Candidate</label>
+                            </div>
+                            <br>
+                            <div class="inputGroup">
+                                <input (click)="userTypeSelection()" id="radio2" value="Recruiter" name="radio" type="radio" />
+                                <label for="radio2">I am a Recruiter</label>
+                            </div>
+                            <!-- <input><label>I am a Candidate</label>
+                        <br>
+                        <button>I am a Recruiter</button>
+                        <br> -->
+                       
+                        </div>
+                        <br/>
+					<br/>
+                        <div style="display: flex; align-items: center; justify-content: center;"> 
+                            <br><br>
+                            <button class="btn btn-block btn-theme2 bg-theme2" (click)="nextButton()" [disabled]="((disableNextButton$ | async))">Next</button>
+                            <br>
+                           
+                        </div>
+
+
+</div>
+</div>
+</div>
+<registerFooter></registerFooter>
+</div>
+</div>
+</main>
+
+ 

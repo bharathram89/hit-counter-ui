@@ -15,7 +15,7 @@ import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, Va
 export class RegisterPage1 {
 
   
-  hero = { fname: '',lname: '' ,pemail: "",cemail:"", phone:"",password:"",confirmPassword:""};
+  hero = { fname: '',lname: '' ,pemail: "",confirmEmail:"",cemail:"",confirmCompanyEmail:"", phone:"",password:"",confirmPassword:""};
 
   profile: FormGroup;
   currentUser: String;
@@ -65,8 +65,16 @@ export class RegisterPage1 {
             Validators.required,
             Validators.email,
           ]))
+          this.profile.addControl('confirmCompanyEmail', new FormControl(this.hero.cemail, [
+            Validators.required,
+            Validators.email,
+          ]))
         console.log(this.profile,"is form group created?")
         }else{
+          this.profile.addControl('confirmEmail', new FormControl(this.hero.cemail, [
+            Validators.required,
+            Validators.email,
+          ]))
           this.profile.addControl('pemail', new FormControl(this.hero.cemail, [
             Validators.required,
             Validators.email,
@@ -172,6 +180,10 @@ export class RegisterPage1 {
   get pemail() { return this.profile.get('pemail'); }
 
 
+
+  get confirmCompanyEmail() { return this.profile.get('confirmCompanyEmail'); }
+
+  get confirmEmail() { return this.profile.get('confirmEmail'); }
 
   get cemail() { return this.profile.get('cemail'); }
 

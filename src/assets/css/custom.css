@@ -1,0 +1,448 @@
+body{
+	font-family: "Roboto","Helvetica Neue",Arial,"Noto Sans",sans-serif;
+	font-size: 12pt;
+	color: #0d0d0d;
+}
+a{
+	cursor: pointer;
+}
+.header{
+	background-color: #144866;
+	max-width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+.navbar-brand img{
+	max-height: 48px;
+}
+.header .navbar .dropdown-menu{
+	right: 0px !important;
+	left: auto;
+}
+.header a.nav-link{
+	color: #eee !important;
+}
+.header a.nav-link:hover,
+.header a.nav-link:focus{
+	background-color: #113c55 !important;
+}
+.profile-image{
+	border: 2px solid #eee;
+	border-radius: 50%;
+	max-height: 32px;
+	max-width: 32px;
+}
+.navbar-nav .nav-item a.nav-link span.fa{
+	font-size: 20px;
+}
+
+.custom-search-form {
+	
+}
+
+.custom-search-form .form-group {
+	padding: 2px 12px;
+	border-radius: 64px;
+	background-color: #113c55;
+}
+
+.custom-search-form .search-field {
+	background-color: transparent;
+	border: none;
+}
+
+.custom-search-form .search-field:hover,
+.custom-search-form .search-field:focus,
+.custom-search-form .search-button:hover,
+.custom-search-form .search-button:focus {
+	border: none !important;
+	box-shadow: none;
+	outline: none;
+}
+.custom-search-form{
+	position: relative;
+}
+.custom-search-form .search-field{
+	width: 100%;
+	padding-right: 36px;
+}
+
+.custom-search-form .search-button {
+	position: absolute;
+	right: 32px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.custom-search-form .search-field:focus,
+.custom-search-form .search-field:not(:placeholder-shown){
+	color: #ddd;
+}
+
+.custom-search-form .search-button::placeholder {
+	color: #577587;
+}
+
+.custom-search-form .search-button{
+	padding: none;
+	padding: 0px;
+}
+.custom-search-form .search-button span{
+	font-size: 150%;
+	color: #f7931e;
+}
+
+
+.recruiters .recruiter{
+	border: 2px solid #e5e5e5;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 0px;
+}
+
+.recruiters .recruiter:hover{
+	border: 2px solid #f7931e;
+}
+
+.recruiters .recruiter .recruiter-profile .recruiter-thumb{
+	max-height: 256px;
+	max-width: 256px;
+	max-width: 100%;
+	border-radius: 50%;
+}
+.recruiters .recruiter .recruiter-profile .mark-favourite{
+	position: absolute;
+	top: 75%;
+	left: 75%;
+	border: 0.15em solid #89a3b2;
+	border-radius: 50%;
+	background-color: #fff;
+}
+
+.recruiters .recruiter ul{
+	font-weight: bold;
+}
+
+.recruiters .recruiter:hover .recruiter-profile .mark-favourite{
+	border: 0.15em solid #f7931e;
+}
+
+.recruiters .recruiter .recruiter-profile .mark-favourite .marked,
+.recruiters .recruiter .recruiter-profile .mark-favourite .unmarked{
+	display: inline-block;
+	vertical-align: center;
+	text-align: center;
+	font-size: 16px;
+	padding: 2px;
+	line-height: 22px;
+	width: 22px;
+	height: 22px;
+	color: #89a3b2;
+	box-sizing: content-box;
+}
+
+.recruiters .recruiter:hover .recruiter-profile .mark-favourite .marked,
+.recruiters .recruiter:hover .recruiter-profile .mark-favourite .unmarked{
+	color: #f7931e;
+}
+
+.recruiters .recruiter .recruiter-profile .mark-favourite .marked{
+	display: none;
+}
+
+.recruiters .recruiter .recruiter-profile{
+	position: relative;
+	margin: auto;
+	max-width:75%;
+	max-height: 256px;
+	display: inline-block;
+	margin-bottom: 16px;
+}
+
+.recruiters .recruiter .recruiter-rating{
+	font-size: 20px;
+	color: #144866;
+	text-align: center;
+	display: -ms-flex;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-between;
+	margin: 8px 12px;
+}
+@media( max-width: 768px ) {
+	.recruiters .recruiter .recruiter-rating{
+		justify-content: space-evenly;
+	}
+}
+
+.recruiters .recruiter .recruiter-rating span.rating{
+	
+}
+
+.recruiters .recruiter .recruiter-profile::after{
+	content: '';
+	clear: both;
+	display: block;
+}
+.recruiters .card.recruiter .card-body{
+	font-size: 80%;
+}
+
+.color-theme1 {
+	color: #275f80;
+}
+.color-theme2 {
+	color: #f7931e;
+}
+.color-themeblack{
+	color: #0d0d0d;
+}
+.color-themewhite{
+	color: #e0e0e0;
+}
+
+.bg-theme1 {
+	background-color: #144866;
+}
+.bg-theme2 {
+	background-color: #f7931e;
+}
+
+
+
+.btn-outline-theme1{
+	border: 2px solid #89a3b2;
+	color: #144866;
+}
+.btn-outline-theme1:hover,
+.btn-outline-theme1:focus{
+	background-color: #89a3b2;
+	color: #fff;
+}
+
+.btn-outline-theme2{
+	border: 2px solid #f7931e;
+	color: #f7931e;
+}
+.btn-outline-theme2:hover,
+.btn-outline-theme2:focus{
+	background-color: #f7931e;
+	color: #fff;
+}
+.fix-width-200{
+	width: 200px;
+}
+
+.btn-outline-theme2:focus{
+	background-color: #89a3b2;
+}
+.btn-outline-theme2{
+	border: 2px solid #f7931e;
+	color: #f7931e;
+}
+.btn-outline-theme2:hover,
+.btn-outline-theme2:focus{
+	background-color: #f7931e;
+}
+
+
+
+.btn-theme1 {
+	color: #fff;
+	background-color: #144866;
+	border-color: #144866;
+}
+
+.btn-theme1:hover {
+	color: #fff;
+	background-color: #18577b;
+	border-color: #18577b;
+}
+
+.btn-theme1:focus, .btn-theme1.focus {
+	color: #fff;
+	background-color: #1c6691;
+	border-color: #1c6691;
+	box-shadow: 0 0 0 0.2rem rgba(28, 102, 145, 0.5);
+}
+
+.btn-theme1.disabled, .btn-theme1:disabled {
+	color: #fff;
+	background-color: #103951;
+	border-color: #103951;
+}
+
+.btn-theme1:not(:disabled):not(.disabled):active, .btn-theme1:not(:disabled):not(.disabled).active,
+.show > .btn-theme1.dropdown-toggle {
+	color: #fff;
+	background-color: #084c72;
+	border-color: #084c72;
+}
+
+.btn-theme1:not(:disabled):not(.disabled):active:focus, .btn-theme1:not(:disabled):not(.disabled).active:focus,
+.show > .btn-theme1.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.2rem rgba(28, 102, 145, 0.5);
+}
+
+.btn-theme2 {
+	color: #fff;
+	background-color: #f7931e;
+	border-color: #f7931e;
+}
+
+.btn-theme2:hover {
+	color: #fff;
+	background-color: #f9ab4f;
+	border-color: #f9ab4f;
+}
+
+.btn-theme2:focus, .btn-theme2.focus {
+	color: #fff;
+	background-color: #fab786;
+	border-color: #fab786;
+	box-shadow: 0 0 0 0.2rem rgba(249, 171, 79, 0.5);
+}
+
+.btn-theme2.disabled, .btn-theme2:disabled {
+	color: #fff;
+	background-color: #462703;
+	border-color: #462703;
+}
+
+.btn-theme2:not(:disabled):not(.disabled):active, .btn-theme2:not(:disabled):not(.disabled).active,
+.show > .btn-theme2.dropdown-toggle {
+	color: #fff;
+	background-color: #f7931e;
+	border-color: #f7931e;
+}
+
+.btn-theme2:not(:disabled):not(.disabled):active:focus, .btn-theme2:not(:disabled):not(.disabled).active:focus,
+.show > .btn-theme2.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.2rem rgba(249, 171, 79, 0.5);
+}
+
+
+
+.footer{
+	background-color: #144866;
+	max-width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+.footer .link-header{
+	font-variant: all-petite-caps;
+	color: #eee;
+}
+.footer ul li .item-link{
+	color: #eee;
+	font-size: 80%;
+}
+.bullet-link a{
+	font-size: 80%;
+	color: #fff;
+	text-decoration: none;
+	border-left: 2px solid #fff;
+	padding: 4px 16px;
+}
+.bullet-link a:first-child{
+	border-left: none;
+}
+.bullet-link a:hover,
+.bullet-link a:focus{
+	color: #ddd;
+	border-color: #ddd;
+}
+
+.web-copyright{
+	transition: 0.3s;
+}
+
+.web-copyright .copyright-text{
+	display: inline-block;
+	font-size: 80%;
+	color: #eee;
+	transition: 0.3s;
+}
+
+@media ( min-width: 1200px ) {
+	.web-copyright .copyright-text{
+		transform: translateY( -200% );
+	}
+}
+
+.color-bar .col-3,
+.color-bar .col-6{
+	height: 6px;
+	padding: 0px;
+}
+
+@media( min-width: 768px ) {
+	.color-bar .col-3,
+	.color-bar .col-6{
+		height: 12px;
+	}
+}
+
+.color-bar .col-3{
+	background-color: #f7931e;
+}
+.color-bar .col-6{
+	background-color: #144866;
+}
+.small-panel{
+	padding: 6em 0.8em;
+	text-align: center;
+}
+.small-panel .top-panel{
+	/*
+	padding: 4em 2em;
+	margin-bottom: 4em;
+	*/
+}
+
+.small-panel .body-panel{
+	width: 100%;
+	padding: 8px;
+}
+
+.small-panel .body-panel .hr-theme2{
+	border-top: 2px solid #f7931e;
+}
+
+.custom-progress-holder .progress{
+	height: 8px;
+	border-radius: 0px;
+}
+
+@media( min-width: 768px ) {
+	.small-panel .body-panel{
+		width: 66.66%;
+	}
+}
+
+.password-reset-form .custom-password-field-holder{
+	padding: 0px !important;
+}
+
+.password-reset-form .custom-password-field,
+.password-reset-form .custom-password-field:hover,
+.password-reset-form .custom-password-field:focus{
+	outline: 0px !important;
+	border: 0px !important;
+	margin: 0px !important;
+}
+
+.password-reset-form .custom-password-field-holder span.custom-password-shower{
+	padding: 8px;
+	font-size: 80%;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	color: #22b3ef;
+}
+.password-reset-form .cancel-link {
+	color: #22b3ef;
+}

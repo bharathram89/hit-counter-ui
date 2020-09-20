@@ -30,10 +30,11 @@ export class ResetPass {
   } 
 
   ngOnInit() {
-
+    //check if valid on page
     if(!window.location.search.includes('userName')){
       this.router.navigate(['signOn'])
     }
+    //load form on page
     this.profile= new FormGroup({
       'pass': new FormControl(this.hero.pass, [
         Validators.required,
@@ -44,7 +45,25 @@ export class ResetPass {
       ])
     },this.checkPasswords);
    
-    
+    //show password js
+    $('.password-reset-form .custom-password-shower').on('click', function(e){
+		
+      //alert(1);
+      //custom-password-field
+      //alert( $(this).parent().find('.custom-password-field').attr('type').toUpperCase() );
+      
+      var pass_field =  $(this).parent().find('.custom-password-field');
+      if( pass_field.attr('type').toUpperCase() == 'PASSWORD' ) {
+        pass_field.attr('type', 'text');
+        $(this).html('Hide');
+      } else {
+        pass_field.attr('type', 'password');
+        $(this).html('Show');
+      }
+      
+    });
+
+
   }
   onSubmit(){
     console.log(window.location,'url')

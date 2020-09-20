@@ -1,24 +1,74 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div id="main">
+<header class="header" role="header">
 
-    
-    <div class="header">
-        <img href="/signOn" src="../../../../assets/logo.png" alt="secure_top_bar_logo">
-        <input type="text" placeholder="Search..">
-        <!-- <div class="header_links"> -->
-          <a href="#home">Candidates</a>
-          <a href="#contact">Recruiter</a>
-          <a href="#contact">Companies</a>
-          <a href="#about">About</a>
-        <!-- </div> -->
-        <!-- <div> -->
-            <a href="#"><i class="fa fa-fw fa-envelope"></i></a>
-             <button class="subnavbtn">Alerts <i class="fa fa-caret-down"></i></button>            <!-- </div> -->
-            <button class="subnavbtn">Image <i class="fa fa-caret-down"></i></button>
-        <div class="subnav-content">
-            <a href="#link1">Settings</a>
-            <a href="#link2">Sign Out</a>
-            <a href="#link3">Link 3</a>
-        </div>
-      </div>
-</div>
+	<nav class="navbar navbar-expand-lg navbar-light align-items-center">
+		
+		<a class="navbar-brand ml-2" href="https://skipped.io"><img src="./assets/logo/logo_white.png" alt="skipped.io"/></a>
+		
+		<div class="d-inline-block d-lg-none">
+			<div class="position-relative d-inline-block">
+				<a class="nav-link dropdown-toggle d-inline-block" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img class="profile-image" src="./assets/images/1cc06303035bdc5acf1a9eb65f2454f12ee9c2fc.png" alt="user"/>
+				</a>
+				<div class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Messages</a>
+					<a class="dropdown-item" href="#">Notifications</a>
+					<a class="dropdown-item" href="#">Profile</a>
+					<a class="dropdown-item" href="#">Setting</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Logout</a>
+				</div>
+			</div>
+			<button class="navbar-toggler d-inline-block" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+		
+		
+		
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			
+			<div class="flex-fill pt-5 pb-5 p-lg-0">
+				<form class="custom-search-form form-inline my-2 my-lg-0 col-12 col-lg-9 m-auto">
+					<div class="form-group flex-fill d-flex align-items-center">
+						<input class="search-field form-control flex-fill" type="search" placeholder="Search for your dream candidate" aria-label="Search"/>
+						<button class="search-button btn my-2 my-sm-0" type="submit"><span class="fa fa-search"></span><span class="sr-only">Search</span></button>
+					</div>
+				</form>
+			</div>
+			
+			<ul class="navbar-nav ml-3 mr-3">
+				<li class="nav-item">
+					<a class="nav-link" href="#">RECRUITERS</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">COMPANIES</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">ABOUT</a>
+				</li>
+			</ul>
+			
+			<ul class="navbar-nav d-none d-lg-flex ml-3 mr-3 mr-lg-5">
+				<li class="nav-item">
+					<a class="nav-link" href="#"><span class="fa fa-envelope-o fa-2x"></span><span class="sr-only">Messages</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"><span class="fa fa-bell-o"></span><span class="sr-only">Notifications</span></a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img class="profile-image" src="./assets/images/1cc06303035bdc5acf1a9eb65f2454f12ee9c2fc.png" alt="user"/>
+					</a>
+					<div class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Profile</a>
+						<a class="dropdown-item" href="#">Setting</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Logout</a>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+	</nav>
+
+</header>

@@ -1,5 +1,106 @@
+
+<main role="main" class="main">
+
+	<div class="color-bar row p-0 m-0">
+		<div class="col-3"></div>
+		<div class="col-6"></div>
+		<div class="col-3"></div>
+	</div>
+
+	<div class="container-fluid row justify-content-center p-0 m-0">
+		<div class="col-md-6 p-0 p-md-0">
+			
+			<div class="small-panel bg-light">
+				
+				<div class="top-panel">
+					<div class="text-center">
+						<a class="navbar-brand ml-2" href="https://skipped.io"><img src="./assets/logo/logo_color.png" alt="skipped.io"/></a>
+					</div>
+				</div>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				
+				<div class="body-panel pl-2 pr-2 m-auto">
+					
+					<h4 class="text-center">Enter your new password below:</h4>
+					<br/>
+					<br/>
+					
+					<div class="my-form-holder password-reset-form-holder text-left">
+						<form class="my-form password-reset-form" action="" [formGroup]="profile" (ngSubmit)="onSubmit()" method="post">
+                            <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
+                                <div class="form-group">
+                                    <label for="pass">New Password *</label>
+                                    <div class="form-control custom-password-field-holder d-flex align-items-center">
+                                        <input formControlName="pass" type="password" class="custom-password-field flex-fill" id="new_password" name="new_password" placeholder="* * * * * * *"/>
+                                        <span class="custom-password-shower">Show</span>
+                                    </div>
+                                    <div *ngIf="pass.invalid && (pass.dirty || pass.touched) " class="alert alert-danger ">
+
+                                        <div *ngIf="pass.errors?.required ">
+                                            Password is required.
+                                        </div>
+                                        <div *ngIf="pass.errors?.pattern ">
+                                            password needs to have atleast 1 upper case letter and 1 lower and min length of 5
+                                        </div>
+                                        
+                                    </div>
+                
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm New Password *</label>
+                                    <div class="form-control custom-password-field-holder d-flex align-items-center">
+                                        <input formControlName="confirmPassword" type="password" class="custom-password-field flex-fill" id="confirm_password" name="confirm_password" placeholder="* * * * * * *"/>
+                                        <span class="custom-password-shower">Show</span>
+                                    </div>
+                                    <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) " class="alert alert-danger ">
+
+                                        <div *ngIf="confirmPassword.errors?.required ">
+                                            Confirm Password is required.
+                                        </div>
+                
+                                    </div>
+                                    <!-- <div id="password_not_matched" class="invalid-feedback">Your new password do not match</div> -->
+                                </div>
+                                <div class="alert-danger" *ngIf="profile.errors?.notSame">
+                                    Password needs to match
+                                </div>
+                                
+                                <br/>
+                                <br/>
+                                <button type="submit" [disabled]="profile.invalid" class="btn btn-block btn-theme2 bg-theme2">Reset</button>            
+                                <br>             
+                                <p id="resetSuccessful" style="display: none;"> Password Reset was successful<a href="/signOn">click here</a> to go to sign On</p>
+ 
+                                <p id="resetFailed" style="display: none;"> Password Reset Failed try again or <a href="/contactUs">click here</a> to get in touch with us</p>
+                            </div>
+							
+							<br/>
+							<br/>
+							
+						</form>
+					</div>
+				
+					
+					
+				</div>
+				
+			</div>
+			
+			<registerFooter></registerFooter> 
+		
+		</div>
+		
+	</div>
+
+</main>
+
+
+
 <!--The content below is only a placeholder and can be replaced.-->
-<div id="main">
+<!-- <div id="main">
     <img width="100%" src="../../../assets/top_bar.png" alt="top_bar">
 
     <div class="container">
@@ -71,4 +172,4 @@
     </div>
 
 </div>
-<registerFooter></registerFooter>
+<registerFooter></registerFooter> -->

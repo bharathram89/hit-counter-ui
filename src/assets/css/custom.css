@@ -446,3 +446,78 @@ a{
 .password-reset-form .cancel-link {
 	color: #22b3ef;
 }
+
+
+
+
+
+
+
+/* app login */
+
+.app-login{
+	
+}
+.app-login .app-login-url {
+	display: block;
+	border-radius: 3px;
+	border: 2px solid #7b7b7b;
+	padding: 6px;
+	text-align: center;
+	text-decoration: none;
+	color: #161616;
+	font-weight: normal;
+	
+}
+.app-login .app-login-url .app-icon{
+	height: 16px;
+	width: auto;
+	max-width: 32px;
+	vertical-align: baseline;
+	margin-right: 16px;
+}
+.app-login .app-login-url:hover,
+.app-login .app-login-url:focus{
+	/*
+	background: #161616;
+	color: #fff;
+	*/
+	background: #ddd;
+	border-color: #000;
+}
+.selectable-radio{
+	position: relative;
+}
+
+.selectable-radio .radio-input{
+	visibility: hidden;
+}
+
+.selectable-radio .radio-input+.radio-label{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #b6b6b6;
+	border-radius: 3px;
+	line-height: 100%;
+	color: #b6b6b6;
+	padding: 8px;
+	z-index: 1;
+}
+.selectable-radio .radio-input:checked+.radio-label{
+	color: #161616;
+}
+.selectable-radio .radio-input:checked+.radio-label::after{
+	content: '\2714';
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 3px
+	font-weight: bold;
+	font-size: 120%;
+	color: #26b4f0;
+	z-index: 2;
+}

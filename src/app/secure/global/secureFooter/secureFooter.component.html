@@ -50,3 +50,44 @@
 	</div>
 
 </footer>
+
+
+
+    <script src="asset/js/jquery-1.12.4.min.js"></script>
+    <script src="asset/js/popper.min.js"></script>
+    <script src="asset/js/bootstrap.min.js"></script>
+    <script src="asset/js/particles.min.js"></script>
+    <script src="asset/js/typewrite.js"></script>
+    <script src="asset/js/slick.min.js"></script>
+    <script src="asset/js/venobox.min.js"></script>
+    <script src="asset/js/jquery.counterup.js"></script>
+    <script src="asset/js/waypoints.min.js"></script>
+    <script src="asset/js/wow.min.js"></script>
+    <script src="asset/js/chosen.jquery.js"></script>
+
+
+
+    <script src="asset/js/jquery.charts-sparkline.js"></script>
+    <script src="asset/js/jquery.sparkline.min.js"></script>
+    <script src="asset/js/custom.js"></script>
+
+
+
+    <script type="text/javascript">
+        var $chosen = $('.chosen-select').chosen({
+            max_selected_options: 3
+        });
+
+        $chosen.change(function () {
+            var $this = $(this);
+            var chosen = $this.data('chosen');
+            var search = chosen.search_container.find('input[type="text"]');
+          
+            search.prop('disabled', $this.val() == 3);
+          
+            if (chosen.active_field) {
+                search.focus();
+            }
+        });
+    </script>
+

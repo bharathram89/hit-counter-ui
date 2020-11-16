@@ -14,23 +14,33 @@ import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, Va
 })
 export class SecureLeftNav {
 
-  
+  userName: String;
 
   profile: FormGroup;
   currentUser: String;
 
-  public modelSvc: UserObjService;
+  public userObjSvc: UserObjService;
   imageUrl = '../../../assets/logo.png'
   constructor(modelSvc: UserObjService,private router: Router){
 
-    this.modelSvc =modelSvc;
+    this.userObjSvc =modelSvc;
     
 
   } 
 
   ngOnInit() {
-   
+   this.userObjSvc.getUserObjectVO$().subscribe(data=>{
+     this.userName = data.firstName + ' ' + data.lastName;
+   })
+   if(window.location.href.includes('profile')){
+    this.makeActive('#profile');
+   }
     
+  }
+  makeActive(locator){
+    if($(locator).length == 1){
+      $(locator).addClass("active")
+    }
   }
   signOn(){
     this.router.navigate(['signOn'])

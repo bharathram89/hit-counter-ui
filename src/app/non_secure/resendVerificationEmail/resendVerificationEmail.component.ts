@@ -45,7 +45,7 @@ export class ResendVerificationEmail {
     console.log(this.profile.value.email)
     $.ajax({
       method:'GET',
-        url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/register/resendVerificationCode?userName="+this.profile.value.email,
+        url:"http://ec2-54-151-38-10.us-west-1.compute.amazonaws.com:8080/api/v1/users/resendVerificationCode?userName="+this.profile.value.email,
         
     }) 
     .then((response) => {

@@ -1,3 +1,21 @@
+.text-navy{color: #000080;}
+.text-blue{color: #0000ff;}
+.text-yellow{color: #ffff00;}
+.text-golden{color: #daa520;}
+.text-orange{color: #ffa500;}
+.text-skyblue{color: #bfdfff;}
+.text-violet{color: #ee82ee;}
+.text-indigo{color: #4b0082;}
+.text-green{color: #008000;}
+.text-red{color: #ff0000;}
+.text-gray{color: #808080;}
+.text-white{color: #ffffff;}
+.text-black{color: #000000;}
+
+.jhide{display: none !important;}
+.jshow{display: block !important;}
+
+
 body{
 	font-family: "Roboto","Helvetica Neue",Arial,"Noto Sans",sans-serif;
 	font-size: 12pt;
@@ -67,6 +85,29 @@ a{
 	padding-right: 36px;
 }
 
+.custom-search-form .search-field.left-pos{
+	padding-top: 6px;
+	padding-right: 12px;
+	padding-bottom: 6px;
+	padding-left: 36px;
+	position: relative;
+}
+
+.custom-search-form .left-pos-icon{
+	position: absolute;
+	left: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #66757d;
+}
+
+.custom-search-form .search-field.left-pos{
+	padding-top: 6px;
+	padding-right: 12px;
+	padding-bottom: 6px;
+	padding-left: 36px;
+}
+
 .custom-search-form .search-button {
 	position: absolute;
 	right: 32px;
@@ -84,7 +125,6 @@ a{
 }
 
 .custom-search-form .search-button{
-	padding: none;
 	padding: 0px;
 }
 .custom-search-form .search-button span{
@@ -520,4 +560,277 @@ a{
 	font-size: 120%;
 	color: #26b4f0;
 	z-index: 2;
+}
+
+
+
+/* Dhashboard */
+.user_dashboard_panel{
+	background-color: #f4f8fb;
+}
+.dashboard_right_panel{
+	background: #fff;
+	border-radius: 6px;
+	padding: 2px;
+}
+.dashboard_nav ul li{
+	padding: 6px 2px;
+}
+.dashboard_nav ul li a{
+	text-decoration: none;
+	color: #969293;
+	display: block;
+}
+
+.dashboard_nav ul li.active a,
+.dashboard_nav ul li a:hover,
+.dashboard_nav ul li a:focus{
+	color: #111111;
+}
+
+.add_tag_btn{
+	display: inline-block;
+	font-size: 100%;
+	padding: 8px 16px;
+	background: #f4f8fb;
+	border: 2px solid #a3a3a4;
+	border-radius: 28px;
+	margin: 4px;
+	-moz-user-select:none;
+	-weblit-user-select:none;
+	user-select:none;
+	cursor: pointer;
+}
+
+.skill_tag{
+	display: inline-block;
+	font-size: 100%;
+	padding: 4px 16px;
+	color: #fff;
+	background: #2aa7df;
+	border: 2px solid #2aa7df;
+	border-radius: 28px;
+	margin: 4px;
+	vertical-align: middle;
+}
+.skill_tag *{
+	line-height: 16px;
+}
+.skill_tag .tag_remover{
+	line-height: 100%;
+	font-family: 'Arial', 'sans-serif';
+	-moz-user-select:none;
+	-weblit-user-select:none;
+	user-select:none;
+	cursor: pointer;
+	font-size: 16px;
+	margin-left: 16px;
+}
+
+.success-modal .modal-body{
+	background-color: #f4f8fb;
+	box-shadow: 0 0 8px #aaa;
+}
+
+.success-modal .success-note{
+	color: #6236ff;
+	
+}
+
+.match_cand a{
+	margin: 2px;
+	display: inline-block;
+}
+
+.match_cand img{
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
+	border: 2px solid transparent;
+	transition: 0.2s;
+}
+
+.match_cand a:hover img,
+.match_cand a:focus img{
+	border: 2px solid #ffbf00;
+}
+
+
+
+/* TAG */
+
+
+.dashboard-form-holder{
+	max-width: 420px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 24px;
+	background: #f4f8fb;
+	border-radius: 8px;
+}
+
+.dashboard3-form-holder{
+	max-width: 460px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 16px;
+	border-radius: 8px;
+}
+
+.dashboard3-form-holder .primary-skills{
+	padding: 16px;
+	border: 1px solid #575748;
+	border-radius: 4px;
+}
+
+.dashboard3-form-holder .primary-skills .skill_search{
+	width: 100%;
+	border: none;
+	outline: none;
+	padding: 0px;
+	margin: 0px;
+	background-image: url('../icons/magnify_24x24.png');
+	background-size: 24px;
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder{
+	margin-top: 6px;
+	height: 220px;
+	max-width: 100%;
+	padding-right: 4px;
+	overflow-y: auto;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder::-webkit-scrollbar{
+	background: transparent;
+	width: 6px;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder:hover::-webkit-scrollbar-thumb{
+	min-height: 10px;
+	max-height: 50%;
+	border-radius: 4px;
+	background: #bbbbbb;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item{
+	margin-bottom: 3px;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item:hover{
+	background-color: #eeeeee;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item::after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item .skill_tag_text{
+	color: #333;
+	float: left;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item .skill_tag_btn{
+	text-align: left;
+	padding: 4px 12px;
+	border: 1px solid  #999;
+	border-radius: 3px;
+	color: #999999;
+	background-color: #fff;
+	width: 96px;
+	float: right;
+	outline: none;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item .skill_tag_btn:hover,
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item .skill_tag_btn:focus{
+	border: 1px solid  #444444;
+	background-color: #eeeeee;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item .skill_tag_btn.tag_added{
+	border: 1px solid  #eeeeee;
+	background-color: #eeeeee;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item .skill_level_opt{
+	color: #cccccc;
+	border: 1px solid #f4f4f4;
+	padding: 4px;
+	float: left;
+}
+
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item .skill_level_opt:hover,
+.dashboard3-form-holder .primary-skills .skill_tag_holder .skill_tag_item .skill_level_opt:focus{
+	color: #333;
+	float: left;
+	border: 1px solid #333333;
+}
+
+
+
+
+
+
+.sal_range .radio_tab{
+	display: none;
+}
+
+.sal_range .radio_tab+span{
+	font-size: 80%;
+	color: #999;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.sal_range .radio_tab:checked+span{
+	color: #222;
+}
+
+.job_type .col{
+	position: relative;
+	display: block;
+	height: 42px;
+}
+
+.job_type .radio_tab{
+	display: none;
+}
+
+.job_type .radio_tab+span{
+	display: block;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 100%;
+	line-height: 42px;
+	background-color: #04a9ee;
+	color: #fff;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	border-radius: 3px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.job_type .radio_tab:checked+span{
+	color: #222222;
+	background-color: #e3e6f7;
+}
+
+
+.user_info img.user_thumb{
+	height: 48px;
+	width: 48px;
+	border-radius: 50%;
+	padding: 0px;
+	background-color: #3b67da;
 }

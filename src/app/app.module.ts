@@ -30,8 +30,12 @@ import { SecureFooter } from './secure/global/secureFooter/secureFooter.componen
 import { SecureLeftNav } from './secure/global/secureLeftNav/secureLeftNav.component';
 import { SecureHeader } from './secure/global/secureHeader/secureHeader.component';
 import { UserObjService } from './services/userObj.service';
- 
+import { PostAJob } from './secure/postAJob/postAJob.component';
 
+import { PostAJobPage1 } from './secure/postAJob/components/page1/page1.component';
+import { PostAJobPage0 } from './secure/postAJob/components/page0/page0.component';
+import { PostAJobObjService } from './services/postAJob.service';
+import { AddProfileInfo } from './secure/addProfileInfo/addProfileInfo.component';
 
 // import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 // import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
@@ -83,7 +87,14 @@ export function provideConfig() {
     SecureLeftNav,
 
     //Secure
-    Profile
+    AddProfileInfo,
+    Profile,
+
+
+    PostAJob,
+    PostAJobPage1,
+    PostAJobPage0
+
   ],
   imports: [
     BrowserModule,
@@ -103,6 +114,9 @@ export function provideConfig() {
     },{
       provide:UserObjService, 
       useClass:UserObjService
+    },{
+      provide:PostAJobObjService, 
+      useClass:PostAJobObjService
     }],
   bootstrap: [AppComponent]
 })

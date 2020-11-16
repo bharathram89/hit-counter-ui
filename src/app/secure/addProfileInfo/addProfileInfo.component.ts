@@ -10,11 +10,11 @@ import { UserObjService } from '../../services/userObj.service';
 import { UserObj } from '../userObj.model';
 
 @Component({
-  selector: 'profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'addProfileInfo',
+  templateUrl: './addProfileInfo.component.html',
+  styleUrls: ['./addProfileInfo.component.scss']
 })
-export class Profile {
+export class AddProfileInfo {
 
   
   profile: FormGroup;
@@ -23,7 +23,8 @@ export class Profile {
   public userObjSvc: UserObjService;
   private isViewValid:Subject<boolean>;
 
-  imageData: any;
+  hero = { industry: '',yrsExp: '' ,keyAchive: "",jobTypeP:"",samplePortfolio:""};
+
   private userName:String;
 
 
@@ -43,50 +44,86 @@ export class Profile {
           
           this.router.navigate(['signOn']);
         }else{
-          this.getPfPic();
           this.userObjSvc.getUserObjectVO$().subscribe(userData=>{
+            if(userData.userType=="RECRUITER"){
+              this.profile= new FormGroup({
+                'industry': new FormControl(this.hero.industry, [
+                ]),
+                'yrsExp': new FormControl(this.hero.industry, [
+                ])
+              });//yrsExp
+            }if(userData.userType=="CANDIDATE"){
+              this.profile= new FormGroup({
+                'industry': new FormControl(this.hero.industry, [
+                ]),
+                'yrsExp': new FormControl(this.hero.industry, [
+                ]),
+                'keyAchive': new FormControl(this.hero.industry, [
+                ]),
+                'jobTypeP': new FormControl(this.hero.industry, [
+                ]),
+                'samplePortfolio': new FormControl(this.hero.industry, [
+                ])
+                
+              });//yrsExpkeyAchive
+            }
+            
+      
+            console.log(userData.userType,"userdata")
             this.currentUser = userData.userType;
-            console.log(userData.firstName,"userdata")
             this.userName=userData.firstName + " " +userData.lastName;
-            // this.replaceValue("#profileName","[[memberName]]",userData.firstName)
+            // this.replaceValue("#profileName","[[memberName]]",userData.firstName)samplePortfolio
           })
         }
       })
       
   }
 
-  getPfPic(){
-    let token = this.getCookie("skippedAuthToken")
-    $.ajax({
-      method:'GET',
-        url:"http://ec2-54-151-38-10.us-west-1.compute.amazonaws.com:8080/api/v1/users/details",
-        headers: {
-              "X-SkippedAuth": token
-            }
-    }) 
-    .then((response,huh,xhr) => {
-      console.log(response,"we need thisss",huh)
-      
-        this.imageData = response.image.replace("/profile_pic","");
-       
-    })
-    .catch((error) => {
-     
-    });
-    
-}
-  replaceValue(locator,key,value){
-    if($(locator).length === 1 ){
-      $(locator).html(function(){
-        return $(this).html().replace(key,value)
-      })
-    }
-  }
-  postAJob(){
-console.log("POST A AJOB")
-    this.router.navigate(['/portal/postAJob']);
-  }
+  get industry() { return this.profile.get('industry'); }
 
+  get yrsExp() { return this.profile.get('yrsExp'); }
+  get keyAchive() { return this.profile.get('keyAchive'); }
+  get jobTypeP() { return this.profile.get('jobTypeP'); }
+
+  
+sendPF(){
+  console.log(
+    $("#pfImg").prop('files')[0], "is it the file?",$("#pfImg").prop('files'))
+  // let files= $("#pfImg").prop('files')[0];
+  var fd = new FormData(); 
+  var files = $("#pfImg").prop('files')[0]; 
+                fd.append('file', files); 
+  let token = this.getCookie("skippedAuthToken")
+  $.ajax({
+    method:'POST',
+      processData: false,
+      contentType:false,
+      url:"http://ec2-54-151-38-10.us-west-1.compute.amazonaws.com:8080/api/v1/upload",
+      headers: {
+            "X-SkippedAuth": token
+      },
+      data:fd
+  }) 
+  .then((response,huh,xhr) => {
+console.log("file uploaded")
+    // this.userObjSvc.getUserObjectVO$().subscribe(data=>{
+    //   if(!data || !data.userType ){
+    //     let user = new UserObj(response.userRole.name,response.firstName,response.lastName);
+    //     this.userObjSvc.setUserObjectVO$( user);
+    //     this.isViewValid.next(true);
+    //   }else{
+    //     this.isViewValid.next(true);
+    //   }
+    // })
+  })
+  .catch((error) => {
+    // this.isViewValid.next(false);
+    // this.router.navigate(['signOn']);
+    // console.log(error);
+
+  });
+  
+}
   validateToken(){
     let token = this.getCookie("skippedAuthToken")
     $.ajax({

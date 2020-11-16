@@ -14,7 +14,6 @@ import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, Va
 })
 export class AcntVerified {
 
-  
 
   profile: FormGroup;
   currentUser: String;
@@ -29,9 +28,15 @@ export class AcntVerified {
   } 
 
   ngOnInit() {
-   
+  // TODO: will get token in url when user arives to page
+  // make verify call and pass token
+  // if success yay or boo
+
     
   }
+
+
+  
   signOn(){
     this.router.navigate(['signOn'])
   }

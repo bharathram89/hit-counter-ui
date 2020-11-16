@@ -8,84 +8,66 @@ import { RegisterVO } from '../../register/register.model';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
 import { UserObjService } from '../../services/userObj.service';
 import { UserObj } from '../userObj.model';
-
+import { PostAJobObjService } from '../../services/postAJob.service';
+import {PostAJobObj} from "./poastAJob.model";
 @Component({
-  selector: 'profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'postAJob',
+  templateUrl: './postAJob.component.html',
+  styleUrls: ['./postAJob.component.scss']
 })
-export class Profile {
+export class PostAJob {
 
   
+
   profile: FormGroup;
   currentUser: String;
 
   public userObjSvc: UserObjService;
-  private isViewValid:Subject<boolean>;
-
-  imageData: any;
-  private userName:String;
-
-
   imageUrl = '../../../assets/logo.png'
-  constructor(userObjSvc: UserObjService,private router: Router){
+  private isViewValid:Subject<boolean>;
+  private firstPage:BehaviorSubject<boolean>;
+  private secondPage:BehaviorSubject<boolean>;
+  postAJobSvc: PostAJobObjService;
+  constructor(postAJobSvc: PostAJobObjService,userObjSvc: UserObjService,private router: Router){
+    this.postAJobSvc =postAJobSvc;
     this.isViewValid = new Subject();
-    this.userName = new String();
     this.userObjSvc =userObjSvc;
+    // this.firstPage = new BehaviorSubject(true);
+    // this.secondPage = new BehaviorSubject(false);
     
-
   } 
 
   ngOnInit() {
       this.validateToken()
       this.isViewValid.subscribe(isTokenValid=>{
-        if(!isTokenValid){//need API to check if auth token in cookie is valid.
-          
-          this.router.navigate(['signOn']);
-        }else{
-          this.getPfPic();
-          this.userObjSvc.getUserObjectVO$().subscribe(userData=>{
-            this.currentUser = userData.userType;
-            console.log(userData.firstName,"userdata")
-            this.userName=userData.firstName + " " +userData.lastName;
-            // this.replaceValue("#profileName","[[memberName]]",userData.firstName)
-          })
-        }
+
+        this.userObjSvc.getUserObjectVO$().subscribe(data=>{
+          console.log(data,"userDatashoe dhow",this.getCookie('userObj'))
+          if(!isTokenValid || (data && data.userType != "RECRUITER")){//need API to check if auth token in cookie is valid.
+            
+            this.router.navigate(['signOn']);
+          }else{
+            this.postAJobSvc.setPostAJobObjectVO$(new PostAJobObj('','FirstStep'))
+           
+          }
+        })
       })
-      
+     
+      this.postAJobSvc.getPostAJobObjectVO$().subscribe(data=>{
+        console.log(data,"post job obj")
+        if(data && data.currentStep == 'FirstStep'){
+  
+          this.firstPage = new BehaviorSubject(true);
+          this.secondPage = new BehaviorSubject(false);
+        }else{
+  
+          this.firstPage = new BehaviorSubject(false);
+          this.secondPage = new BehaviorSubject(true);
+        }
+        // if(data)
+      })
   }
 
-  getPfPic(){
-    let token = this.getCookie("skippedAuthToken")
-    $.ajax({
-      method:'GET',
-        url:"http://ec2-54-151-38-10.us-west-1.compute.amazonaws.com:8080/api/v1/users/details",
-        headers: {
-              "X-SkippedAuth": token
-            }
-    }) 
-    .then((response,huh,xhr) => {
-      console.log(response,"we need thisss",huh)
-      
-        this.imageData = response.image.replace("/profile_pic","");
-       
-    })
-    .catch((error) => {
-     
-    });
-    
-}
-  replaceValue(locator,key,value){
-    if($(locator).length === 1 ){
-      $(locator).html(function(){
-        return $(this).html().replace(key,value)
-      })
-    }
-  }
-  postAJob(){
-console.log("POST A AJOB")
-    this.router.navigate(['/portal/postAJob']);
-  }
 
   validateToken(){
     let token = this.getCookie("skippedAuthToken")
@@ -97,16 +79,16 @@ console.log("POST A AJOB")
             }
     }) 
     .then((response,huh,xhr) => {
+      this.isViewValid.next(true);
 
       this.userObjSvc.getUserObjectVO$().subscribe(data=>{
         if(!data || !data.userType ){
           let user = new UserObj(response.userRole.name,response.firstName,response.lastName);
           this.userObjSvc.setUserObjectVO$( user);
-          this.isViewValid.next(true);
-        }else{
-          this.isViewValid.next(true);
+
         }
       })
+      
     })
     .catch((error) => {
       this.isViewValid.next(false);
@@ -136,8 +118,7 @@ console.log("POST A AJOB")
     }
     return null;
   }
-
-
+  
 }
 
 

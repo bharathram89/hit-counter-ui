@@ -150,16 +150,25 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="phone">Phone number</label>
+                                    <label for="phone">Phone number *</label>
                                     <input formControlName="phone" type="text" class="form-control" id="exampleInputPhonenumber" placeholder="+1 1234567890"/>
                                     <div *ngIf="phone.errors?.pattern ">
                                         Please enter a valid email phone number
                                     </div>
+                                    <div *ngIf="phone.errors?.required ">
+                                        Phone Number is required.
+                                    </div>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Zipcode</label>
-                                    <input type="number" class="form-control" id="exampleInputZipcode" placeholder="12345" min="0"/>
+                                    <label for="zipcode">Zipcode *</label>
+                                    <input formControlName="zipcode" type="text" class="form-control" id="exampleInputZipcode" placeholder="12345" min="0"/>
+                                    <div *ngIf="zipcode.errors?.required ">
+                                        Zipcode is required.
+                                    </div>
+                                    <div *ngIf="zipcode.errors?.pattern ">
+                                        Please enter a valid email zipcode.
+                                    </div>
                                 </div>
                                 
                                 <br/>

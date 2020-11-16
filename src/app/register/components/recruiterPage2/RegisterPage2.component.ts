@@ -49,9 +49,9 @@ export class RegisterPage2 {;
         }
       }
        
-      $.ajax({
+      $.ajax({//}
         method:'GET',
-          url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/register/resendVerificationCode?userName="+head.userName,
+          url:"http://ec2-54-151-38-10.us-west-1.compute.amazonaws.com:8080/api/v1/users/resendVerificationCode?userName="+head.userName,
           
       }) 
       .then((response) => {

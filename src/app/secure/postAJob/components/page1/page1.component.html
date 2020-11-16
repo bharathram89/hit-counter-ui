@@ -1,0 +1,219 @@
+<div class="my-form-holder dashboard-form-holder text-left">
+    <form class="my-form add-job-form" action="" method="post">
+        <h3 class="text-center">Additional Details</h3>
+        <div class="small text-center">Additional Details</div>
+        <br>
+        <div class="form-group">
+            <label for="job_desc_input">Job Description *</label>
+            <input type="text" name="job_desc" class="form-control" id="job_desc_input" placeholder="Ex. Designer">
+        </div>
+        
+        <div class="form-group">
+            <label for="industry_type_input">Industry Type *</label>
+            <input type="text" name="industry_type" class="form-control" id="industry_type_input" placeholder="Ex. Technology">
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleInputEmail1">Travel * </label>
+            <select class="form-control" id="exampleInputPhonenumber">
+                <option value="">Choose your travel %</option>
+                <option value="1">0-25%</option>
+                <option value="2">25-50%</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleInputEmail1">Visa Status * </label>
+            <select class="form-control" id="exampleInputPhonenumber">
+                <option value="">Choose your status</option>
+                <option value="1">Visa</option>
+                <option value="2">Permanent Resident</option>
+                <option value="3">US Citizen</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>Preferred Skills *</label>
+            <div>
+                <span class="skill_tags">
+                
+                    <span class="skill_tag">
+                        <input style="display:none" name="skill" type="checkbox" value="JAVA" ckecled="">
+                        JAVA
+                        <span class="tag_remover">X</span>
+                    </span>
+                    
+                <span class="skill_tag"><input style="display:none" name="skill" type="checkbox" value="SQL" ckecled="">SQL<span class="tag_remover">X</span></span></span>
+                
+                <span class="add_tag_btn" data-toggle="modal" data-target="#add_tag_form">Add &nbsp; &nbsp; +</span>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-block btn-theme2 bg-theme2" data-toggle="modal" data-target="#success-modal">Post Job</button>
+    </form>
+    
+    <!-- Modal Tag -->
+    <div class="modal" id="add_tag_form" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Tag</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <input id="skill_tag_inp" class="d-block w-100 p-1" type="text" placeholder="single tag here..">
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button id="add_skill_tag" type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!-- Modal Success 
+    
+     success-modal modal-dialog-centered  show
+    -->
+    <!--<div class=" success-modal position-absolute show" id="add_tag_form" aria-modal="true" style="padding-right: 17px; display: block;">-->
+    <div class="modal success-modal" id="success-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal modal-center">
+                <!-- Modal Header 
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Tag</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                -->
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="p-4">
+                    
+                        <h3 class="success-note text-center mb-4">Success!</h3>
+                        <h4 class="text-center">You have successfully posted your job</h4>
+                        
+                        <br>
+                        
+                        <div class="row user_info">
+                            <div class="col col-auto flex-auto">
+                                <img class="user_thumb" src="./assets/images/client_1.png" alt="">
+                            </div>
+                            <div class="col">
+                                <h5 class="m-0 mb-1 font-weight-normal text-left">UX Designer</h5>
+                                <div class="font-weight-normal text-left text-gray">
+                                    Walmart Inc.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        
+                        <div class="text-left mb-2">
+                            Job Description
+                        </div>
+                        <p class=" text-gray p-0">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        
+                        
+                        <div class="row d-none d-md-flex">
+                            
+                            <div class="col">
+                                <div class="text-left">
+                                    Location
+                                </div>
+                                <div class="text-left font-weight-bold mb-2">
+                                    San Francisco
+                                </div>
+                                <div class="text-left">
+                                    Recruiter
+                                </div>
+                                <div class="text-left font-weight-bold mb-2">
+                                    Christin P.
+                                </div>
+                            </div>
+                            
+                            <div class="col">
+                                <div class="text-left">
+                                    Year of exp.
+                                </div>
+                                <div class="text-left font-weight-bold mb-2">
+                                    5-7
+                                </div>
+                                
+                                <div class="text-left">
+                                    Job type
+                                </div>
+                                <div class="text-left font-weight-bold mb-2">
+                                    Full-time
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="col">
+                                <div class="text-left">
+                                    Industry type
+                                </div>
+                                <div class="text-left font-weight-bold mb-2">
+                                    Social Media
+                                </div>
+                                
+                                <div class="text-left">
+                                    Skill Requirements
+                                </div>
+                                <div class="text-left font-weight-bold mb-2">
+                                    HTML, CSS, Java, Pyton, React, PSD
+                                </div>
+                            </div>
+                            
+                            <div class="col">
+                                <div class="text-left">
+                                    Salary Range
+                                </div>
+                                <div class="text-left font-weight-bold mb-2">
+                                    $50-100 hourly
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <br>
+                        
+                        <div class="text-center p-3">
+                            <a class="btn btn-theme2 mb-2 mr-md-3" href="#">Edit Job</a>
+                            <a class="btn btn-theme2 mb-2 ml-md-3" href="#">My Dashboard</a>
+                        </div>
+                        
+                        <div class="text-center p-3">
+                            Matching Candidates to your job posting below
+                            
+                            <div class="match_cand">
+                                <a href="#" title="Mishal"><img src="./assets/images/Oval_1.png"></a>
+                                <a href="#" title="Mishal"><img src="./assets/images/Oval_2.png"></a>
+                                <a href="#" title="Mishal"><img src="./assets/images/Oval_3.png"></a>
+                                <a href="#" title="Mishal"><img src="./assets/images/Oval_4.png"></a>
+                                <a href="#" title="Mishal"><img src="./assets/images/Oval_5.png"></a>
+                                <a href="#" title="Mishal"><img src="./assets/images/Oval_6.png"></a>
+                                <a href="#" title="Mishal"><img src="./assets/images/Oval_7.png"></a>
+                                <span class="d-inline-block text-gray">+12</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal footer 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button id="add_skill_tag" type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+    
+</div>

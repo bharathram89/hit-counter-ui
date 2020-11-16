@@ -12,6 +12,9 @@ import { ResendVerificationEmail } from './non_secure/resendVerificationEmail/re
 import { ForgotPass } from './non_secure/forgotPass/forgotPass.component';
 import { ResetPass } from './non_secure/resetPass/resetPass.component';
 import { Profile } from './secure/profile/profile.component';
+import { PostAJob } from './secure/postAJob/postAJob.component';
+import { AddProfileInfo } from './secure/addProfileInfo/addProfileInfo.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -57,6 +60,14 @@ export const routes: Routes = [
   {
     path:'portal/profile',
     component:Profile
+  },
+  {
+    path:'portal/postAJob',
+    component:PostAJob
+  },
+  {
+    path:'portal/addProfileInfo',
+    component:AddProfileInfo
   },
   // {
   //   path:'resetPass',

@@ -15,7 +15,7 @@ import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, Va
 export class RegisterPage1 {
 
   
-  hero = { fname: '',lname: '' ,pemail: "",confirmEmail:"",cemail:"",confirmCompanyEmail:"", phone:"",password:"",confirmPassword:""};
+  hero = { fname: '',lname: '' ,pemail: "",confirmEmail:"",cemail:"",confirmCompanyEmail:"", phone:"",password:"",confirmPassword:"",zipcode:""};
 
   profile: FormGroup;
   currentUser: String;
@@ -41,6 +41,7 @@ export class RegisterPage1 {
           Validators.required
         ]),
         'phone': new FormControl(this.hero.phone, [
+          Validators.required,
           Validators.pattern("^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$")
         ]),
         'password': new FormControl(this.hero.password, [
@@ -50,7 +51,11 @@ export class RegisterPage1 {
         ]),
         'confirmPassword': new FormControl(this.hero.confirmPassword, [
           Validators.required
-        ])
+        ]),
+        'zipcode': new FormControl(this.hero.password, [
+          Validators.required,
+          Validators.pattern("^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$")
+        ]),
       },this.checkPasswords);
 
 
@@ -96,69 +101,64 @@ export class RegisterPage1 {
     this.modelSvc.setPersonalEmail$(this.profile.value.pemail);
     this.modelSvc.setCompanyEmail$(this.profile.value.cemail);
     this.modelSvc.setPhoneNumber$(this.profile.value.phone);
-
+    this.modelSvc.setZipCode$(this.profile.value.zipcode);
 
     this.modelSvc.getRegisterVO$().subscribe(data=>{
       if(data.userType =='Recruiter'){
         var head;
-        if(this.profile.value.phone===''){
+
           head =  {
-            first_name: this.profile.value.fname,
-            last_name: this.profile.value.lname,
-            org_email: this.profile.value.cemail,
-            password:this.profile.value.confirmPassword
+            firstName: this.profile.value.fname,
+            lastName: this.profile.value.lname,
+            email: this.profile.value.cemail,
+            contactNumber: this.profile.value.phone,
+            password:this.profile.value.confirmPassword,
+            zipCode:this.profile.value.zipcode
           }
-        }else{
-          head =  {
-            first_name: this.profile.value.fname,
-                  last_name: this.profile.value.lname,
-                  org_email: this.profile.value.cemail,
-                  contact_number: this.profile.value.phone,
-                  password:this.profile.value.confirmPassword
-          }
-        }
+        
         $.ajax({
           method:'POST',
-            url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/users/createRecruiter",
-            headers: head
+            url:"http://ec2-54-151-38-10.us-west-1.compute.amazonaws.com:8080/api/v1/users/3",
+            data: JSON.stringify(head),
+            dataType:"json",
+            headers:{"Content-Type": "application/json"}
         }) 
         .then((response) => {
           console.log(response);
           this.router.navigate(['registerRecruiter2']);
         })
         .catch((error) => {
-          $('#create_fail_msg').removeAttr('style')
+          $('#create_fail_msg') //removeAttr('style')
           console.log(error);
         });
         
       }else if(data.userType == 'Candidate'){
         var head;
-          if(this.profile.value.phone===''){
+         
             head =  {
-              firstname: this.profile.value.fname,
-              lastname: this.profile.value.lname,
-              pemail: this.profile.value.pemail,
-              password:this.profile.value.confirmPassword
+              firstName: this.profile.value.fname,
+              lastName: this.profile.value.lname,
+              email: this.profile.value.pemail,
+              contactNumber:this.profile.value.phone,
+              password:this.profile.value.confirmPassword,
+              zipCode:this.profile.value.zipcode
             }
-          }else{
-            head =  {
-              firstname: this.profile.value.fname,
-              lastname: this.profile.value.lname,
-              pemail: this.profile.value.pemail,
-              contactnumber:this.profile.value.phone,
-              password:this.profile.value.confirmPassword
-            }
-          }
-      
-
+          
         $.ajax({
           method:'POST',
-            url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/users/candidate",
-            headers: head
+            url:"http://ec2-54-151-38-10.us-west-1.compute.amazonaws.com:8080/api/v1/users/2",
+            data: JSON.stringify(head),
+            headers:{"Content-Type": "application/json"},
+            dataType:"json"
         }) 
         .then((response) => {
           console.log(response);
-          this.router.navigate(['registerRecruiter2']);
+          if (response.code.includes('400.SKIPPED')){
+            $('#create_fail_msg').removeAttr('style')
+          }else{
+
+            this.router.navigate(['registerRecruiter2']);
+          }
         })
         .catch((error) => {
           $('#create_fail_msg').removeAttr('style')
@@ -201,6 +201,7 @@ export class RegisterPage1 {
   get password() { return this.profile.get('password'); }
 
   get confirmPassword() { return this.profile.get('confirmPassword'); }
+  get zipcode() { return this.profile.get('zipcode'); }
   
 
 }

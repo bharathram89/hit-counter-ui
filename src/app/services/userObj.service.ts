@@ -10,4 +10,10 @@ export class UserObjService {
     private currentModel$:BehaviorSubject<UserObj> = new BehaviorSubject(null);
     constructor() {
     }
+    public getUserObjectVO$():BehaviorSubject<UserObj> {
+        return this.currentModel$
+    }
+    public setUserObjectVO$(initialModel:UserObj):void {
+        this.currentModel$.next(initialModel);
+    }
 }

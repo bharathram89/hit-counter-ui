@@ -73,7 +73,7 @@ export class ResetPass {
       let userName = str.substring((str.indexOf("userName=")+9),str.length)
       $.ajax({
         method:'POST',
-          url:"https://zaj3gxtv1m.execute-api.us-west-1.amazonaws.com/dev/register/resetPass",
+          url:"http://ec2-54-151-38-10.us-west-1.compute.amazonaws.com:8080/api/users/changePassword",
           headers:{
             "pass":this.profile.value.pass,
             "userName":userName,

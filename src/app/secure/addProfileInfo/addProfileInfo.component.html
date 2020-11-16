@@ -1,0 +1,177 @@
+
+<div *ngIf="(isViewValid | async)" >
+    <secureHeader></secureHeader>
+    <div class="p-1 p-md-3">
+			
+        <div class="row m-0">
+            <div class="dashboard_left_panel col-12 col-md-2 p-2 m-0">
+			
+                <secureLeftNav></secureLeftNav>
+            
+            </div>
+                
+            
+                
+            <div class="dashboard_right_panel col-12 col-md-10 p-2 m-0">
+                <div class="right-content-part">
+                    
+                  <h1>Lets complete your profile now</h1>
+                  <br/>
+                  
+                  <div *ngIf="currentUser == 'RECRUITER'" >
+                    <form [formGroup]="profile" (ngSubmit)="sendPF()" class="my-form login-form" action="" method="post">
+                      <div style="max-width:800px;">
+                      <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
+                        <h4>Demographic info:</h4>  
+                        <div class="row">
+                            <div class="col form-group">
+                              <label for="industry">Industry You Hire For *</label>
+                              <select formControlName="industry" id="industry" class="custom-select">
+                                <option value="" disabled>Select primary industry</option>
+                                <option>New York</option>
+                             </select>
+                            </div>
+                            <div class="col form-group">
+                                <label for="yrsExp">Total Years of Experience as Recruiter *</label>
+                                <select formControlName="yrsExp" value="1-2" id="yrsExp" class="custom-select">
+                                  <option value="1-2" selected>1-2</option>
+                                  <option>3-5</option>
+                                  <option>6-9</option>
+                                  <option>10+</option>
+                                </select>
+                                <br>
+                                <br>
+                                
+                                <div>
+                                  <label for="pfImg">Profile Image</label>
+                                  <div class="custom-file">
+                                  <input type="file" class="pfImg-file-input" id="pfImg">
+                                  <label class="custom-file-label" for="pfImg">Choose file</label>
+                                  </div>
+                                </div>
+                             
+                            </div>
+                           
+                           
+                          </div>
+                          <h4>Job/Role/Skill info:</h4>
+                          <div class="row">
+                          </div>
+                          <br/>
+                          <button type="submit" [disabled]="profile.invalid" class="btn btn-block btn-theme2 bg-theme2">Finish!</button>
+                          <div id="create_fail_msg" style="display: none;">
+                              There was an issue in registing you, please try again or reach out to us via <a href="./contactUs">contact us</a>.
+                          </div>
+                      </div>
+                      </div>
+                    </form>
+                  </div>
+                 <!-- ---------------------------------- CANDIDATE STARTS BELOW ----------------------------------- -->
+                  <div *ngIf="currentUser == 'CANDIDATE'" >
+                    <form [formGroup]="profile" (ngSubmit)="sendPF()" class="my-form login-form" action="" method="post">
+                      <div style="max-width:800px;">
+                      <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
+                        <h4>Highlights:</h4>  
+                        <div class="row">
+                            <div class="col form-group">
+                              <div>
+                                <label class="myCustom" for="industry">Job Seeking Status *</label>
+                                <select formControlName="industry" id="industry" class="custom-select">
+                                  <option value="" disabled>Select option that suites you best </option>
+                                  <option>Not looking for job</option>
+                                  <option>In job open to offers</option>
+                                  <option>Looking for full-time roles</option>
+                                  <option>Looking for job</option>
+                               </select>
+                              </div>
+                              <div>
+                                <label class="myCustom" for="fname">Key Achievement *</label>
+                                <input formControlName="keyAchive" type="text" class="form-control" id="keyAchive" placeholder="Ex: Ex Google Program Manager"/>
+                              </div>
+                              <div>
+                                <label class="myCustom" for="samplePortfolio">Sample Portfolio</label>
+                                <input formControlName="samplePortfolio" type="text" class="form-control" id="samplePortfolio" placeholder="Ex: mywebsite.com"/>
+                              </div>
+                              <div>
+                                <label class="myCustom" for="jobTypeP">Primary Job Type *</label>
+                                <select formControlName="jobTypeP" id="jobTypeP" class="custom-select">
+                                  <option value="" disabled>Select option that suites you best </option>
+                                  <option value="1-2">Software Engineer</option>
+                                  <option>Electical Engineer</option>
+                                  <option>UI Designer</option>
+                                  <option>UX Designer</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col form-group">
+                                <label class="myCustom" for="yrsExp">Total Years of Professional Experience *</label>
+                                <select formControlName="yrsExp" value="1-2" id="yrsExp" class="custom-select">
+                                  <option value="1-2" selected>1-2</option>
+                                  <option>3-5</option>
+                                  <option>6-9</option>
+                                  <option>10+</option>
+                                </select>
+                                <br>
+                                <div>
+                                  <label class="myCustom" for="resume">Resume</label>
+                                  <div class="custom-file">
+                                  <input type="file" class="resume-file-input" id="resumeUpload">
+                                  <label class="custom-file-label" for="resume">Choose file</label>
+                                  </div>
+                                </div>
+                                <div>
+                                  <label class="myCustom" for="pfImg">Profile Image</label>
+                                  <div class="custom-file">
+                                  <input type="file" class="pfImg-file-input" id="pfImg">
+                                  <label class="custom-file-label" for="pfImg">Choose file</label>
+                                  </div>
+                                </div>
+                             
+                            </div>
+                           
+                           
+                          </div>
+                          <h4>Job/Role/Skill info:</h4>
+                          <div class="row">
+                            <div class="col form-group">
+                              <div>
+                                <label class="myCustom" for="industry">Desired Industry *</label>
+                                <select formControlName="industry" id="industry" class="custom-select">
+                                  <option value="" disabled>Select prefered industry</option>
+                                  <option>New York</option>
+                               </select>
+                              </div>
+                            </div>
+                            
+                            <br>
+                          </div>
+                          <br/>
+                          <button type="submit" [disabled]="profile.invalid" class="btn btn-block btn-theme2 bg-theme2">Finish!</button>
+                          <div id="create_fail_msg" style="display: none;">
+                              There was an issue in registing you, please try again or reach out to us via <a href="./contactUs">contact us</a>.
+                          </div>
+                      </div>
+                      </div>
+                    </form>
+                  </div>
+
+
+                   
+                  
+                  
+    
+  
+  
+
+
+                </div>
+                </div>
+        </div>        
+        
+    </div>
+    <secureFooter></secureFooter>
+</div>
+        
+
+
+

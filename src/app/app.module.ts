@@ -11,16 +11,8 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routing.module'
 import { RegisterModelService } from './services/model.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CookieLawModule } from 'angular2-cookie-law';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignOn } from './non_secure/signOn/SignOn.component';
-import {
-  SocialLoginModule, 
-  AuthServiceConfig,
-  GoogleLoginProvider, 
-  FacebookLoginProvider, 
-  LinkedinLoginProvider
-} from 'ng4-social-login';
 import { AcntVerified } from './non_secure/acntVerified/acntVerified.component';
 import { ResendVerificationEmail } from './non_secure/resendVerificationEmail/resendVerificationEmail.component';
 import { ForgotPass } from './non_secure/forgotPass/forgotPass.component';
@@ -41,25 +33,6 @@ import { AddProfileInfo } from './secure/addProfileInfo/addProfileInfo.component
 // import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
  
  
-const CONFIG = new AuthServiceConfig([
-  {
-    id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('380914575563-o5mslfbj2klk7tdhdmr2rdogk9ugq86d.apps.googleusercontent.com')
-  },
-  {
-    id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider('Facebook-App-Id')
-  },
-  {
-    id: LinkedinLoginProvider.PROVIDER_ID,
-    provider: new LinkedinLoginProvider('LINKEDIN_CLIENT_ID')
-  }
-],false);
- 
- 
-export function provideConfig() {
-  return CONFIG;
-}
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,17 +71,12 @@ export function provideConfig() {
   ],
   imports: [
     BrowserModule,
-    SocialLoginModule,
-    CookieLawModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [{
-    provide: AuthServiceConfig,
-    useFactory: provideConfig
-  },{
       provide:RegisterModelService, 
       useClass:RegisterModelService
     },{

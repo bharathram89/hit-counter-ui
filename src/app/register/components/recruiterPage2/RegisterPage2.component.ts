@@ -5,7 +5,7 @@ import * as $ from "jquery";
 import { RegisterModelService } from '../../../services/model.service';
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { RegisterVO } from '../../register.model';
-import { validateConfig } from '@angular/router/src/config';
+// import { validateConfig } from '@angular/router/src/config';
 import { FormGroup, FormControl,Validators, EmailValidator } from '@angular/forms';
 
 @Component({

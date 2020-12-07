@@ -4,12 +4,6 @@ import { RegisterVO } from '../../register.model'
 import * as $ from "jquery";
 import { RegisterModelService } from '../../../services/model.service';
 import { Router } from '@angular/router';
-import { 
-  AuthService, 
-  FacebookLoginProvider, 
-  GoogleLoginProvider,
-  LinkedinLoginProvider
-} from 'ng4-social-login';
 @Component({
   selector: 'register',
   templateUrl: './RegisterPage0.component.html',
@@ -19,10 +13,10 @@ export class RegisterPage0 {
   public googleErrors$ =  new BehaviorSubject(false);
   public disableNextButton$ =  new BehaviorSubject(true);
   auth2: any;
-  @ViewChild('loginRef') loginElement: ElementRef;
+  // @ViewChild('loginRef') loginElement: ElementRef;
   public modelSvc: RegisterModelService;
   imageUrl = '../../../assets/logo.png'
-  constructor(modelSvc: RegisterModelService,private router: Router,private authService: AuthService){
+  constructor(modelSvc: RegisterModelService,private router: Router){
     this.modelSvc = modelSvc;
     // var checkboxes = $("input[type='checkbox']");
     // this.disableNextButton$ = new Subject<boolean>(false);
@@ -48,31 +42,6 @@ export class RegisterPage0 {
 
   }
 
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-  signInWithLinkedIN(): void {
-    this.authService.signIn(LinkedinLoginProvider.PROVIDER_ID);
-  }
-  signInWithGoogle(): void {
-    let x = this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    // if(x.)
-    x.then((user) => {
-      console.log(user,"user")
-      if(user !== null){
-    //create register object and proceed to next route
-    var selected_option = $('input[type=radio]:checked').attr('value');
-    var regiserModel = new RegisterVO(selected_option,null,null,null,null,null,null,null,null,null,null);
-    this.modelSvc.setRegisterVO$(regiserModel);
-        this.googleErrors$.next(true)
-        this.router.navigate(['registerRecruiter3'])
-      }else{
-        this.googleErrors$.next(false)
-        console.log('google login didnt work')
-      }
-      
-    });
-  }
   userTypeSelection(){
     this.disableNextButton$.next(false);
   }

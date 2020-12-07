@@ -5,9 +5,9 @@ import * as $ from "jquery";
 import { RegisterModelService } from '../../../services/model.service';
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { RegisterVO } from '../../register.model';
-import { validateConfig } from '@angular/router/src/config';
+// import { validateConfig } from '@angular/router/src/config';
 import { FormGroup, FormControl,Validators, EmailValidator, AbstractControl, ValidatorFn } from '@angular/forms';
-import { AuthService } from 'ng4-social-login';
+
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
 }
@@ -27,7 +27,7 @@ export class RegisterPage3 {;
   selectedFile: ImageSnippet;
 
   imageUrl = '../../../assets/logo.png'
-  constructor(modelSvc: RegisterModelService,private router: Router,private authService: AuthService){
+  constructor(modelSvc: RegisterModelService,private router: Router ){
     this.modelSvc = modelSvc;
     // var checkboxes = $("input[type='checkbox']");
     // this.disableNextButton$ = new Subject<boolean>(false);
@@ -42,9 +42,7 @@ export class RegisterPage3 {;
         this.pfData= data;
       }
     })
-    this.authService.authState.subscribe(data=>{
-      console.log(data,"google data");
-    })
+   
     this.profile = new FormGroup({
       'address': new FormControl(this.hero.address, [
         Validators.required

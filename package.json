@@ -22,14 +22,14 @@
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
     "@types/jquery": "3.3.31",
-    "angular2-cookie-law": "^1.4.0",
     "bootstrap": "^4.5.2",
     "core-js": "^2.4.1",
     "jquery": "3.5.0",
     "rxjs": "^6.6.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1",
-    "rxjs-compat": "^6.0.0-rc.0"
+    "rxjs-compat": "^6.0.0-rc.0",
+    "ngx-google-places-autocomplete":"2.0.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.29",
@@ -52,6 +52,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.2.4"
   }
 }

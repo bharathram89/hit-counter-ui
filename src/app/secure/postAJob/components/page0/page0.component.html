@@ -1,3 +1,5 @@
+
+
 <div class="my-form-holder dashboard-form-holder text-left">
     <form class="my-form login-form" action="" method="post">
         <h3 class="text-center">Add Job</h3>
@@ -39,12 +41,9 @@
         
         <div class="form-group">
             <label for="location_input">Location/City/State *</label>
-            <select name="location" class="form-control" id="location_input">
-                <option value="">Choose your location</option>
-                <option value="developer">New York, USA</option>
-                <option value="technician">Slough, UK</option>
-                <option value="technician">London, England</option>
-            </select>
+            <input class="form-control"  ngx-google-places-autocomplete [options]= 
+               'options'  (onAddressChange)="AddressChange($event)"/> 
+            {{ formattedaddress }} 
         </div>
         
         <div class="form-group">

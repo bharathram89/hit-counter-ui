@@ -21,6 +21,14 @@ export class PostAJobPage0 {
   private isViewValid:Subject<boolean>;
   private postAJobSvc: PostAJobObjService;
   imageUrl = '../../../assets/logo.png'
+
+  formattedaddress=" "; 
+  options={ 
+    componentRestrictions:{ 
+      country:["US"] 
+    } 
+  } 
+
   constructor(postAJobSvc: PostAJobObjService,private router: Router){
     this.isViewValid = new Subject();
     this.postAJobSvc = postAJobSvc;
@@ -41,6 +49,12 @@ export class PostAJobPage0 {
       
     
   }
+
+  public AddressChange(address: any) { 
+  //setting address from API to local variable 
+   this.formattedaddress=address.formatted_address 
+} 
+
   nextStep(){
     console.log("triggered")
     this.postAJobSvc.getPostAJobObjectVO$().subscribe(data=>{

@@ -28,7 +28,7 @@ import { PostAJobPage1 } from './secure/postAJob/components/page1/page1.componen
 import { PostAJobPage0 } from './secure/postAJob/components/page0/page0.component';
 import { PostAJobObjService } from './services/postAJob.service';
 import { AddProfileInfo } from './secure/addProfileInfo/addProfileInfo.component';
-
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 // import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 // import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
  
@@ -70,6 +70,7 @@ import { AddProfileInfo } from './secure/addProfileInfo/addProfileInfo.component
 
   ],
   imports: [
+    GooglePlaceModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

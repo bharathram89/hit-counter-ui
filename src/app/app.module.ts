@@ -31,7 +31,7 @@ import { AddProfileInfo } from './secure/addProfileInfo/addProfileInfo.component
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 // import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 // import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
- 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
  
 @NgModule({
   declarations: [
@@ -71,6 +71,7 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
   ],
   imports: [
     GooglePlaceModule,
+    NgMultiSelectDropDownModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

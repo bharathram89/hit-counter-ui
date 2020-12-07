@@ -1,27 +1,38 @@
 
 
 <div class="my-form-holder dashboard-form-holder text-left">
-    <form class="my-form login-form" action="" method="post">
+    <form  [formGroup]="addAJob" class="my-form login-form" action="" method="post">
         <h3 class="text-center">Add Job</h3>
         <div class="small text-center">Furnish Job Details</div>
         <br>
         
         <div class="form-group">
-            <label for="job_title_input">Job Title *</label>
-            <select name="job_title" class="form-control" id="job_title_input">
-                <option value="">Ex. Designer</option>
-                <option value="developer">Developer</option>
-                <option value="technician">Technician</option>
-            </select>
+            <label for="name">Job Type *</label>
+               <ng-multiselect-dropdown
+               [placeholder]="'Select Job Title'"
+                formControlName="jobTitle" 
+                [data]="jobTitle"
+                [(ngModel)]="JobTitleSelectedItems"
+                [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+                >
+                </ng-multiselect-dropdown>
         </div>
         
         <div class="form-group">
             <label for="industry_type_input">Industry Type *</label>
-            <select name="industry_type" class="form-control" id="industry_type_input">
-                <option value="">Ex. Technology</option>
-                <option value="developer">Food</option>
-                <option value="technician">Service</option>
-            </select>
+           
+            <ng-multiselect-dropdown
+            [placeholder]="'Select Industry'"
+            formControlName="industry" 
+            [data]="industry"
+            [(ngModel)]="industrySelectedItems"
+            [settings]="sigleSectionDropdownSettings"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+            >
+            </ng-multiselect-dropdown>
         </div>
         
         <div class="form-group">

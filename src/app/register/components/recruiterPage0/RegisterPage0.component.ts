@@ -13,7 +13,7 @@ export class RegisterPage0 {
   public googleErrors$ =  new BehaviorSubject(false);
   public disableNextButton$ =  new BehaviorSubject(true);
   auth2: any;
-  @ViewChild('loginRef') loginElement: ElementRef;
+  // @ViewChild('loginRef') loginElement: ElementRef;
   public modelSvc: RegisterModelService;
   imageUrl = '../../../assets/logo.png'
   constructor(modelSvc: RegisterModelService,private router: Router){

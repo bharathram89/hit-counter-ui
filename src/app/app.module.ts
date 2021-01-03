@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routing.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CookieLawModule } from 'angular2-cookie-law';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   SocialLoginModule, 
@@ -18,8 +17,14 @@ import { Register } from './non_secure_pages/register/register.component';
 import { Header } from './components/header/header.component';
 
 
+import { PostAJobPage1 } from './secure/postAJob/components/page1/page1.component';
+import { PostAJobPage0 } from './secure/postAJob/components/page0/page0.component';
+import { PostAJobObjService } from './services/postAJob.service';
+import { AddProfileInfo } from './secure/addProfileInfo/addProfileInfo.component';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 // import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 // import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
  
  
 const CONFIG = new AuthServiceConfig([
@@ -46,9 +51,9 @@ export function provideConfig() {
     Header
   ],
   imports: [
+    GooglePlaceModule,
+    NgMultiSelectDropDownModule,
     BrowserModule,
-    SocialLoginModule,
-    CookieLawModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,

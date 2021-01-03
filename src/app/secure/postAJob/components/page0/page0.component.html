@@ -1,0 +1,151 @@
+
+
+<div class="my-form-holder dashboard-form-holder text-left">
+    <form  [formGroup]="addAJob" class="my-form login-form" action="" method="post">
+        <h3 class="text-center">Add Job</h3>
+        <div class="small text-center">Furnish Job Details</div>
+        <br>
+        
+        <div class="form-group">
+            <label for="name">Job Type *</label>
+               <ng-multiselect-dropdown
+               [placeholder]="'Select Job Title'"
+                formControlName="jobTitle" 
+                [data]="jobTitle"
+                [(ngModel)]="JobTitleSelectedItems"
+                [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+                >
+                </ng-multiselect-dropdown>
+        </div>
+        
+        <div class="form-group">
+            <label for="industry_type_input">Industry Type *</label>
+           
+            <ng-multiselect-dropdown
+            [placeholder]="'Select Industry'"
+            formControlName="industry" 
+            [data]="industry"
+            [(ngModel)]="industrySelectedItems"
+            [settings]="sigleSectionDropdownSettings"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+            >
+            </ng-multiselect-dropdown>
+        </div>
+        
+        <div class="form-group">
+            <label for="company_name_input">Company *</label>
+            <input type="text" name="company_name" class="form-control" id="company_name_input" placeholder="Enter your company name">
+        </div>
+        
+        <div class="form-group">
+            <label for="company_status_input">Company Status *</label>
+            <select name="industry_type" class="form-control" id="company_status_input">
+                <option value="">Startup/Series A/B/C, Pre-IPO,Public</option>
+                <option value="startup">Startup/Series A/B/C</option>
+                <option value="pre-ipo">Pre-IPO</option>
+                <option value="public">Public</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="location_input">Location/City/State *</label>
+            <input class="form-control"  ngx-google-places-autocomplete [options]= 
+               'options'  (onAddressChange)="AddressChange($event)"/> 
+            {{ formattedaddress }} 
+        </div>
+        
+        <div class="form-group">
+            <label for="zipcode_input">Zipcode *</label>
+            <select name="location" class="form-control" id="zipcode_input">
+                <option value="">Choose your location</option>
+                <option value="10000">10000</option>
+                <option value="12000">12000</option>
+                <option value="13000">13000</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <div class="row m-0 p-0">
+                <label class="col m-0 p-0" for="">Salary Range *</label>
+                <div class="col sal_range text-right m-0 p-0">
+                    <label class="mr-2" for="sal_range_opt_hourly">
+                        <input class="sal_range_opt radio_tab" type="radio" name="sal_range_opt" id="sal_range_opt_hourly" value="hourly" checked="">
+                        <span>Hourly</span>
+                    </label>
+                    <label for="sal_range_opt_yearly">
+                        <input class="sal_range_opt radio_tab" type="radio" name="sal_range_opt" id="sal_range_opt_yearly" value="yearly">
+                        <span>Yearly</span>
+                    </label>
+                </div>
+            </div>
+            
+            <select name="sal_range_hourly" class="form-control" id="sal_range_h">
+                <option value="">$50 - 100</option>
+                <option value="50">50</option>
+                <option value="80">80</option>
+                <option value="100">100</option>
+            </select>
+            
+            <select name="sal_range_yearly" class="form-control jhide" id="sal_range_y">
+                <option value="">$500 - 10000</option>
+                <option value="500">500</option>
+                <option value="800">800</option>
+                <option value="10000">10000</option>
+            </select>
+            
+            
+        </div>
+        
+        <div class="form-group">
+            <label for="job_experience_input">Job Experience *</label>
+            <input type="text" name="job_experience" class="form-control" id="job_experience_input" placeholder="Years">
+        </div>
+        
+        <div class="form-group">
+            <label>Job Type *</label>
+            <div class="row job_type text-center m-0 p-0">
+                <label class="col" for="job_type_opt_fulltime">
+                    <input class="radio_tab" type="radio" name="job_type_opt" id="job_type_opt_fulltime" value="fulltime" checked="">
+                    <span>Fulltime</span>
+                </label>
+                <label class="col" for="job_type_opt_contract">
+                    <input class="radio_tab" type="radio" name="job_type_opt" id="job_type_opt_contract" value="contract">
+                    <span>Contract</span>
+                </label>
+                <label class="col" for="job_type_opt_remote">
+                    <input class="radio_tab" type="radio" name="job_type_opt" id="job_type_opt_remote" value="remote">
+                    <span>Remote</span>
+                </label>
+            </div>
+        </div>01773633288
+        
+        <div class="form-group">
+            <label>Duration *</label>
+            <div class="row job_duration text-left m-0 p-0">
+                <label class="col" for="job_duration_3m">
+                    <input class="custom_radio" type="radio" name="job_duration" id="job_duration_3m" value="fulltime" checked="">
+                    <span>0-3m</span>
+                </label>
+                <label class="col" for="job_duration_6m">
+                    <input class="custom_radio" type="radio" name="job_duration" id="job_duration_6m" value="contract">
+                    <span>3-6m</span>
+                </label>
+                <label class="col" for="job_duration_12m">
+                    <input class="custom_radio" type="radio" name="job_duration" id="job_duration_12m" value="remote">
+                    <span>6-12m</span>
+                </label>
+                <label class="col" for="job_duration_12mp">
+                    <input class="custom_radio" type="radio" name="job_duration" id="job_duration_12mp" value="remote">
+                    <span>12m+</span>
+                </label>
+            </div>
+        </div>
+        
+        <br>
+        <button (click)="nextStep()"  class="btn btn-block btn-theme2 bg-theme2">Continue to Final Step</button>
+    </form>
+    
+</div>

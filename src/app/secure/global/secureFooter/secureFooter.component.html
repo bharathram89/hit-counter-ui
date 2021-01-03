@@ -1,0 +1,93 @@
+
+<footer class="footer" role="footer">
+
+	<div class="container pt-4 pb-3 pb-lg-0">
+		
+		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 text-center text-md-left">
+		
+			<div class="col mb-3">
+				<a class="navbar-brand" href="https://skipped.io"><img src="./assets/logo/logo_white.png" alt="skipped.io"/></a>
+			</div>
+			
+			<div class="col mb-3">
+				<h5 class="link-header">Candidates</h5>
+				<ul class="list-unstyled p-0 m-0">
+					<li><a class="item-link" href="#">For Candidates</a></li>
+					<li><a class="item-link" href="#">Refer a Friend</a></li>
+					<li><a class="item-link" href="#">Candidate Sign Up</a></li>
+				</ul>
+			</div>
+			
+			<div class="col mb-3">
+				<h5 class="link-header">Company</h5>
+				<ul class="list-unstyled p-0 m-0">
+					<li><a class="item-link" href="#">Team</a></li>
+				</ul>
+			</div>
+			
+			<div class="col mb-3">
+				<h5 class="link-header">Social</h5>
+				<ul class="list-unstyled p-0 m-0">
+					<li><a class="item-link" href="#">Linkedin</a></li>
+					<li><a class="item-link" href="#">Twitter</a></li>
+				</ul>
+			</div>
+		
+		</div>
+		
+		<div class="bullet-link text-center mt-2 mb-3">
+			<a href="#">Privacy</a>
+			<a href="#">Terms</a>
+			<a href="#">Sitemap</a>
+		</div>
+		
+		<div class="web-copyright text-center text-lg-right">
+			<span class="copyright-text">
+				&copy; <span class="copyright-year">2020</span> Skipped.io. All Rights Reserved
+			</span>
+		</div>
+		
+	</div>
+
+</footer>
+
+
+
+    <script src="asset/js/jquery-1.12.4.min.js"></script>
+    <script src="asset/js/popper.min.js"></script>
+    <script src="asset/js/bootstrap.min.js"></script>
+    <script src="asset/js/particles.min.js"></script>
+    <script src="asset/js/typewrite.js"></script>
+    <script src="asset/js/slick.min.js"></script>
+    <script src="asset/js/venobox.min.js"></script>
+    <script src="asset/js/jquery.counterup.js"></script>
+    <script src="asset/js/waypoints.min.js"></script>
+    <script src="asset/js/wow.min.js"></script>
+    <script src="asset/js/chosen.jquery.js"></script>
+
+
+
+    <script src="asset/js/jquery.charts-sparkline.js"></script>
+    <script src="asset/js/jquery.sparkline.min.js"></script>
+    <script src="asset/js/custom.js"></script>
+
+
+
+    <script type="text/javascript">
+        var $chosen = $('.chosen-select').chosen({
+            max_selected_options: 3
+        });
+
+        $chosen.change(function () {
+            var $this = $(this);
+            var chosen = $this.data('chosen');
+            var search = chosen.search_container.find('input[type="text"]');
+          
+            search.prop('disabled', $this.val() == 3);
+          
+            if (chosen.active_field) {
+                search.focus();
+            }
+        });
+    </script>
+

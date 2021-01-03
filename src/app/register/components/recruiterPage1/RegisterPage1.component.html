@@ -1,0 +1,200 @@
+
+<main role="main" class="main">
+
+	<div class="color-bar row p-0 m-0">
+		<div class="col-3"></div>
+		<div class="col-6"></div>
+		<div class="col-3"></div>
+	</div>
+
+	<div class="container-fluid row justify-content-center p-0 m-0">
+		<div class="col-md-6 p-0 p-md-0">
+			
+			<div class="small-panel bg-light">
+				
+				<div class="top-panel">
+					<div class="text-center">
+						<a class="navbar-brand ml-2" href="https://skipped.io"><img src="./assets/logo/logo_color.png" alt="skipped.io"/></a>
+					</div>
+				</div>
+				
+				<br/>
+				<br/>
+				
+				<div class="body-panel pl-2 pr-2 m-auto">
+					
+					<h5 class="text-center">Let's begin with registering you</h5>
+					<br/>
+					<br/>
+					<div class="custom-progress-holder">
+						<div class="progress">
+							<div class="progress-bar bg-theme2" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%;"></div>
+						</div>
+					</div>
+					<br/>
+					<br/>
+					
+					<div class="my-form-holder login-form-holder text-left">
+						<form [formGroup]="profile" (ngSubmit)="onSubmit()" class="my-form login-form" action="" method="post">
+                            <div class="cross-validation " [class.cross-validation-error]="profile.errors?.identityRevealed && (profile.touched || profile.dirty) ">
+                                <div class="row">
+                                    
+                                    <!-- <div class="form-group ">
+
+                                        <label for="fname ">First Name</label>
+                                        <input id="fname " class="form-control " formControlName="fname" placeholder="ex: Alex" required>
+                    
+                                        <div *ngIf="fname.invalid && (fname.dirty || fname.touched) " class="alert alert-danger ">
+                    
+                                            <div *ngIf="fname.errors?.required ">
+                                                First Name is required.
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="col form-group">
+                                        <label for="fname">First name *</label>
+                                        <input formControlName="fname" type="text" class="form-control" id="fname" placeholder="Ex: Alex"/>
+                                        <div *ngIf="fname.invalid && (fname.dirty || fname.touched) " class="alert alert-danger ">
+
+                                            <div *ngIf="fname.errors?.required ">
+                                                First Name is required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col form-group">
+                                        <label for="lname">Last name *</label>
+                                        <input formControlName="lname" type="text" class="form-control" id="exampleInputLastname" placeholder="Ex: Lamy"/>
+                                        <div *ngIf="lname.invalid && (lname.dirty || lname.touched) " class="alert alert-danger ">
+
+                                            <div *ngIf="lname.errors?.required ">
+                                                Last Name is required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="currentUser == 'Recruiter'" >
+                                    <div class="form-group">
+                                        <label for="cemail">Company Email *</label>
+                                        <input formControlName="cemail" type="cemail" class="form-control" id="exampleInputEmail1" placeholder="yourname@mail.com"/>
+                                    </div>
+                                    <div *ngIf="cemail.invalid && (cemail.dirty || cemail.touched) " class="alert alert-danger ">
+    
+                                        <div *ngIf="cemail.errors?.required ">
+                                            Company Email is required.
+                                        </div>
+                                        <div *ngIf="cemail.errors?.email ">
+                                            Please enter a valid email address
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="confirmCompanyEmail">Company Email confirmation *</label>
+                                        <input formControlName="confirmCompanyEmail" type="email" class="form-control" id="exampleInputConfirmEmail1" aria-describedby="emailHelp" placeholder="yourname@mail.com"/>
+                                    </div>
+                                    <!-- NEED TO ADD EMAIL CONFIRMATION CHECK AND ERROR -->
+                                </div>
+                               
+                                <div *ngIf="currentUser == 'Candidate'" >
+                                    <div class="form-group">
+                                        <label for="pemail">Email *</label>
+                                        <input formControlName="pemail" type="pemail" class="form-control" id="exampleInputEmail1" placeholder="yourname@mail.com"/>
+                                        <div *ngIf="pemail.invalid && (pemail.dirty || pemail.touched) " class="alert alert-danger ">
+    
+                                            <div *ngIf="pemail.errors?.required ">
+                                                Email is required.
+                                            </div>
+                                            <div *ngIf="pemail.errors?.email ">
+                                                Please enter a valid email address
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmEmail ">Email confirmation *</label>
+                                        <input formControlName="confirmEmail"  type="email" class="form-control" id="exampleInputConfirmEmail1" aria-describedby="emailHelp" placeholder="yourname@mail.com"/>
+                                    </div>
+                                    <!-- NEED TO ADD EMAIL CONFIRMATION CHECK AND ERROR -->
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col form-group">
+                                        <label for="password">Password *</label>
+                                        <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="* * * * * * *"/>
+                                        <div *ngIf="password.invalid && (password.dirty || password.touched) " class="alert alert-danger ">
+    
+                                            <div *ngIf="password.errors?.required ">
+                                                Password is required.
+                                            </div>
+                                            <div *ngIf="password.errors?.pattern ">
+                                                password needs to have atleast 1 upper case letter and 1 lower and min length of 5
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col form-group">
+                                        <label for="confirmPassword">Confirm password *</label>
+                                        <input formControlName="confirmPassword" type="password" class="form-control" id="exampleInputPassword2" placeholder="* * * * * * *"/>
+                                        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) " class="alert alert-danger ">
+    
+                                            <div *ngIf="confirmPassword.errors?.required ">
+                                                Confirm Password is required.
+                                            </div>
+                    
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert-danger" *ngIf="profile.errors?.notSame">
+                                    Password needs to match
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Phone number *</label>
+                                    <input formControlName="phone" type="text" class="form-control" id="exampleInputPhonenumber" placeholder="+1 1234567890"/>
+                                    <div *ngIf="phone.errors?.pattern ">
+                                        Please enter a valid email phone number
+                                    </div>
+                                    <div *ngIf="phone.errors?.required ">
+                                        Phone Number is required.
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="zipcode">Zipcode *</label>
+                                    <input formControlName="zipcode" type="text" class="form-control" id="exampleInputZipcode" placeholder="12345" min="0"/>
+                                    <div *ngIf="zipcode.errors?.required ">
+                                        Zipcode is required.
+                                    </div>
+                                    <div *ngIf="zipcode.errors?.pattern ">
+                                        Please enter a valid email zipcode.
+                                    </div>
+                                </div>
+                                
+                                <br/>
+                                <br/>
+                                <button type="submit" [disabled]="profile.invalid" class="btn btn-block btn-theme2 bg-theme2">Sign up</button>
+                                <div id="create_fail_msg" style="display: none;">
+                                    There was an issue in registing you, please try again or reach out to us via <a href="./contactUs">contact us</a>.
+                                </div>
+                            </div>
+							
+						</form>
+						
+					</div>
+				
+					<br/>
+					Already have an account? <a class="color-theme1" href="./signOn">Sign in</a>
+					
+				</div>
+				
+			</div>
+			
+			
+<registerFooter></registerFooter>
+		
+		</div>
+		
+	</div>
+	
+<!--<img class="img-fluid" src="./assets/images/signin - candidate-1.png" alt="preview"/>-->

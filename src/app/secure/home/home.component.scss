@@ -1,4 +1,13 @@
 
+.carousel-item {
+      height: 65vh;
+      min-height: 350px;
+      background: no-repeat center center scroll;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
 /**
 
       @media (min-width: 768px){
@@ -14,7 +23,6 @@
         
       }
 **/
-
 // .container {
 //     background-color: rgb(245, 245, 245);
 //     width: 44.5%;

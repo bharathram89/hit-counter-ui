@@ -19,16 +19,7 @@ export class Header {
   } 
 
   ngOnInit() {
-    if(window.location.href.includes('welcomePage')){
-      $('#top_nav_home').addClass('active')
-      $('#top_nav_register').removeClass('active')
-    }else if(window.location.href.includes('register')){
-      $('#top_nav_home').removeClass('active')
-      $('#top_nav_register').addClass('active')
-
-    }else{
-
-    }
+     
   }
   onSubmit(){
     

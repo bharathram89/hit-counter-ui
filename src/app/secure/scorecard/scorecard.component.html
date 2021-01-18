@@ -1,0 +1,84 @@
+
+
+<div id="header" class="container">
+  <div class="row">
+    <div class="col-sm">
+      logo
+    </div>
+    <div class="col-sm">
+      tag
+    </div>
+    <div class="col-sm">
+      quotes
+    </div>
+  </div> 
+</div>
+
+<div id="main">
+
+  <div class="row" >
+    <div class="col-sm">
+    
+    </div>
+    <div class="col-sm">
+
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Game Running Time
+          <span class="badge bg-primary rounded-pill">60 mins</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          No of Kills
+          <span class="badge bg-primary rounded-pill">{{totalKills | async}}</span>
+        </li>
+        <li  *ngIf="reviveButton" class="list-group-item d-flex justify-content-between align-items-center">
+          Total Revived
+          <span class="badge bg-primary rounded-pill">1</span>
+        </li>
+          <li  *ngIf="reviveButton" class="list-group-item d-flex justify-content-between align-items-center">
+          Total times being Revived
+          <span class="badge bg-primary rounded-pill">1</span>
+        </li>
+        <li *ngIf="respawnButton"  class="list-group-item d-flex justify-content-between align-items-center">
+          Total times respawned
+          <span class="badge bg-primary rounded-pill">1</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm">
+
+    </div>
+
+  </div>
+
+  <div id="buttons" class="row">
+  
+    <div *ngIf="deadButton" class="col-sm">
+      <button (click)="onDead()" type="button" class="btn btn-danger">Dead</button>
+    </div>
+    <div *ngIf="killButton" class="col-sm">
+        <button (click)="onKill()" type="button" class="btn btn-success">Kill</button>
+    </div>
+    <div *ngIf="medicButton" class="col-sm">
+        <button (click)="onMedic()" type="button" class="btn btn-primary">Medic</button>
+    </div>
+    <div *ngIf="reviveButton" class="col-sm">
+        <button (click)="onRevive()" type="button" class="btn btn-secondary">Revive</button>
+    </div>
+    <div *ngIf="respawnButton" class="col-sm">
+        <button (click)="onRespawn()" type="button" class="btn btn-secondary">Respawn</button>
+    </div>
+
+  </div>
+  <br>
+  <br>
+  <div  class="row">
+    <button (click)="clickEndGame()" type="button" class="btn btn-danger">End Game</button>
+</div>
+</div>
+
+
+<div id="footer">
+
+
+</div>

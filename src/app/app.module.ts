@@ -1,68 +1,66 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { JwPaginationComponent } from 'jw-angular-pagination';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routing.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  SocialLoginModule, 
-  AuthServiceConfig,
-  GoogleLoginProvider, 
-  FacebookLoginProvider, 
-  LinkedinLoginProvider
-} from 'ng4-social-login';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { WelcomePage } from './non_secure_pages/welcomePage/welcomePage.component';
 import { Register } from './non_secure_pages/register/register.component';
 import { Header } from './components/header/header.component';
+import { SignOn } from './non_secure_pages/signOn/signOn.component';
+import { Home } from './secure/home/home.component';
+import { NewGame } from './secure/newGame/newGame.component';
+import { UserModelService } from './models/user.model';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { Scorecard } from './secure/scorecard/scorecard.component';
+import { GameModelService } from './models/game.model';
+import { CreateUser } from './services/createUser.service';
+import { GameService } from './services/game.service'; 
 
-
-import { PostAJobPage1 } from './secure/postAJob/components/page1/page1.component';
-import { PostAJobPage0 } from './secure/postAJob/components/page0/page0.component';
-import { PostAJobObjService } from './services/postAJob.service';
-import { AddProfileInfo } from './secure/addProfileInfo/addProfileInfo.component';
-import { GooglePlaceModule } from "ngx-google-places-autocomplete";
-// import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-// import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
- 
- 
-const CONFIG = new AuthServiceConfig([
-  {
-    id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider('Facebook-App-Id')
-  }
-],false);
- 
- 
-export function provideConfig() {
-  return CONFIG;
-}
+  
+  
 @NgModule({
   declarations: [
     AppComponent,
-
+    JwPaginationComponent,
    
     //NON Secure
     WelcomePage,
     Register,
-   
+    SignOn,
 
+
+    //Secure
+    Home,
+    NewGame,
+    Scorecard,
+
+    
     Header
   ],
-  imports: [
-    GooglePlaceModule,
-    NgMultiSelectDropDownModule,
+  imports: [ 
     BrowserModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [{
-    provide: AuthServiceConfig,
-    useFactory: provideConfig
-  }],
+    provide:CreateUser, 
+    useClass:CreateUser
+  },
+  {
+    provide:GameModelService, 
+    useClass:GameModelService
+  },
+  {
+    provide:GameService, 
+    useClass:GameService
+  } 
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

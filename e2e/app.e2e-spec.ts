@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('skipped App', () => {
+describe('hitCounter App', () => {
   let page: AppPage;
 
   beforeEach(() => {

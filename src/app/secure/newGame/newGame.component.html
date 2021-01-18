@@ -1,0 +1,64 @@
+
+<div class="container">
+
+  <div class="row header">
+    <div class="col logo">
+      logo
+    </div>
+    <div class="col welcome_message">
+      welcome message
+    </div>
+     <div class="col user">
+      Users
+    </div> 
+  </div>
+  
+  <div class="row title">
+    <div class="col display-6">
+      Select Game Type
+    </div> 
+  </div>
+ 
+ 
+  <div class="row">
+    <div class="col" id="{{card.name}}" *ngFor="let card of collection | paginate: { itemsPerPage: 2, currentPage: p }"> 
+      <div (click)="selectedGameType(card.id)"  class="card col custom-hover">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{card.name}} </h5>
+          <p class="card-text">{{card.medic}}</p>
+          <p class="card-text">{{card.spawn}}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+  </div>
+         <div class="">
+           <div class="col"></div>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+         </div>    
+  
+
+<!-- 
+  <div class="row"> 
+    <div *ngFor="let card of items">
+      <div class="card col">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{card.name}} </h5>
+          <p class="card-text">{{card.medic}}</p>
+          <p class="card-text">{{card.spawn}}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div> 
+  </div>
+   -->
+
+
+  
+</div>

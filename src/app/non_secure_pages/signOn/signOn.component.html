@@ -31,17 +31,13 @@
    </div>
    <div class="row main">
       <div class="col">
+
+        <div id="verificationComplete" class="alert alert-success d-none">
+          Your Accout has been Verified! Please Sign in Below. 
+      </div>
          <div class="myform form ">
-            <form [formGroup]="addUser" action="" method="post"  name="login">
-                  <div class="form-group">
-                     <input type="text" formControlName="gamer_tag" name="gamer_tag"  class="form-control my-input" id="gamer_tag" placeholder="Gamer Tag">
-                     <div *ngIf="gamer_tag.invalid && (gamer_tag.dirty || gamer_tag.touched) " class="alert alert-danger ">
-                        <div *ngIf="gamer_tag.errors?.required ">
-                           Gamer Tag is required
-                       </div>
-                     </div>
-                     
-                  </div>
+            <form [formGroup]="login" action="" method="post"  name="login">
+                  Sign On
                   <div class="form-group">
                      <input type="email" formControlName="email" name="email"  class="form-control my-input" id="email" placeholder="Email">
                      <div *ngIf="email.invalid && (email.dirty || email.touched) " class="alert alert-danger ">
@@ -57,18 +53,19 @@
                         <div *ngIf="password.errors?.required ">
                            Password is required
                        </div>
-                     </div>
-                     
+                     </div> 
                   </div>
                   <div class="text-center ">
-                     <button type="submit" (click)='submit()' class=" btn btn-block send-button tx-tfm">Create Your Free Account</button>
+                     <button type="submit" (click)='onSubmit()' class=" btn btn-block send-button tx-tfm">Login</button>
                   </div>
-                  <div id="userCreatedMessage" class="alert alert-primary d-none">
-                     Your are almost ready to get started!<br>
-                     Check your email and look for our email to confirm your account and you can login with your email.
+                <div id="verficationFailed" class="alert alert-danger d-none">
+                  Verification Failed Please contact us
+              </div>
+                 <div id="userNotFound" class="alert alert-primary d-none">
+                     We do not see the email is registered. Sign up here!
                  </div>
-                 <div id="userCreatFaileddMessage" class="alert alert-danger d-none">
-                  We are sorry we were not able to create your account at this time <br>
+                 <div id="signOnIssue" class="alert alert-danger d-none">
+                  We are sorry we were not able to sign you on at this time <br>
                   Please try again or contact us from our contact us page
               </div>
 

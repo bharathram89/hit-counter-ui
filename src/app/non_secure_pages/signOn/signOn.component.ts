@@ -4,7 +4,7 @@ import { Route, Router } from '@angular/router';
 import * as $ from "jquery";
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
-import { CreateUser } from '../../services/createUser.service';
+import { UserService } from '../../services/user.service';
 import { UserModelService } from '../../../app/models/user.model';
 
 @Component({
@@ -14,12 +14,12 @@ import { UserModelService } from '../../../app/models/user.model';
 })
 export class SignOn {
   login: FormGroup;
-  createUserSvc:CreateUser;
+  createUserSvc:UserService;
   userModelSvc: UserModelService;
   fields={ email:'',password:''}
   constructor(private router: Router){
 
-    this.createUserSvc = new CreateUser();
+    this.createUserSvc = new UserService();
     this.userModelSvc = new UserModelService();
 
   } 

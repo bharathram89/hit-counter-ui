@@ -5,7 +5,7 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 import { BehaviorSubject, Subject } from 'rxjs';
 import 'rxjs/add/observable/dom/ajax';
 @Injectable()
-export class CreateUser { 
+export class UserService { 
 
     createGamer(data){
       return Observable.ajax({

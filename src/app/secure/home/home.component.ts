@@ -3,7 +3,7 @@ import { Observable, Subject, BehaviorSubject} from 'rxjs/Rx';
 import { Route, Router } from '@angular/router';
 import * as $ from "jquery";
 import { ValueTransformer } from '@angular/compiler/src/util';
-import { CreateUser } from '../../services/createUser.service';
+import { UserService } from '../../services/user.service';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
  
 @Component({
@@ -12,10 +12,10 @@ import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, Va
   styleUrls: ['./home.component.scss']
 })
 export class Home {
-  user :CreateUser;
+  user :UserService;
   constructor(private router: Router){
 
-    this.user = new CreateUser();
+    this.user = new UserService();
 
   } 
 

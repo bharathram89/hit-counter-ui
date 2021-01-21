@@ -16,8 +16,8 @@ import { UserModelService } from './models/user.model';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { Scorecard } from './secure/scorecard/scorecard.component';
 import { GameModelService } from './models/game.model';
-import { CreateUser } from './services/createUser.service';
-import { GameService } from './services/game.service'; 
+import { UserService } from './services/user.service';
+import { GameService } from './services/game.service';  
 
   
   
@@ -35,8 +35,7 @@ import { GameService } from './services/game.service';
     //Secure
     Home,
     NewGame,
-    Scorecard,
-
+    Scorecard,  
     
     Header
   ],
@@ -49,8 +48,8 @@ import { GameService } from './services/game.service';
     RouterModule.forRoot(routes)
   ],
   providers: [{
-    provide:CreateUser, 
-    useClass:CreateUser
+    provide:UserService, 
+    useClass:UserService
   },
   {
     provide:GameModelService, 

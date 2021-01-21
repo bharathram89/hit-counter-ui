@@ -67,7 +67,7 @@
         <button (click)="onMedic()" type="button" class="btn btn-primary">Medic</button>
     </div>
     <div *ngIf="(reviveButton | async) && isMedicEnabled" class="col-sm">
-        <button id="reviveButton" type="button" class="btn btn-secondary">Revive</button>
+        <button (mousedown)="revive()" id="reviveButton" type="button" class="btn btn-secondary">Revive</button>
     </div>
     <div *ngIf="(respawnButton | async) && isRespawnEnabled" class="col-sm">
         <button (click)="onRespawn()" type="button" class="btn btn-secondary">Respawn</button>

@@ -4,11 +4,11 @@ import { Route, Router } from '@angular/router';
 import * as $ from "jquery";
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
-import { CreateUser } from '../../services/createUser.service';
+import { UserService } from '../../services/user.service';
 import { GameModelService } from '../../models/game.model';
-import { GameService } from '../../services/game.service';
-import { stat } from 'fs';
+import { GameService } from '../../services/game.service'; 
 import { resolve } from 'url';
+import { data } from 'jquery';
  
 
 
@@ -42,14 +42,14 @@ export class Scorecard {
   respawnButton:ReplaySubject<boolean>=new ReplaySubject(1);;;
   killButton:ReplaySubject<boolean>=new ReplaySubject(1);;;
   deadButton:ReplaySubject<boolean>=new ReplaySubject(1);;;
- 
+
   gameMdlSvc:GameModelService;
-  userSvc:CreateUser;
+  userSvc:UserService;
   gameSvc:GameService;
-  // items=[];
+
   p: number = 1;
   collection: any[] = [];  
-  constructor(private el: ElementRef,private router: Router,gameMdlService: GameModelService,createService:CreateUser,gameService:GameService){
+  constructor(private el: ElementRef,private router: Router,gameMdlService: GameModelService,createService:UserService,gameService:GameService){
 
     this.userSvc = createService;
     this.gameMdlSvc = gameMdlService;
@@ -65,12 +65,13 @@ export class Scorecard {
         if(isTokenValid.status = 200 && isTokenValid.response.user){
           if(sessionStorage.getItem('activeGameModal')  && this.isGameInfoInSessionForCurrentLoggedInUser(isTokenValid.response.user)){ 
             
+            let gameModal = JSON.parse(sessionStorage.getItem('activeGameModal'))      
             this.parseModalToSetGlobalValues()
             this.playerState.subscribe(state=>{
 
               this.handleMedicButtons(state);
             }) 
-            // console.log("Scorecard: ", gameModal,isTokenValid.response.user)
+            console.log("Scorecard: ", gameModal,isTokenValid.response.user)
 
           }else{
             this.router.navigate(['newGame'])
@@ -84,36 +85,18 @@ export class Scorecard {
       this.router.navigate(['signOn'])
     } 
   } 
-
-  
-   
-  waitForRevive(bleedOutTime):Observable<boolean>{ 
-    let timeout_id = 0;
-    let timeItTakesToBeRevived = 5000;
-    bleedOutTime = bleedOutTime * 1000;
-    let revivied:Subject<boolean>=new Subject();
-    $('#reviveButton').on({
-      mousedown: function() {
-          $(this).data('timer', setTimeout(function() {
-              revivied.next(true)
-          }, timeItTakesToBeRevived));//5secs to be mediced
-      },
-      mouseup: function() {
-          clearTimeout( $(this).data('timer') );
-      }
-    }); 
+  revived:Subject<boolean>=new Subject();
+  reviveTimOut:Subject<boolean>=new Subject();
+  revive(){ 
     setTimeout(()=>{ 
-      revivied.next(false)
-    },bleedOutTime)
-    
-    
-    return revivied;
+      $('#reviveButton').data["revived"]=true;
+      this.revived.next(true) 
+      this.reviveTimOut.next(false) 
+    }, 4000); 
   }
-
+    
   handleMedicButtons(state){
-// state == dead 
-  // isMedicEnabled == true  
-      // if isReviveAvaliable ? show revive for set amout of time  
+// death get double counted when timer runs out
 
     let gameModal = JSON.parse(sessionStorage.getItem('activeGameModal'))        
       if( state == 'active' ){
@@ -124,41 +107,66 @@ export class Scorecard {
         if(this.isMedicEnabled){
           this.medicButton.next(true);
         }
+
+        //reset states 
+
+        // this.reviveTimOut.next(null)
+        // this.revived.next(null)
       }
       if (state == 'dead'){
-        let revived:Subject<boolean>=new Subject();
+        // let revived:Subject<boolean>=new Subject();
         this.killButton.next(false);
         this.deadButton.next(false);
         this.medicButton.next(false);
-        revived.subscribe(wasRevived=>{
-          if(wasRevived){ 
-            this.playerState.next('active')
-            this.killButton.next(false);
-            this.deadButton.next(false);
-            this.reviveButton.next(false);
-            this.onRevive();
-              //set state and handle buttons and update scorecard
-          }else{
-            this.reviveButton.next(false);
-            if(this.isRespawnEnabled && this.isRespawnAvaliable(gameModal)){
-              this.respawnButton.next(true);
+        let lastState ='';
+        Observable.combineLatest([this.revived , this.reviveTimOut]).subscribe(
+          ([wasRevived,wasReviveTimedOut])=>{
+
+            if(wasRevived && !wasReviveTimedOut){ 
+              this.playerState.next('active')
+              this.killButton.next(true);
+              this.deadButton.next(true);
+              this.reviveButton.next(false);
+              this.onRevive();
+                //set state and handle buttons and update scorecard
+            }else if(!wasRevived && wasReviveTimedOut){
+              this.reviveButton.next(false);//failed to revive
+              if(this.isRespawnAvaliable(gameModal)){ 
+                this.respawnButton.next(true)
+              }else{
+                console.log('you are dead and no more respawn and you didnt get revived')
+              }
             }else{
-              //all dead 
-              console.log('you are dead')
-            }
+              this.reviveButton.next(false);
+              if(this.isRespawnEnabled && this.isRespawnAvaliable(gameModal)){
+                this.respawnButton.next(true);
+              }else{
+                //all dead 
+                console.log('you are dead')
+              }
+            } 
+
           }
-        })
-        if(this.isMedicEnabled && this.isReviveAvaliable(gameModal)){
+        ) 
+
+        if(this.isMedicEnabled && this.isReviveAvaliable(gameModal) ){
           this.reviveButton.next(true);
-          this.waitForRevive(gameModal.rules.revive.bleedOutTime).subscribe(isRevived=>{
-            if(isRevived){
-              revived.next(true)
-            }else{ 
-              revived.next(false)
+          $('#reviveButton').data["revived"]=false;
+
+
+          let that = this;
+          //wait for user to revive or time to run out. 
+          
+          setTimeout(()=>{  
+            if(!$('#reviveButton').data["revived"]){
+              that.reviveTimOut.next(true)  
+              that.revived.next(false)   
             }
-          });
+          },20000)
+           
         }else{
-          revived.next(false)
+          this.revived.next(false)
+          this.reviveTimOut.next(false)
         } 
       }   
   }
@@ -238,6 +246,8 @@ export class Scorecard {
   } 
   onEndGame(){ 
     // show "End Game Card"
+    sessionStorage.removeItem('activeGameModal')
+    this.router.navigate(['newGame'])
   } 
 
 

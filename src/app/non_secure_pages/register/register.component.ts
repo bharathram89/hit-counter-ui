@@ -4,18 +4,18 @@ import { Route, Router } from '@angular/router';
 import * as $ from "jquery";
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
-import { CreateUser } from '../../services/createUser.service'
+import { UserService } from '../../services/user.service'
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class Register {
-  createUserSvc: CreateUser;
+  createUserSvc: UserService;
   addUser: FormGroup;
   fields={gamer_tag:'',email:'',password:''}
   constructor(private router: Router){
-    this.createUserSvc = new CreateUser();
+    this.createUserSvc = new UserService();
 
   } 
 

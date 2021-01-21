@@ -4,7 +4,7 @@ import { Route, Router } from '@angular/router';
 import * as $ from "jquery";
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
-import { CreateUser } from '../../services/createUser.service';
+import { UserService } from '../../services/user.service';
 import { GameModelService } from '../../models/game.model';
 import { GameService } from '../../services/game.service'; 
  
@@ -28,11 +28,11 @@ export class NewGame {
 
   gameSvc:GameService
   gameMdlService:GameModelService;
-  userSvc:CreateUser;
+  userSvc:UserService;
   // items=[];
   p: number = 1;
   collection: any[] = [];  
-  constructor(private el: ElementRef,private router: Router,gameMdlService: GameModelService,createService:CreateUser,gameService:GameService){
+  constructor(private el: ElementRef,private router: Router,gameMdlService: GameModelService,createService:UserService,gameService:GameService){
     this.gameMdlService=gameMdlService;
     this.userSvc = createService;
     this.gameSvc = gameService;

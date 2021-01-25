@@ -13,4 +13,14 @@ export class GameService {
           url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/startGame"+data, 
         }) 
       }
+
+      gameOver(data,head ){
+        return Observable.ajax({
+          method:'POST',
+          url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/gameOver"+data, 
+          body:head,
+          headers:{"Content-Type":"application/json"}
+        }) 
+      }
+
 }

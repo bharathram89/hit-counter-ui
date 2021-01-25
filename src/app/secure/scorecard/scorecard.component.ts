@@ -9,7 +9,7 @@ import { GameModelService } from '../../models/game.model';
 import { GameService } from '../../services/game.service'; 
 import { resolve } from 'url';
 import { data } from 'jquery';
- 
+import * as bootstrap from "bootstrap"; 
 
 
 export interface Card {
@@ -30,6 +30,8 @@ export class Scorecard {
   playerState:ReplaySubject<String>=new ReplaySubject(1);   //active,dead,gameOver
   isMedicEnabled:boolean = false;
   isRespawnEnabled:boolean = false;
+  revived:Subject<boolean>=new Subject();
+  reviveTimOut:Subject<boolean>=new Subject();
 
 
   totalKills:BehaviorSubject<number>=new BehaviorSubject(0);  
@@ -47,8 +49,6 @@ export class Scorecard {
   userSvc:UserService;
   gameSvc:GameService;
 
-  p: number = 1;
-  collection: any[] = [];  
   constructor(private el: ElementRef,private router: Router,gameMdlService: GameModelService,createService:UserService,gameService:GameService){
 
     this.userSvc = createService;
@@ -58,6 +58,8 @@ export class Scorecard {
   } 
 
   ngOnInit() {
+    // ($('#finalScore') as any).modal('hide');
+    window.$("#finalScore").modal("hide");
 
     if(sessionStorage.getItem('token')){
       let data = "?token="+ JSON.parse(sessionStorage.getItem('token')).token; 
@@ -85,8 +87,6 @@ export class Scorecard {
       this.router.navigate(['signOn'])
     } 
   } 
-  revived:Subject<boolean>=new Subject();
-  reviveTimOut:Subject<boolean>=new Subject();
   revive(){ 
     setTimeout(()=>{ 
       $('#reviveButton').data["revived"]=true;
@@ -134,6 +134,8 @@ export class Scorecard {
               if(this.isRespawnAvaliable(gameModal)){ 
                 this.respawnButton.next(true)
               }else{
+
+                this.onEndGame()
                 console.log('you are dead and no more respawn and you didnt get revived')
               }
             }else{
@@ -141,6 +143,8 @@ export class Scorecard {
               if(this.isRespawnEnabled && this.isRespawnAvaliable(gameModal)){
                 this.respawnButton.next(true);
               }else{
+
+                this.onEndGame()
                 //all dead 
                 console.log('you are dead')
               }
@@ -245,9 +249,28 @@ export class Scorecard {
     //reenable all buttons 
   } 
   onEndGame(){ 
+    // ($('#finalScore') as any).modal({backdrop: "static"});
+    let gameModal = JSON.parse(sessionStorage.getItem('activeGameModal'))   
+    window.$("#finalScore").modal({backdrop: "static"});
+    let stat = {totalKills:gameModal.scorecard.totalKills, 
+                              totalRevived:gameModal.scorecard.totalSuccessfulRevives,
+                              totalRespawn:gameModal.scorecard.totalRespawn,
+                              totalMediced:gameModal.scorecard.totalTimesRevived,
+                              totalDeath:gameModal.scorecard.totalDeaths
+                            }
+    let data = "?token="+JSON.parse(sessionStorage.getItem('token')).token;
+    console.log(data,"game saved")
+    let head = {
+      "stats":stat,
+      "gameid":gameModal.gameID
+    }
+    this.gameSvc.gameOver(data,head).subscribe(ren=>{
+      console.log(ren,"game saved")
+    })
+    // $("#finalScore").removeClass('d-none')
     // show "End Game Card"
-    sessionStorage.removeItem('activeGameModal')
-    this.router.navigate(['newGame'])
+    // sessionStorage.removeItem('activeGameModal') 
+    // this.router.navigate(['newGame'])
   } 
 
 

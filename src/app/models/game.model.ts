@@ -43,7 +43,7 @@ export class GameModelService {
         let scorecard = new ScorecardModel(user,totalKills,totalDeaths,totalRespawn,totalSuccessfulRevives,totalUnsuccessuflRevives,totalTimesRevived)
 
         let rules = new GameRules(revive,respawn,config.maxRespawn)
-        this.currentModel$ = new GameModel(gameID,config.gameTypeID,scorecard,rules);       
+        this.currentModel$ = new GameModel(config.gameTypeID,gameID,scorecard,rules);       
        
         return true;
         // this.currentModel$.next(new GameModel(config.gameTypeID,medic,respawn,config.maxRespawn))
@@ -68,12 +68,12 @@ class GameRules {
 
 class GameModel {
     gameID:number;
-    gameTypeID:string;
+    gameTypeID:number;
     gameStartTime:Date;
     rules:GameRules;
     scorecard:ScorecardModel
     constructor(
-        gameTypeID:string,  
+        gameTypeID:number,  
         gameID:number,
         scorecard:ScorecardModel,
         rule:GameRules

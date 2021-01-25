@@ -1,6 +1,7 @@
 
+<div class="container"> 
 
-<div id="header" class="container">
+<div id="header"  >
   <div class="row">
     <div class="col-sm">
       logo
@@ -77,7 +78,7 @@
   <br>
   <br>
   <div  class="row">
-    <button (click)="onEndGame()" type="button" class="btn btn-danger">End Game</button>
+    <button (click)="onEndGame()"  type="button" class="btn btn-danger">End Game</button>
 </div>
 </div>
 
@@ -85,4 +86,32 @@
 <div id="footer">
 
 
+</div>
+
+<div class="modal fade" id="finalScore" data-backdrop="static" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Even a cat only has 9 lives. </h4> 
+      </div>
+      <div class="modal-body">
+        <p>Total Kills:{{totalKills | async}}</p>
+        <p>Total Deaths:{{totalDeaths | async}}</p>
+        
+        <p *ngIf="isMedicEnabled">Total  Medic:{{totalMedic | async}}</p>
+        <p *ngIf="isMedicEnabled">Total  Revive:{{totalRevive | async}}</p>
+
+
+        <p *ngIf="isRespawnEnabled">Total  Revive:{{totalRespawn | async}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">New Game</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Home</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
 </div>

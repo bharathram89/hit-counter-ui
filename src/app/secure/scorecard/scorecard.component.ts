@@ -259,13 +259,16 @@ export class Scorecard {
                               totalDeath:gameModal.scorecard.totalDeaths
                             }
     let data = "?token="+JSON.parse(sessionStorage.getItem('token')).token;
-    console.log(data,"game saved")
     let head = {
       "stats":stat,
       "gameid":gameModal.gameID
     }
     this.gameSvc.gameOver(data,head).subscribe(ren=>{
       console.log(ren,"game saved")
+      sessionStorage.removeItem('activeGameModal') 
+      $('#modalHome').removeClass('d-none')
+      $('#modalNewGame').removeClass('d-none')
+
     })
     // $("#finalScore").removeClass('d-none')
     // show "End Game Card"

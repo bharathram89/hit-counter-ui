@@ -104,11 +104,11 @@
         <p *ngIf="isMedicEnabled">Total  Revive:{{totalRevive | async}}</p>
 
 
-        <p *ngIf="isRespawnEnabled">Total  Revive:{{totalRespawn | async}}</p>
+        <p *ngIf="isRespawnEnabled">Total  Respawn:{{totalRespawn | async}}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">New Game</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Home</button>
+        <button  routerLink="/newGame" id="modalNewGame" type="button" class="btn btn-default d-none" data-dismiss="modal">New Game</button>
+        <button routerLink="/home"  id="modalHome" type="button" class="btn btn-default d-none" data-dismiss="modal">Home</button>
       </div>
     </div>
     

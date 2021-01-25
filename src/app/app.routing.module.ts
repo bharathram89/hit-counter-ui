@@ -42,7 +42,7 @@ export const routes: Routes = [
   //   path:'resetPass',
   //   component:ResetPass
   // },
-  { path: '**', redirectTo: 'welcomePage' }
+  // { path: '**', redirectTo: 'welcomePage' }
 ];
 
 // @NgModule({

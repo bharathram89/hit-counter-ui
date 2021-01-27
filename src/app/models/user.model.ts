@@ -1,22 +1,19 @@
 import { BehaviorSubject } from 'rxjs';
 
-
-export class UserModelService {
-    currentModel$:BehaviorSubject<UserModel> = new BehaviorSubject(null);
-    // userObj:SecureModel;
-    constructor(){    
-    }
-    getSecureModel(){
-        return this.currentModel$;
-    }
-    setInitial(userType,key){
-        this.currentModel$.next(new UserModel(userType,key)) 
-    }
-}
-
-class UserModel {
+export class UserModel {
     constructor(
         userType:string,
         key:string
     ) {}
+}
+
+export class UserModelService {
+    currentModel$:BehaviorSubject<UserModel> = new BehaviorSubject(new UserModel(null,null));
+    sharedMoldal = this.currentModel$.asObservable();
+    // userObj:SecureModel;
+    constructor(){ 
+        this.currentModel$ 
+    }
+    setKey(key){ 
+    }
 }

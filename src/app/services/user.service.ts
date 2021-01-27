@@ -48,4 +48,18 @@ export class UserService {
         url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/gameConfig"+data, 
       }) 
     }
+
+    getPlayerStatsSummary(data){
+      return Observable.ajax({
+        method:'GET',
+        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/playerStatsSummary"+data, 
+      }) 
+    }
+
+    getUserInfo(data){
+      return Observable.ajax({
+        method:'GET',
+        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/userData"+data, 
+      }) 
+    }
 }

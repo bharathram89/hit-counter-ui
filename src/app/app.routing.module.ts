@@ -7,6 +7,7 @@ import { SignOn } from './non_secure_pages/signOn/signOn.component';
 import { Home } from './secure/home/home.component';
 import { NewGame } from './secure/newGame/newGame.component';
 import { Scorecard } from './secure/scorecard/scorecard.component';
+import { Profile } from './secure/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,10 @@ export const routes: Routes = [
   {
     path: 'scorecard',
     component:Scorecard
+  },
+  {
+    path: 'profile',
+    component:Profile
   },
   // {
   //   path:'resetPass',

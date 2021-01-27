@@ -5,7 +5,7 @@ import * as $ from "jquery";
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { UserModelService } from '../../../app/models/user.model';
+import { UserModelService, UserModel } from '../../../app/models/user.model';
 
 @Component({
   selector: 'signOn',
@@ -14,13 +14,11 @@ import { UserModelService } from '../../../app/models/user.model';
 })
 export class SignOn {
   login: FormGroup;
-  createUserSvc:UserService;
-  userModelSvc: UserModelService;
+  createUserSvc:UserService; 
   fields={ email:'',password:''}
-  constructor(private router: Router){
+  constructor(private router: Router ){
 
-    this.createUserSvc = new UserService();
-    this.userModelSvc = new UserModelService();
+    this.createUserSvc = new UserService(); 
 
   } 
 
@@ -62,7 +60,7 @@ export class SignOn {
       if( loginResponse.xhr.getResponseHeader('hit-token')){
         console.log(loginResponse," loginResponse ")
         let token =  loginResponse.xhr.getResponseHeader('hit-token');
-        this.userModelSvc.setInitial(loginResponse.response.email,token)  
+        // this.userModelSvc.currentModel$ = new BehaviorSubject(new UserModel('player',token))
           let user = JSON.stringify({'token':token,"user":loginResponse.response.email});
           sessionStorage.setItem("token",user) 
           this.router.navigate(['home'])

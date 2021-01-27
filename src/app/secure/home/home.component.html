@@ -13,38 +13,95 @@
     </div>
      <div class="col-auto user">
       Users
-    </div>
-    
+    </div> 
   </div>
-  
-  <div class="row subHeader">
-    <div class="col">
-      tagName
+  <div class="card">
+    <div class="p-4">
+        <div class="d-flex flex-row">
+            <div class=""><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="rounded-circle" width="100" /></div>
+            <div class="pl-4">
+                <h3>{{tagName}}</h3>
+                <h4>{{clan}}</h4>
+                <button class="btn btn-success btn-rounded text-white text-uppercase font-14"><i class="fa fa-plus mr-2"></i> Follow</button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col border-right text-center">
+                <h2 class="font-light">{{totalKills}}</h2>
+                <h4 class="text-uppercase">Total Kills</h4>
+            </div>
+            <div class="col border-right text-center">
+                <h2 class="font-light">{{kd}}</h2>
+                <h4 class="text-uppercase">KD ratio</h4>
+            </div>
+            <div class="col text-center">
+                <h2 class="font-light">145</h2>
+                <h4 class="text-uppercase">Tasks</h4>
+            </div>
+        </div>
     </div>
-    <div class="col">
-      PF Image
+    <div class="card-body border-top">
+        <p class="text-center aboutscroll">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+        </p>
+        <hr />
+        <h4 class="font-medium text-center mt-4">Followers</h4>
+        <ul class="list-style-none list-icons d-flex flex-item text-center pt-2">
+            <li class="col px-2">
+                <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Shaina Chhatraliya">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="rounded-circle" width="50" />
+                </a>
+            </li>
+            <li class="col px-2">
+                <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Nirav Joshi">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="user" class="rounded-circle" width="50" />
+                </a>
+            </li>
+            <li class="col px-2">
+                <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Vishal Bhatt">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="user" class="rounded-circle" width="50" />
+                </a>
+            </li>
+            <li class="col px-2">
+                <a href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="More">
+                    <button class="btn btn-circle btn-info text-white btn-lg" href="javascript:void(0)">
+                        5+
+                    </button>
+                </a>
+            </li>
+        </ul>
     </div>
-     <div class="col">
-      Edit PF
+    <div class="card-body border-top">
+        <ul class="list-style-none list-icons d-flex flex-item text-center">
+            <li class="col">
+                <a href="javascript:void(0)" class="text-muted" data-toggle="tooltip" title="" data-original-title="Website"><i class="fa fa-globe font-20"></i></a>
+            </li>
+            <li class="col">
+                <a href="javascript:void(0)" class="text-muted" data-toggle="tooltip" title="" data-original-title="twitter"><i class="fa fa-twitter font-20"></i></a>
+            </li>
+            <li class="col">
+                <a href="javascript:void(0)" class="text-muted" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook-square font-20"></i></a>
+            </li>
+            <li class="col">
+                <a href="javascript:void(0)" class="text-muted" data-toggle="tooltip" title="" data-original-title="Youtube"><i class="fa fa-youtube font-20"></i></a>
+            </li>
+            <li class="col">
+                <a href="javascript:void(0)" class="text-muted" data-toggle="tooltip" title="" data-original-title="Linkdin"><i class="fa fa-linkedin font-20"></i></a>
+            </li>
+        </ul>
     </div>
   </div>
- 
- 
-  
-    <div class="row">
-     Total Kills
-    </div> 
-     <div class="row">
-      KD ratio
-    </div> 
-     <div class="row">
-      Clan tag
-    </div> 
-     <div class="row">
-      Player Level
-    </div> 
    
  
+ 
+  <div id='notActiveUserMessage'>
+    <div class="row">
+     We need you to 
+    </div> 
+     
+
+  </div>
+   
   <div class="row footer">
     <div class="col">
       History Page

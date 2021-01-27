@@ -1,0 +1,213 @@
+<div class="container pb-5 mb-sm-4">
+  <!-- Details-->
+    <div class="row mb-3">
+        <div class="col-sm-4 mb-2">
+          <div class="bg-primary p-4 text-light text-center"><span class="font-weight-semibold mr-2">Help us customize your experince</span>Profile</div>
+        </div>
+        <div class="col-sm-4 mb-2">
+          <div class="bg-primary p-4 text-light text-center"><span class="font-weight-semibold mr-2">Social Media </span>Lets connect!</div>
+        </div>
+        <div class="col-sm-4 mb-2">
+            <div class="bg-primary p-4 text-light text-center"><span class="font-weight-semibold mr-2">Whats Next?</span>What is and what is coming</div>
+        </div>
+    </div>
+  <!-- Progress-->
+    <div class="steps">
+      <div class="steps-header">
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+      </div>
+      <div class="steps-body">
+
+ 
+           
+        <div class="card">
+          <div class="card-body">
+            <div class="e-profile">
+              <div class="row">
+                <div class="col-12 col-sm-auto mb-3">
+                  <div class="mx-auto" style="width: 140px;">
+                    <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="rounded-circle" width="100" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                  <div class="text-center text-sm-left mb-2 mb-sm-0">
+                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{gamerTag | async}}</h4>
+                    <p class="mb-0">{{clanTag | async}}</p> 
+                    <div class="mt-2">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fa fa-fw fa-camera"></i>
+                        <span>Change Photo</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="text-center text-sm-right">
+                    <span class="badge badge-secondary">{{userType | async}}</span>
+                    <div class="text-muted"><small> Last Game Completed: Joined 09 Dec 2017</small></div>
+                  </div>
+                </div>
+              </div> 
+              <div class="tab-content pt-3">
+                <div class="tab-pane active">
+                  <form [formGroup]="profile" class="form" novalidate="">
+                    <div class="row">
+                      <div class="col">
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Gamer Tag</label>
+                              <input formControlName="gamer_tag"  class="form-control" type="text" name="name" placeholder="HeroOne" value="HeroOne">
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Clan Name</label>
+                              <input formControlName="clan_tag" class="form-control" type="text" name="username" placeholder="MOS-TAC" value="MOS-TAC">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col mb-3">
+                            <div class="form-group">
+                              <label>About</label>
+                              <textarea formControlName="about" class="form-control" rows="5" placeholder="Tell us about your gear your game types"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 col-sm-6 mb-3">
+                        <div class="mb-2"><b>Change Password</b></div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Current Password</label>
+                              <input formControlName="current_password" class="form-control" type="password" placeholder="••••••">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>New Password</label>
+                              <input formControlName="new_password"  class="form-control" type="password" placeholder="••••••">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+                              <input formControlName="confirm_new_password" class="form-control" type="password" placeholder="••••••"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-5 offset-sm-1 mb-3">
+                        <div class="mb-2"><b>Keeping in Touch</b></div>
+                        <div class="row">
+                          <div class="col"> 
+                            <div class="custom-controls-stacked px-2">
+                              <div class="custom-control custom-checkbox">
+                                <input formControlName="email_com" type="checkbox" class="custom-control-input" id="notifications-blog" checked="">
+                                <label class="custom-control-label" for="notifications-blog">Email Communication</label>
+                              </div>
+                              <div class="custom-control custom-checkbox">
+                                <input formControlName="promotional_com" type="checkbox" class="custom-control-input" id="notifications-news" checked="">
+                                <label class="custom-control-label" for="notifications-news">Promotional Offers</label>
+                              </div>
+                              <div class="custom-control custom-checkbox">
+                                <input formControlName="products_com" type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
+                                <label class="custom-control-label" for="notifications-offers">Product Updates and Releases</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="mb-2"><b>Other Preferences</b></div>
+                        <div class="row">
+                          <div class="col"> 
+                            <div class="custom-controls-stacked px-2">
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="notifications-blog" checked="">
+                                <label class="custom-control-label" for="notifications-blog">Stuff</label>
+                              </div>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="notifications-news" checked="">
+                                <label class="custom-control-label" for="notifications-news">Stuff1</label>
+                              </div>
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
+                                <label class="custom-control-label" for="notifications-offers">Stuff2</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="socalMedia">
+                      <div class="row"> 
+                        <div class="col"> 
+                          <div id="fb_card" class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <i class="fa fa-facebook fa-5x"></i>       
+                              <h5 class="card-title">Facebook Connection</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Connected: {{fbConnected | async}}</h6>
+                              <p class="card-text">If you are connected you can share data.</p>
+                              <a href="#" *ngIf="!(fbConnected |async) " id="fb_connect" class="card-link">Connect</a>
+                              <a href="#" *ngIf="(fbConnected |async)"  id="fb_disconnect" class="card-link">Disconnect</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col"> 
+                          <div id="twitter_card" class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <i class="fa fa-twitter fa-5x"></i>     
+                              <h5 class="card-title">Twitter Connection</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Connected: {{twitterConnected | async}}</h6>
+                              <p class="card-text">If you are connected you can share data.</p>
+                              <a href="#"  *ngIf="!(twitterConnected |async)" id="twitter_connect" class="card-link">Connect</a>
+                              <a href="#" *ngIf="(twitterConnected |async)"  id="twitter_disconnect" class="card-link">Disconnect</a>
+                            </div>
+                          </div> 
+                        </div>
+                        <div class="col"> 
+                          <div id="yt" class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <i class="fa fa-youtube fa-5x"></i>     
+                              <h5 class="card-title">Youtube Connection</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Connected: {{ytConnected | async}}</h6>
+                              <p class="card-text">If you are connected you can share data.</p>
+                              <a href="#"  *ngIf="!(ytConnected |async)" id="yt" class="card-link">Connect</a>
+                              <a href="#"  *ngIf="(ytConnected |async)" id="yt" class="card-link">Disconnect</a>
+                            </div>
+                          </div> 
+                        </div>
+                      </div> 
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col d-flex justify-content-center">
+                        <button (click)="onSave()" class="btn btn-primary" type="submit">Save Changes</button>
+                      </div>
+                    </div>
+                  </form> 
+                  
+                  
+                </div>
+              </div>
+              
+            </div>
+
+
+          </div> 
+        </div>
+ 
+ 
+      </div>
+  </div>
+  <!-- Footer-->
+</div>

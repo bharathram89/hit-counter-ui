@@ -18,6 +18,7 @@ import { Scorecard } from './secure/scorecard/scorecard.component';
 import { GameModelService } from './models/game.model';
 import { UserService } from './services/user.service';
 import { GameService } from './services/game.service';  
+import { Profile } from './secure/profile/profile.component';
 
   
   
@@ -36,6 +37,7 @@ import { GameService } from './services/game.service';
     Home,
     NewGame,
     Scorecard,  
+    Profile,
     
     Header
   ],
@@ -50,6 +52,10 @@ import { GameService } from './services/game.service';
   providers: [{
     provide:UserService, 
     useClass:UserService
+  },
+  {
+    provide:UserModelService, 
+    useClass:UserModelService
   },
   {
     provide:GameModelService, 

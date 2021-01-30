@@ -8,6 +8,7 @@ import { Home } from './secure/home/home.component';
 import { NewGame } from './secure/newGame/newGame.component';
 import { Scorecard } from './secure/scorecard/scorecard.component';
 import { Profile } from './secure/profile/profile.component';
+import { PastGames } from './secure/pastGames/pastGames.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,10 @@ export const routes: Routes = [
   {
     path: 'profile',
     component:Profile
+  },
+  {
+    path: 'pastGames',
+    component:PastGames
   },
   // {
   //   path:'resetPass',

@@ -6,5 +6,8 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class UserObjService {
-     
+    tag:BehaviorSubject<string> = new BehaviorSubject(null);
+     constructor(){
+         this.tag.next('')
+     }
 }

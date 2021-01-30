@@ -1,27 +1,28 @@
 
 <div class="container">
 
-  <div class="row header">
-    <div class="col-sm logo">
-      logo
+
+  <secureHeader></secureHeader>
+ 
+<div id="loading" >
+  <div class="spinner-border text-info" role="status">
     </div>
-    <div class="col-6 welcome_message">
-      welcome message
-    </div>
-    <div class="col-sm search">
-      search
-    </div>
-     <div class="col-auto user">
-      Users
-    </div> 
+    Loading...
+</div>
+    <!-- <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div> -->
+
+  <div id="pageLvlError" class="alert alert-primary d-none" role="alert">
+    Page Load Failed Please hit <a href="./home" class="alert-link">refresh</a> or <a href="#" class="alert-link"> contact us</a>.
   </div>
-  <div class="card">
+  <div id="main" class="card">
     <div class="p-4">
         <div class="d-flex flex-row">
             <div class=""><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="rounded-circle" width="100" /></div>
             <div class="pl-4">
-                <h3>{{tagName}}</h3>
-                <h4>{{clan}}</h4>
+                <h3>{{gamerTag |async}}</h3>
+                <h4>{{clanTag |async}}</h4>
                 <button class="btn btn-success btn-rounded text-white text-uppercase font-14"><i class="fa fa-plus mr-2"></i> Follow</button>
             </div>
         </div>
@@ -35,14 +36,14 @@
                 <h4 class="text-uppercase">KD ratio</h4>
             </div>
             <div class="col text-center">
-                <h2 class="font-light">145</h2>
-                <h4 class="text-uppercase">Tasks</h4>
+                <h2 class="font-light">{{numberOfGames}}</h2>
+                <h4 class="text-uppercase">Number Of Games</h4>
             </div>
         </div>
     </div>
     <div class="card-body border-top">
         <p class="text-center aboutscroll">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+            {{about | async}}
         </p>
         <hr />
         <h4 class="font-medium text-center mt-4">Followers</h4>
@@ -73,6 +74,8 @@
     </div>
     <div class="card-body border-top">
         <ul class="list-style-none list-icons d-flex flex-item text-center">
+
+          <div class="mb-2"><b>Share Summary</b></div>
             <li class="col">
                 <a href="javascript:void(0)" class="text-muted" data-toggle="tooltip" title="" data-original-title="Website"><i class="fa fa-globe font-20"></i></a>
             </li>
@@ -85,30 +88,17 @@
             <li class="col">
                 <a href="javascript:void(0)" class="text-muted" data-toggle="tooltip" title="" data-original-title="Youtube"><i class="fa fa-youtube font-20"></i></a>
             </li>
-            <li class="col">
-                <a href="javascript:void(0)" class="text-muted" data-toggle="tooltip" title="" data-original-title="Linkdin"><i class="fa fa-linkedin font-20"></i></a>
-            </li>
         </ul>
     </div>
   </div>
    
  
  
-  <div id='notActiveUserMessage'>
-    <div class="row">
-     We need you to 
-    </div> 
-     
-
-  </div>
-   
   <div class="row footer">
-    <div class="col">
-      History Page
-    </div> 
-    <div class="col">
-      <button type="button"  routerLink="/newGame"  class="btn btn-primary btn-lg">New Game</button>
-    </div> 
+      <div class="d-grid gap-2 d-md-block">
+        <button type="button"  routerLink="/newGame"  class="btn btn-primary">New Game</button>
+        <button routerLink="/profile"  class="btn btn-primary" type="submit">Profile Page</button>
+      </div> 
   </div>
  
   

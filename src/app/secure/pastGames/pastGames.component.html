@@ -1,0 +1,48 @@
+
+<div class="container">
+
+
+    <secureHeader></secureHeader>
+   
+    <div id="loading" >
+        <div class="spinner-border text-info" role="status"> </div>
+        Loading...
+    </div> 
+  
+    <div id="pageLvlError" class="alert alert-primary d-none" role="alert">
+      Page Load Failed Please hit <a href="./pastGames" class="alert-link">refresh</a> or <a href="#" class="alert-link"> contact us</a>.
+    </div>
+
+
+    <div id="noGames" class="alert alert-primary d-none" role="alert">
+        <a href="./newGame" class="alert-link"> Play your first game! </a> 
+      </div>
+    <div class="text-center" id="main"> 
+        <div class="row">
+            <div class="card-group" id="{{card.name}}" *ngFor="let card of collection | paginate: { itemsPerPage: 5, currentPage: p }"> 
+            <div (click)="selectedGameType(card.id)"  class="card col custom-hover">
+                <div class="card-body">
+                <h5 class="card-title">Game Type: {{card.name}} </h5>
+                <p class="card-text">Play Time: {{card.playTime}}</p> 
+                <p class="card-text">Total Kills: {{card.totalKills}}</p>
+                <p class="card-text">Total Deaths: {{card.totalDeath}}</p>
+
+
+                <p *ngIf="card.totalMediced" class="card-text">Total People Revived: {{card.totalMediced}}</p>
+                <p *ngIf="card.totalRevived" class="card-text">Total Times Revived: {{card.totalRevived}}</p>
+                <p *ngIf="card.totalRespawn" class="card-text">Total Respawn: {{card.totalRespawn}}</p> 
+
+                </div>
+                <div class="card-footer">
+                <small class="text-muted">{{card.playDate}}</small>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="col"></div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>     
+    </div>
+
+</div>

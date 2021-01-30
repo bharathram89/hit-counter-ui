@@ -1,23 +1,30 @@
 <div class="container pb-5 mb-sm-4">
   <!-- Details-->
-    <div class="row mb-3">
-        <div class="col-sm-4 mb-2">
-          <div class="bg-primary p-4 text-light text-center"><span class="font-weight-semibold mr-2">Help us customize your experince</span>Profile</div>
-        </div>
-        <div class="col-sm-4 mb-2">
-          <div class="bg-primary p-4 text-light text-center"><span class="font-weight-semibold mr-2">Social Media </span>Lets connect!</div>
-        </div>
-        <div class="col-sm-4 mb-2">
-            <div class="bg-primary p-4 text-light text-center"><span class="font-weight-semibold mr-2">Whats Next?</span>What is and what is coming</div>
-        </div>
-    </div>
+ 
   <!-- Progress-->
-    <div class="steps">
-      <div class="steps-header">
-          <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+
+  <secureHeader></secureHeader>
+  <div id="loading" >
+    <div class="spinner-border text-info" role="status">
       </div>
+      Loading...
+  </div>
+
+
+  <div id="pageError" class="alert alert-primary d-none" role="alert">
+    Page Load Failed Please hit <a href="./profile" class="alert-link">refresh</a> or <a href="#" class="alert-link"> contact us</a>.
+  </div>
+
+
+  <div id="newUser" class="alert alert-primary d-none" role="alert">
+    Hi New User! Fill out some of profile below to get started.
+  </div>
+
+  <!-- <div *ngIf="(pageError| async)" class="alert alert-primary d-none" role="alert">
+    Page Load Failed Please hit <a href="." class="alert-link">refresh</a> or <a href="#" class="alert-link"> contact us</a>.
+  </div> -->
+    
+  <div  id="main" class="steps d-none">
       <div class="steps-body">
 
  
@@ -38,7 +45,7 @@
                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{gamerTag | async}}</h4>
                     <p class="mb-0">{{clanTag | async}}</p> 
                     <div class="mt-2">
-                      <button class="btn btn-primary" type="button">
+                      <button class="btn btn-primary"  type="button">
                         <i class="fa fa-fw fa-camera"></i>
                         <span>Change Photo</span>
                       </button>
@@ -59,13 +66,13 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Gamer Tag</label>
-                              <input formControlName="gamer_tag"  class="form-control" type="text" name="name" placeholder="HeroOne" value="HeroOne">
+                              <input formControlName="gamer_tag"  class="form-control" type="text" placeholder="HeroOne" value="{{gamerTag | async}}">
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label>Clan Name</label>
-                              <input formControlName="clan_tag" class="form-control" type="text" name="username" placeholder="MOS-TAC" value="MOS-TAC">
+                              <input formControlName="clan_tag" class="form-control" type="text"  placeholder="MOS-TAC" value="{{clanTag | async}}">
                             </div>
                           </div>
                         </div>
@@ -73,7 +80,7 @@
                           <div class="col mb-3">
                             <div class="form-group">
                               <label>About</label>
-                              <textarea formControlName="about" class="form-control" rows="5" placeholder="Tell us about your gear your game types"></textarea>
+                              <textarea formControlName="about" class="form-control" rows="5" value="{{about | async}}" ></textarea>
                             </div>
                           </div>
                         </div>
@@ -112,15 +119,15 @@
                           <div class="col"> 
                             <div class="custom-controls-stacked px-2">
                               <div class="custom-control custom-checkbox">
-                                <input formControlName="email_com" type="checkbox" class="custom-control-input" id="notifications-blog" checked="">
+                                <input formControlName="email_com" type="checkbox" class="custom-control-input" id="notifications-blog" checked>
                                 <label class="custom-control-label" for="notifications-blog">Email Communication</label>
                               </div>
                               <div class="custom-control custom-checkbox">
-                                <input formControlName="promotional_com" type="checkbox" class="custom-control-input" id="notifications-news" checked="">
+                                <input formControlName="promotional_com" type="checkbox" class="custom-control-input" id="notifications-news" checked>
                                 <label class="custom-control-label" for="notifications-news">Promotional Offers</label>
                               </div>
                               <div class="custom-control custom-checkbox">
-                                <input formControlName="products_com" type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
+                                <input formControlName="products_com" type="checkbox" class="custom-control-input" id="notifications-offers" checked>
                                 <label class="custom-control-label" for="notifications-offers">Product Updates and Releases</label>
                               </div>
                             </div>
@@ -132,16 +139,16 @@
                           <div class="col"> 
                             <div class="custom-controls-stacked px-2">
                               <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-blog" checked="">
-                                <label class="custom-control-label" for="notifications-blog">Stuff</label>
+                                <input type="checkbox" class="custom-control-input" id="Stuff-blog" checked="">
+                                <label class="custom-control-label" for="Stuff-blog">Stuff</label>
                               </div>
                               <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-news" checked="">
-                                <label class="custom-control-label" for="notifications-news">Stuff1</label>
+                                <input type="checkbox" class="custom-control-input" id="Stuff1-news" checked="">
+                                <label class="custom-control-label" for="Stuff1-news">Stuff1</label>
                               </div>
                               <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
-                                <label class="custom-control-label" for="notifications-offers">Stuff2</label>
+                                <input type="checkbox" class="custom-control-input" id="Stuff2-offers" checked="">
+                                <label class="custom-control-label" for="Stuff2-offers">Stuff2</label>
                               </div>
                             </div>
                           </div>
@@ -193,10 +200,15 @@
                       <div class="col d-flex justify-content-center">
                         <button (click)="onSave()" class="btn btn-primary" type="submit">Save Changes</button>
                       </div>
+                      
                     </div>
                   </form> 
-                  
-                  
+                  <div id="pfUpdatePass" class="alert alert-primary d-none" role="alert">
+                    Profile update was saved!
+                  </div>
+                  <div id="pfUpdateFailed" class="alert alert-primary d-none" role="alert">
+                    Profile update Failed. Try again or <a href="#" class="alert-link">contact us</a>.
+                  </div>
                 </div>
               </div>
               

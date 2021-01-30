@@ -22,5 +22,11 @@ export class GameService {
           headers:{"Content-Type":"application/json"}
         }) 
       }
+      pastGames(data ){
+        return Observable.ajax({
+          method:'GET',
+          url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/pastGames"+data
+        }) 
+      }
 
 }

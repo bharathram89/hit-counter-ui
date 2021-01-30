@@ -62,4 +62,13 @@ export class UserService {
         url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/userData"+data, 
       }) 
     }
+
+    saveProfileInfo(data,head){
+      return Observable.ajax({
+        method:'POST',
+        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/profile"+data, 
+        body:head,
+        headers:{"Content-Type":"application/json"}
+      }) 
+    }
 }

@@ -14,7 +14,7 @@ import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, Va
 export class Profile {
   user :UserService;
   profile:FormGroup;
-  fields={gamer_tag:'', clan_tag:'',about:'',current_password:'',new_password:'',confirm_new_password:'',email_com:'',promotional_com:'',products_com:'',facebook:'',twitter:'',youtube:''}
+  fields={gamer_tag:'', clan_tag:'',about:'',current_password:'',new_password:'',confirm_new_password:'',email_com:'',promotional_com:'',products_com:'',facebook:'',twitter:'',youtube:'',pfPic:''}
   pageError:BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   fbConnected: BehaviorSubject<boolean> = new BehaviorSubject(null);
@@ -23,6 +23,7 @@ export class Profile {
   gamerTag: BehaviorSubject<String> = new BehaviorSubject(null);
   clanTag: BehaviorSubject<String> = new BehaviorSubject("Choose a Clan Name!");
   userType:BehaviorSubject<String> = new BehaviorSubject(null);
+  about: BehaviorSubject<String> = new BehaviorSubject("Tell us about your gear your game types");
   
   constructor(private router: Router){
 
@@ -57,26 +58,41 @@ export class Profile {
       ]),
       "youtube":new FormControl(this.fields.youtube, [ 
       ]),
+      "pfPic":new FormControl(this.fields.pfPic, [ 
+      ]),
       
      })
+     window.location.href.includes('newUser=true') ? $('#newUser').removeClass('d-none'):null;
+    $('#main').addClass('d-none')
     if(sessionStorage.getItem('token')){
       let data = "?token="+ JSON.parse(sessionStorage.getItem('token')).token; 
-      // this.user.verifyToken(data).subscribe(isTokenValid=>{
-      //   if(isTokenValid.status = 200 && isTokenValid.response.user){
-          let userData = JSON.parse(sessionStorage.getItem('token'));
-  
-           userData.youtube ? this.ytConnected.next(true) : this.ytConnected.next(false);
-           userData.facebook ? this.fbConnected.next(true) :this.fbConnected.next(false);
-           userData.twitter ?  this.twitterConnected.next(true) :this.twitterConnected.next(false);
-           userData.gamerTag ? this.gamerTag.next(userData.gamerTag) :this.pageError.next(true);
-           userData.clanTag ? this.clanTag.next(userData.clanTag) : null;
-           userData.userType ? this.userType.next(userData.userType) : this.pageError.next(true);
+      this.user.verifyToken(data).subscribe(isTokenValid=>{
+        if(isTokenValid.status = 200 && isTokenValid.response.user){
+          // let userData = JSON.parse(sessionStorage.getItem('token'));
+          this.user.getUserInfo(data).subscribe(userData=>{
+            userData= userData.response[0];
+            userData.youtube ? this.ytConnected.next(true) : this.ytConnected.next(false);
+            userData.facebook ? this.fbConnected.next(true) :this.fbConnected.next(false);
+            userData.twitter ?  this.twitterConnected.next(true) :this.twitterConnected.next(false);
+            userData.gamerTag ? this.gamerTag.next(userData.gamerTag) :this.pageError.next(true);
+            userData.clanTag ? this.clanTag.next(userData.clanTag) : null;
+            userData.userType ? this.userType.next(userData.userType) : this.pageError.next(true);
+            userData.about ? this.about.next (userData.about) : null;
+             $('#loading').addClass('d-none')
+            $('#main').removeClass('d-none')
+           console.log(userData," sessionData")
+          })
+        }else{
+          console.log(" toke call failed")
 
-          console.log(userData," sessionData")
-      //   }else{
-      //     // this.router.navigate(['signOn']) 
-      //   }
-      // },error => this.router.navigate(['signOn']))
+         $('#loading').addClass('d-none') 
+         $('#pageError').removeClass('d-none');
+        }
+      },error => { 
+        $('#loading').addClass('d-none');
+        $('#pageError').removeClass('d-none');
+      }
+    )
     }else{
       this.router.navigate(['signOn'])
     }
@@ -84,6 +100,31 @@ export class Profile {
 
   onSave(){
     console.log(this.profile.value.gamer_tag,"aiiii")
+    let data = "?token="+JSON.parse(sessionStorage.getItem('token')).token;
+    let body = {
+      "profile":{
+        "gamer_tag":this.profile.value.gamer_tag,
+        "clan_tag":this.profile.value.clan_tag,
+        "about":this.profile.value.about,
+        "oldPass":this.profile.value.current_password,
+        "newPass":this.profile.value.new_password,
+        "email_com":this.profile.value.email_com?1:0,
+        "promotional_com":this.profile.value.promotional_com?1:0,
+        "product_com":this.profile.value.product_com?1:0,
+        "facebook":"",
+        "twitter":"",
+        "youtube":"",
+        "pfPic":""
+      }
+    }
+    this.user.saveProfileInfo(data,body).subscribe(success=>{
+      
+        $('#pfUpdatePass').removeClass('d-none'); 
+    },
+    err=>{
+      $('#pfUpdateFailed').removeClass('d-none');
+      //show profile update failed message
+    })
   }
 
 }

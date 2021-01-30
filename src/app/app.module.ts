@@ -19,6 +19,9 @@ import { GameModelService } from './models/game.model';
 import { UserService } from './services/user.service';
 import { GameService } from './services/game.service';  
 import { Profile } from './secure/profile/profile.component';
+import { SecureHeader } from './secure/secureHeader/secureHeader.component';
+import { UserObjService } from './services/userObj.service';
+import { PastGames } from './secure/pastGames/pastGames.component';
 
   
   
@@ -38,6 +41,8 @@ import { Profile } from './secure/profile/profile.component';
     NewGame,
     Scorecard,  
     Profile,
+    SecureHeader,
+    PastGames,
     
     Header
   ],
@@ -64,6 +69,10 @@ import { Profile } from './secure/profile/profile.component';
   {
     provide:GameService, 
     useClass:GameService
+  } ,
+  {
+    provide:UserObjService, 
+    useClass:UserObjService
   } 
 ],
   bootstrap: [AppComponent]

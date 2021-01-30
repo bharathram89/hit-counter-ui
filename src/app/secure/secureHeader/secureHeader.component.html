@@ -1,0 +1,57 @@
+
+  <div class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
+    <a class="navbar-brand" routerLink="/home">Bootstrap 4 NavBar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li id="nav_home" class="nav-item">
+                <a class="nav-link" routerLink="/home">Home </a> <!-- <span class="sr-only">(current)</span> -->
+            </li>
+            <li  id="nav_profile" class="nav-item">
+                <a class="nav-link" routerLink="/profile">Profile</a>
+            </li>
+            <li  id="nav_newGame" class="nav-item">
+                <a class="nav-link" routerLink="/newGame">New Game</a>
+            </li>
+            <li  id="nav_pastGames" class="nav-item">
+                <a class="nav-link" routerLink="/pastGames">Past Games</a>
+            </li>
+            <li  id="nav_customGames" class="nav-item">
+                <a class="nav-link" routerLink="/customGames">Custom Games</a>
+            </li>
+            
+            <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                    <li class="dropdown-item" href="#"><a>Action 1</a></li>
+                    <li class="dropdown-item dropdown">
+                        <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
+                            <li class="dropdown-item" href="#"><a>Action 1.1</a></li>
+                            <li class="dropdown-item dropdown">
+                                <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1.1.1</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
+                                    <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li> --> 
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{gamerTag | async}}
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/contactUs">Contact Us</a></li>
+                  <li><a (click)="signOut()">Sign Out</a></li>
+                  <li><a routerLink="/nextRelease">Next Release</a></li>
+                </ul>
+              </li>
+        </form>
+    </div>
+</div>

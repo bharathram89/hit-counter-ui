@@ -48,12 +48,20 @@ export class NewGame {
           let data = "?token="+ JSON.parse(sessionStorage.getItem('token')).token;
           this.userSvc.allGameType(data).subscribe(data=>{
             if(data.status ==200 && data.response){ 
+              $('#main').removeClass('d-none'); 
+              $('#loading').addClass('d-none');
               this.collection = data.response;
               console.log(data,"alldaa")
             }else{
+              $('#loading').addClass('d-none');
+              $('#pageError').removeClass('d-none');
               console.log("TODO:::: NEED TO SHOW ERROR THAT CANT GET ALL GAME TYPES AND TRY REFRESH")
             }
-          },error => console.log("TODO:::: NEED TO SHOW ERROR THAT CANT GET ALL GAME TYPES AND TRY REFRESH"))
+          },error =>{ 
+            $('#loading').addClass('d-none');
+            $('#pageError').removeClass('d-none');
+            console.log("TODO:::: NEED TO SHOW ERROR THAT CANT GET ALL GAME TYPES AND TRY REFRESH")
+          })
         }else{
           this.router.navigate(['signOn']) 
         }

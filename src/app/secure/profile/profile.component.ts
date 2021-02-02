@@ -5,6 +5,7 @@ import * as $ from "jquery";
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { UserService } from '../../services/user.service';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
+import { UserObjService } from '../../services/userObj.service';
  
 @Component({
   selector: 'profile',
@@ -24,9 +25,9 @@ export class Profile {
   clanTag: BehaviorSubject<String> = new BehaviorSubject("Choose a Clan Name!");
   userType:BehaviorSubject<String> = new BehaviorSubject(null);
   about: BehaviorSubject<String> = new BehaviorSubject("Tell us about your gear your game types");
-  
-  constructor(private router: Router){
-
+  userObj:UserObjService;
+  constructor(private router: Router,userObj:UserObjService){
+    this.userObj = userObj;
     this.user = new UserService();
 
   } 
@@ -61,20 +62,20 @@ export class Profile {
       "pfPic":new FormControl(this.fields.pfPic, [ 
       ]),
       
-     })
-     window.location.href.includes('newUser=true') ? $('#newUser').removeClass('d-none'):null;
-    $('#main').addClass('d-none')
+     }) 
     if(sessionStorage.getItem('token')){
       let data = "?token="+ JSON.parse(sessionStorage.getItem('token')).token; 
       this.user.verifyToken(data).subscribe(isTokenValid=>{
         if(isTokenValid.status = 200 && isTokenValid.response.user){
+          window.location.href.includes('newUser=true') ? $('#newUser').removeClass('d-none'):null;
           // let userData = JSON.parse(sessionStorage.getItem('token'));
-          this.user.getUserInfo(data).subscribe(userData=>{
-            userData= userData.response[0];
+          this.user.getUserInfo(data).subscribe(resp=>{
+            let userData = resp.response[0];
             userData.youtube ? this.ytConnected.next(true) : this.ytConnected.next(false);
             userData.facebook ? this.fbConnected.next(true) :this.fbConnected.next(false);
             userData.twitter ?  this.twitterConnected.next(true) :this.twitterConnected.next(false);
             userData.gamerTag ? this.gamerTag.next(userData.gamerTag) :this.pageError.next(true);
+            this.userObj.tag.next(userData.gamerTag);
             userData.clanTag ? this.clanTag.next(userData.clanTag) : null;
             userData.userType ? this.userType.next(userData.userType) : this.pageError.next(true);
             userData.about ? this.about.next (userData.about) : null;

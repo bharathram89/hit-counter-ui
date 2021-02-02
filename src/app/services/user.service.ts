@@ -4,71 +4,81 @@ import {Injectable} from '@angular/core';
 import {ReplaySubject} from "rxjs/ReplaySubject"; 
 import { BehaviorSubject, Subject } from 'rxjs';
 import 'rxjs/add/observable/dom/ajax';
+import * as config from '../config/config.json'
+ 
 @Injectable()
 export class UserService { 
-
+ 
     createGamer(data){
       return Observable.ajax({
         method:'POST',
-        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/user"+data, 
+        url:"https://"+config.host+"/user"+data, 
+        headers:{"x-api-key":config.apiKey}
       }) 
     }
 
     verifyGamer(data){
       return Observable.ajax({
         method:'GET',
-        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/verifyPlayer"+data, 
+        url:"https://"+config.host+"/verifyPlayer"+data, 
+        headers:{"x-api-key":config.apiKey}
       })
     }
 
     playerLogin(data){
       return Observable.ajax({
         method:'POST',
-        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/signOn"+data, 
+        url:"https://"+config.host+"/signOn"+data, 
+        headers:{"x-api-key":config.apiKey}
       })
     }
 
     allGameType(data){
       return Observable.ajax({
         method:'GET',
-        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/allGameType"+data, 
+        url:"https://"+config.host+"/allGameType"+data, 
+        headers:{"x-api-key":config.apiKey}
       })
     }
 //
     verifyToken(data){
       return Observable.ajax({
         method:'GET',
-        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/verifyToken"+data, 
+        url:"https://"+config.host+"/verifyToken"+data, 
+        headers:{"x-api-key":config.apiKey}
       })
     }
 
     getGameConfig(data){
       return Observable.ajax({
         method:'GET',
-        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/gameConfig"+data, 
+        url:"https://"+config.host+"/gameConfig"+data, 
+        headers:{"x-api-key":config.apiKey}
       }) 
     }
 
     getPlayerStatsSummary(data){
       return Observable.ajax({
         method:'GET',
-        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/playerStatsSummary"+data, 
+        url:"https://"+config.host+"/playerStatsSummary"+data,
+        headers:{"x-api-key":config.apiKey} 
       }) 
     }
 
     getUserInfo(data){
       return Observable.ajax({
         method:'GET',
-        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/userData"+data, 
+        url:"https://"+config.host+"/userData"+data, 
+        headers:{"x-api-key":config.apiKey}
       }) 
     }
 
     saveProfileInfo(data,head){
       return Observable.ajax({
         method:'POST',
-        url:"https://4bgn511z3f.execute-api.us-west-1.amazonaws.com/dev/profile"+data, 
+        url:"https://"+config.host+"/profile"+data, 
         body:head,
-        headers:{"Content-Type":"application/json"}
+        headers:{"Content-Type":"application/json","X-Api-Key":config.apiKey}
       }) 
     }
 }

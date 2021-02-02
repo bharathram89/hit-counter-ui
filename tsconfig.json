@@ -5,6 +5,8 @@
     "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "resolveJsonModule": true,//needed for reading local josn files like config.json
+    "allowSyntheticDefaultImports": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,

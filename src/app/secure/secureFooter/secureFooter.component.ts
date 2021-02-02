@@ -9,11 +9,11 @@ import { UserModelService } from '../../models/user.model';
 import { UserObjService } from '../../services/userObj.service';
  
 @Component({
-  selector: 'secureHeader',
-  templateUrl: './secureHeader.component.html',
-  styleUrls: ['./secureHeader.component.scss']
+  selector: 'secureFooter',
+  templateUrl: './secureFooter.component.html',
+  styleUrls: ['./secureFooter.component.scss']
 })
-export class SecureHeader {
+export class SecureFooter {
   user :UserService;
   totalKills = 0;
   tagName; 
@@ -24,7 +24,7 @@ export class SecureHeader {
   gamerTag: BehaviorSubject<String> = new BehaviorSubject(null);
   about: BehaviorSubject<String> = new BehaviorSubject('Describe yourself in airsoft');
   clanTag: BehaviorSubject<String> = new BehaviorSubject("Choose a Clan Name!");
-  numberOfGames: String;
+  currentYear:String;
   kd = 0;
   constructor(private router: Router ,userObj:UserObjService){
     this.userObjSvc = userObj;
@@ -33,15 +33,17 @@ export class SecureHeader {
   } 
 
   ngOnInit() {
-
-    this.userObjSvc.tag.subscribe(data=>{
-      this.gamerTag.next(data);
-    })
-     window.location.href.includes('profile')? $("#nav_profile").addClass('active'):null;
-     window.location.href.includes('home')? $("#nav_home").addClass('active'):null;
-     window.location.href.includes('newGame')? $("#nav_newGame").addClass('active'):null;
-     window.location.href.includes('pastGames')? $("#nav_pastGames").addClass('active'):null;
-    if(sessionStorage.getItem('token')){ 
+ 
+    if(sessionStorage.getItem('token')){
+      let data = "?token="+ JSON.parse(sessionStorage.getItem('token')).token; 
+      this.user.verifyToken(data).subscribe(isTokenValid=>{
+        if(isTokenValid.status = 200 && isTokenValid.response.user){
+          
+        }else{
+          this.router.navigate(['signOn']) 
+        }
+      },error => this.router.navigate(['signOn']))
+      console.log(data,"data")
     }else{
       this.router.navigate(['signOn'])
     }

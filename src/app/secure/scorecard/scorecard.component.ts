@@ -1,7 +1,7 @@
 import { Component, NgZone, ViewChild, ChangeDetectorRef, HostListener, ElementRef } from '@angular/core';
 import { Observable, Subject, BehaviorSubject, ReplaySubject} from 'rxjs/Rx';
 import { Route, Router } from '@angular/router';
-import * as $ from "jquery";
+// import * as $ from "jquery";
 import { ValueTransformer } from '@angular/compiler/src/util';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
 import { UserService } from '../../services/user.service';
@@ -18,7 +18,7 @@ export interface Card {
   medic: string;
 }
 
-
+declare var $ : any;
 
 @Component({
   selector: 'scorecard',
@@ -59,7 +59,7 @@ export class Scorecard {
 
   ngOnInit() {
     // ($('#finalScore') as any).modal('hide');
-    window.$("#finalScore").modal("hide");
+    $("#finalScore").modal("hide");
 
     if(sessionStorage.getItem('token')){
       let data = "?token="+ JSON.parse(sessionStorage.getItem('token')).token; 
@@ -251,7 +251,7 @@ export class Scorecard {
   onEndGame(){ 
     // ($('#finalScore') as any).modal({backdrop: "static"});
     let gameModal = JSON.parse(sessionStorage.getItem('activeGameModal'))   
-    window.$("#finalScore").modal({backdrop: "static"});
+    $("#finalScore").modal({backdrop: "static"});
     let stat = {totalKills:gameModal.scorecard.totalKills, 
                               totalRevived:gameModal.scorecard.totalSuccessfulRevives,
                               totalRespawn:gameModal.scorecard.totalRespawn,

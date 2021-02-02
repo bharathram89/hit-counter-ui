@@ -4,6 +4,16 @@
   
   <secureHeader></secureHeader>
   
+  <div id="loading" >
+    <div class="spinner-border text-info" role="status"> </div>
+    Loading...
+</div> 
+
+<div id="pageError" class="alert alert-primary d-none" role="alert">
+  Page Load Failed Please hit <a href="./newGame" class="alert-link">refresh</a> or <a href="#" class="alert-link"> contact us</a>.
+</div>
+<div class='d-none' id="main">
+
   <div class="row title">
     <div class="col display-6">
       Select Game Type
@@ -32,6 +42,7 @@
          </div>    
   
 
+</div>
 <!-- 
   <div class="row"> 
     <div *ngFor="let card of items">
@@ -50,6 +61,6 @@
   </div>
    -->
 
-
+<secureFooter></secureFooter>
   
 </div>

@@ -22,6 +22,7 @@ import { Profile } from './secure/profile/profile.component';
 import { SecureHeader } from './secure/secureHeader/secureHeader.component';
 import { UserObjService } from './services/userObj.service';
 import { PastGames } from './secure/pastGames/pastGames.component';
+import { SecureFooter } from './secure/secureFooter/secureFooter.component';
 
   
   
@@ -42,6 +43,7 @@ import { PastGames } from './secure/pastGames/pastGames.component';
     Scorecard,  
     Profile,
     SecureHeader,
+    SecureFooter,
     PastGames,
     
     Header

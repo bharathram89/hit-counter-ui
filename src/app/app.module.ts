@@ -23,6 +23,9 @@ import { SecureHeader } from './secure/secureHeader/secureHeader.component';
 import { UserObjService } from './services/userObj.service';
 import { PastGames } from './secure/pastGames/pastGames.component';
 import { SecureFooter } from './secure/secureFooter/secureFooter.component';
+import { CustomGames } from './secure/customGames/customGames.component';
+import { NextRelease } from './non_secure_pages/nextRelease/nextRelease.component';
+import { FeatureList } from './non_secure_pages/featureList/featureList.component';
 
   
   
@@ -35,7 +38,8 @@ import { SecureFooter } from './secure/secureFooter/secureFooter.component';
     WelcomePage,
     Register,
     SignOn,
-
+    NextRelease,
+    FeatureList,
 
     //Secure
     Home,
@@ -45,6 +49,7 @@ import { SecureFooter } from './secure/secureFooter/secureFooter.component';
     SecureHeader,
     SecureFooter,
     PastGames,
+    CustomGames,
     
     Header
   ],

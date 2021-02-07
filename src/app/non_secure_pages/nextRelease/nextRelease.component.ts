@@ -6,11 +6,11 @@ import { ValueTransformer } from '@angular/compiler/src/util';
 import { FormGroup, FormControl,Validators, EmailValidator, ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'nextRelease',
+  templateUrl: './nextRelease.component.html',
+  styleUrls: ['./nextRelease.component.scss']
 })
-export class Header {
+export class NextRelease {
 
   constructor(private router: Router){
 
@@ -21,8 +21,7 @@ export class Header {
   ngOnInit() {
      window.location.href.includes('register')? $("#nav_register").addClass('active'):null;
      window.location.href.includes('welcomePage')? $("#nav_home").addClass('active'):null;
-     window.location.href.includes('nextRelease')? $("#nav_release").addClass('active'):null;
-     window.location.href.includes('featureList')? $("#nav_featureList").addClass('active'):null;
+     window.location.href.includes('release')? $("#nav_release").addClass('active'):null;
   }
   onSubmit(){
     

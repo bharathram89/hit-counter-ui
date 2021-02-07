@@ -1,4 +1,13 @@
 
+.carousel-item {
+      height: 65vh;
+      min-height: 350px;
+      background: no-repeat center center scroll;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
 /**
 
       @media (min-width: 768px){
@@ -44,10 +53,3 @@
 //   width: 50%;
 //   margin: auto;
 // }
-.hit-custom-style{
-
-      background: -webkit-linear-gradient(59deg, #3A6073, #16222A);
-}
-.hc_custom_logo {
-      max-height: 40px;;
-}

@@ -25,7 +25,98 @@
    -->
 
    <header></header>
-  <div class="container">
+
+
+   <div class="container">
+
+   <div class="omb_login">
+      <h3 class="omb_authTitle">Login or <a routerLink="/register">Sign up</a></h3>
+     <div class="row omb_row-sm-offset-3 omb_socialButtons">
+          <div class="col-xs-4 col-sm-2">
+             <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+                <i class="fa fa-facebook visible-xs"></i>
+                <span class="hidden-xs"> Facebook</span>
+             </a>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+             <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+                <i class="fa fa-twitter visible-xs"></i>
+                <span class="hidden-xs"> Twitter</span>
+             </a>
+          </div>	
+          <div class="col-xs-4 col-sm-2">
+             <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                <i class="fa fa-google-plus visible-xs"></i>
+                <span class="hidden-xs"> Google+</span>
+             </a>
+          </div>	
+     </div>
+
+     <div class="row omb_row-sm-offset-3 omb_loginOr">
+        <div class="col-xs-12 col-sm-6">
+           <hr class="omb_hrOr">
+           <span class="omb_spanOr">or</span>
+        </div>
+     </div>
+
+     <div class="row omb_row-sm-offset-3">
+        <div class="col-xs-12 col-sm-6">	
+            <form [formGroup]="login" class="omb_loginForm" action="" autocomplete="off" method="POST">
+              <div class="input-group">
+                 <span class="input-group-addon"><i class="fa fa-user hc_custom_padding"></i></span>
+                 <input formControlName="email"  type="text" class="form-control" name="username" placeholder="email address">
+                 <div *ngIf="email.invalid && (email.dirty || email.touched) " class="alert alert-danger ">
+                  <div *ngIf="email.errors?.required ">
+                     Email is required
+                 </div>
+               </div>
+              </div> 
+               <br>
+              <div class="input-group">
+                 <span class="input-group-addon"><i class="fa fa-lock hc_custom_padding"></i></span>
+                 <input formControlName="password" type="password" class="form-control" name="password" placeholder="Password">
+                 <div *ngIf="password.invalid && (password.dirty || password.touched) " class="alert alert-danger ">
+                  <div *ngIf="password.errors?.required ">
+                     Password is required
+                 </div>
+               </div> 
+              </div>
+              <br>
+              <button (click)='onSubmit()' class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+           </form>
+        </div>
+      </div>
+      <div class="row omb_row-sm-offset-3">
+         <div class="col-xs-12 col-sm-3">
+           <label class="checkbox omb_forgotPwd">
+              <input class="hc_custom_padding" type="checkbox" value="remember-me">Remember Me
+           </label>
+         </div>
+         <div class="col-xs-12 col-sm-3">
+           <p class="omb_forgotPwd">
+              <a href="#">Forgot password?</a>
+           </p>
+         </div>
+         <div id="verficationFailed" class="alert alert-danger d-none">
+            Verification Failed Please contact us
+         </div>
+         <div id="userNotFound" class="alert alert-primary d-none">
+            We do not see the email is registered. Sign up here!
+         </div>
+         <div id="signOnIssue" class="alert alert-danger d-none">
+            We are sorry we were not able to sign you on at this time <br>
+            Please try again or contact us from our contact us page
+         </div>
+     </div>	    	
+  </div>
+
+
+   </div>
+
+<br>
+   <secureFooter></secureFooter>
+
+  <!-- <div class="container">
    <div class="col-sm">
          
    </div>
@@ -102,7 +193,7 @@
    <div class="col-sm">
          
    </div>
- </div> 
+ </div>  -->
 
 
 

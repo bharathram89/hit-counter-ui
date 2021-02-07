@@ -22,28 +22,29 @@
       </div>
     </div>
   </nav> -->
-  <div class="row header">
-    <div class="col-sm">
-       
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <img class="img-fluid" routerLink="/welcomePage" src="../../../assets/images/logo2.png" alt="user"/>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link"  id="nav_home" routerLink="/welcomePage">Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  id="nav_featureList" routerLink="/featureList">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  id="nav_release" routerLink="/nextRelease">Release Notes</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" id="nav_register" routerLink="/register">Register</a>
+        </li> 
+      </ul>
+      <div class="form-inline my-2 my-lg-0"> 
+        <button class="btn btn-outline-success my-2 my-sm-0" routerLink="/signOn" type="submit">Sign In</button>
+      </div>
     </div>
-    <div class="col-1 logo">
-      logo
-    </div>
-    |
-    <div class="col-3 welcome_message">
-      Welcome to Hit Counter
-      Count your hits
-    </div>
-    |
-    <div class="col search">
-      search
-    </div>
-    |
-     <div class="col-auto user">
-      Users
-    </div>
-    <div class="col-sm">
-       
-    </div>
-    
-  </div>
+  </nav>

@@ -34,19 +34,19 @@ export class SecureFooter {
 
   ngOnInit() {
  
-    if(sessionStorage.getItem('token')){
-      let data = "?token="+ JSON.parse(sessionStorage.getItem('token')).token; 
-      this.user.verifyToken(data).subscribe(isTokenValid=>{
-        if(isTokenValid.status = 200 && isTokenValid.response.user){
+    // if(sessionStorage.getItem('token')){
+    //   let data = "?token="+ JSON.parse(sessionStorage.getItem('token')).token; 
+    //   this.user.verifyToken(data).subscribe(isTokenValid=>{
+    //     if(isTokenValid.status = 200 && isTokenValid.response.user){
           
-        }else{
-          this.router.navigate(['signOn']) 
-        }
-      },error => this.router.navigate(['signOn']))
-      console.log(data,"data")
-    }else{
-      this.router.navigate(['signOn'])
-    }
+    //     }else{
+    //       this.router.navigate(['signOn']) 
+    //     }
+    //   },error => this.router.navigate(['signOn']))
+    //   console.log(data,"data")
+    // }else{
+    //   this.router.navigate(['signOn'])
+    // }
   }
 
   signOut(){

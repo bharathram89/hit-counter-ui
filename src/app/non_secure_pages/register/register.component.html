@@ -1,175 +1,152 @@
-
-<!--   
-  <div>
-    <div class="container">
-
-      <div class="col-md-6 mx-auto text-center">
-        <div class="header-title">
-           <h1 >
-              Welcome to hit counter!
-           </h1>
-           <h2 class="wv-heading--subtitle">
-             "Count your hits"
-           </h2>
-        </div>
-     </div>
-     <div class="row">
-        <div class="col-md-4 mx-auto"> 
-           
-        </div>
-     </div>
-
-
-    </div>
-  </div>
-   -->
+ 
 
    <header></header>
 
 
- 
-  <!-- <div class="container">
-   <div class="col-sm">
-         
-   </div>
-   <div class="row main">
-      <div class="col">
-         <div class="myform form ">
-            <form [formGroup]="addUser" action="" method="post"  name="login">
-                  <div class="form-group">
-                     <input type="text" formControlName="gamer_tag" name="gamer_tag"  class="form-control my-input" id="gamer_tag" placeholder="Gamer Tag">
-                     <div *ngIf="gamer_tag.invalid && (gamer_tag.dirty || gamer_tag.touched) " class="alert alert-danger ">
-                        <div *ngIf="gamer_tag.errors?.required ">
-                           Gamer Tag is required
-                       </div>
-                     </div>
-                     
-                  </div>
-                  <div class="form-group">
-                     <input type="email" formControlName="email" name="email"  class="form-control my-input" id="email" placeholder="Email">
-                     <div *ngIf="email.invalid && (email.dirty || email.touched) " class="alert alert-danger ">
-                        <div *ngIf="email.errors?.required ">
-                           Email is required
-                       </div>
-                     </div>
-                     
-                  </div>
-                  <div class="form-group">
-                     <input type="password" formControlName="password" min="0" name="password" id="password"  class="form-control my-input" placeholder="password">
-                     <div *ngIf="password.invalid && (password.dirty || password.touched) " class="alert alert-danger ">
-                        <div *ngIf="password.errors?.required ">
-                           Password is required
-                       </div>
-                     </div>
-                     
-                  </div>
-                  <div class="text-center ">
-                     <button type="submit" (click)='submit()' class=" btn btn-block send-button tx-tfm">Create Your Free Account</button>
-                  </div>
-                  <div id="userCreatedMessage" class="alert alert-primary d-none">
-                     Your are almost ready to get started!<br>
-                     Check your email and look for our email to confirm your account and you can login with your email.
+  
+  
+  <div class="col-md-6 mx-auto">
+   <nav>
+       <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+           <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#player-signup" role="tab" aria-controls="nav-profile" aria-selected="true">Player Sign up</a>
+           <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#field-signup" role="tab" aria-controls="nav-contact" aria-selected="false">Field Sign up</a>
+       </div>
+   </nav>
+   <div class="tab-content" id="nav-tabContent">
+       <div class="tab-pane fade show active omb_login" id="player-signup" role="tabpanel" aria-labelledby="nav-profile-tab">
+         <form [formGroup]="addUser" class="omb_loginForm" action="" autocomplete="off" method="POST">
+            <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-user hc_custom_padding"></i></span>
+               <input formControlName="email"  type="text" class="form-control" name="username" placeholder="email address">
+               <div *ngIf="email.invalid && (email.dirty || email.touched) " class="alert alert-danger ">
+                <div *ngIf="email.errors?.required ">
+                   Email is required
+               </div>
+             </div>
+            </div> 
+             <br>
+            <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-lock hc_custom_padding"></i></span>
+               <input formControlName="password" type="password" class="form-control" name="password" placeholder="Password">
+               <div *ngIf="password.invalid && (password.dirty || password.touched) " class="alert alert-danger ">
+                <div *ngIf="password.errors?.required ">
+                   Password is required
+               </div>
+             </div> 
+            </div>
+            <br>
+            <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-lock hc_custom_padding"></i></span>
+               <input formControlName="gamer_tag" type="text" class="form-control" name="password" placeholder="gamer tag">
+               <div *ngIf="gamer_tag.invalid && (gamer_tag.dirty || gamer_tag.touched) " class="alert alert-danger ">
+                  <div *ngIf="gamer_tag.errors?.required ">
+                     Gamer Tag is required
                  </div>
-                 <div id="userCreatFaileddMessage" class="alert alert-danger d-none">
+               </div>
+            </div>
+            <br>
+            <button (click)='submit()' class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+            <br>
+            <!-- <div class="row omb_row-sm-offset-3"> 
+               <div id="userCreatedMessage" class="alert alert-primary d-none">
+                  Your are almost ready to get started!<br>
+                  Check your email and look for our email to confirm your account and you can login with your email.
+               </div>
+               <div id="userCreatFaileddMessage" class="alert alert-danger d-none">
                   We are sorry we were not able to create your account at this time <br>
                   Please try again or contact us from our contact us page
-              </div>
-
-              </form>
-             
-         </div>
-      </div>
-      OR
-      <div class="col">
-          
-         <div class="form-group">
-            <a class="btn btn-block g-button" href="#">
-            <i class="fa fa-google"></i> Sign up with Google
-            </a>
-         </div>
-      </div>
-    </div>
-
-    
-    <div class="col-sm">
-         
-   </div>
-  </div> -->
- 
-
-
-  <div class="container">
-
-   <div class="omb_login">
-   <h3 class="omb_authTitle"> Sign up</h3>
-      
-      
-      <div class="row omb_row-sm-offset-3">
-         <div class="col-xs-12 col-sm-6">	
-             <form [formGroup]="addUser" class="omb_loginForm" action="" autocomplete="off" method="POST">
-               <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user hc_custom_padding"></i></span>
-                  <input formControlName="email"  type="text" class="form-control" name="username" placeholder="email address">
-                  <div *ngIf="email.invalid && (email.dirty || email.touched) " class="alert alert-danger ">
-                   <div *ngIf="email.errors?.required ">
-                      Email is required
-                  </div>
-                </div>
                </div> 
-                <br>
-               <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-lock hc_custom_padding"></i></span>
-                  <input formControlName="password" type="password" class="form-control" name="password" placeholder="Password">
-                  <div *ngIf="password.invalid && (password.dirty || password.touched) " class="alert alert-danger ">
-                   <div *ngIf="password.errors?.required ">
-                      Password is required
-                  </div>
-                </div> 
-               </div>
-               <br>
-               <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-lock hc_custom_padding"></i></span>
-                  <input formControlName="gamer_tag" type="password" class="form-control" name="password" placeholder="gamer tag">
-                  <div *ngIf="gamer_tag.invalid && (gamer_tag.dirty || gamer_tag.touched) " class="alert alert-danger ">
-                     <div *ngIf="gamer_tag.errors?.required ">
-                        Gamer Tag is required
-                    </div>
-                  </div>
-               </div>
-               <br>
-               <button (click)='submit()' class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-            </form>
+            </div>	 -->
+                	
+         </form>
+         <div class="row omb_row-sm-offset-3 omb_loginOr">
+            <div class="col-xs-12 col-sm-6">
+               <hr class="omb_hrOr">
+               <span class="omb_spanOr">or </span>
+            </div>
          </div>
+         <div class="row omb_row-sm-offset-3 omb_socialButtons">
+            <div class="col-xs-4 col-sm-2">
+               <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+                  <i class="fa fa-facebook visible-xs"></i>
+                  <span class="hidden-xs"> Facebook</span>
+               </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+               <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+                  <i class="fa fa-twitter visible-xs"></i>
+                  <span class="hidden-xs"> Twitter</span>
+               </a>
+            </div>	
+            <div class="col-xs-4 col-sm-2">
+               <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                  <i class="fa fa-google-plus visible-xs"></i>
+                  <span class="hidden-xs"> Google+</span>
+               </a>
+            </div>	
+         </div>
+ 
        </div>
-
-      <div class="row omb_row-sm-offset-3 omb_loginOr">
-         <div class="col-xs-12 col-sm-6">
-            <hr class="omb_hrOr">
-            <span class="omb_spanOr">or </span>
-         </div>
-      </div>
-      <div class="row omb_row-sm-offset-3 omb_socialButtons">
-         <div class="col-xs-4 col-sm-2">
-            <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
-               <i class="fa fa-facebook visible-xs"></i>
-               <span class="hidden-xs"> Facebook</span>
-            </a>
-         </div>
-         <div class="col-xs-4 col-sm-2">
-            <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
-               <i class="fa fa-twitter visible-xs"></i>
-               <span class="hidden-xs"> Twitter</span>
-            </a>
-         </div>	
-         <div class="col-xs-4 col-sm-2">
-            <a href="#" class="btn btn-lg btn-block omb_btn-google">
-               <i class="fa fa-google-plus visible-xs"></i>
-               <span class="hidden-xs"> Google+</span>
-            </a>
-         </div>	
-      </div>
-      <br>
-      <div class="row omb_row-sm-offset-3"> 
+       <div class="tab-pane fade" id="field-signup" role="tabpanel" aria-labelledby="nav-contact-tab">
+         
+         <form [formGroup]="addUser" class="omb_loginForm" action="" autocomplete="off" method="POST">
+            <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-user hc_custom_padding"></i></span>
+               <input formControlName="email"  type="text" class="form-control" name="username" placeholder="email address">
+               <div *ngIf="email.invalid && (email.dirty || email.touched) " class="alert alert-danger ">
+                <div *ngIf="email.errors?.required ">
+                   Email is required
+               </div>
+             </div>
+            </div> 
+             <br>
+            <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-lock hc_custom_padding"></i></span>
+               <input formControlName="password" type="password" class="form-control" name="password" placeholder="Password">
+               <div *ngIf="password.invalid && (password.dirty || password.touched) " class="alert alert-danger ">
+                <div *ngIf="password.errors?.required ">
+                   Password is required
+               </div>
+             </div> 
+            </div>
+            <br>
+            <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-lock hc_custom_padding"></i></span>
+               <input formControlName="fieldName" type="text" class="form-control" name="password" placeholder="fieldName">
+               <div *ngIf="fieldName.invalid && (fieldName.dirty || fieldName.touched) " class="alert alert-danger ">
+                  <div *ngIf="fieldName.errors?.required ">
+                     Field Name is required
+                 </div>
+               </div>
+            </div>
+   
+            <br>
+            <div class="input-group">
+               <span class="input-group-addon"><i class="fa fa-lock hc_custom_padding"></i></span>
+               <input formControlName="phone" type="text" class="form-control" name="password" placeholder="gamer tag">
+               <div *ngIf="phone.invalid && (phone.dirty || phone.touched) " class="alert alert-danger ">
+                  <div *ngIf="phone.errors?.required ">
+                     Phone is required
+                 </div>
+               </div>
+            </div>
+            <br> 
+            <button (click)='submit()' class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+            <br>
+            <div class="row omb_row-sm-offset-3"> 
+               <div id="userCreatedMessage" class="alert alert-primary d-none">
+                  Your are almost ready to get started!<br>
+                  Check your email and look for our email to confirm your account and you can login with your email.
+               </div>
+               <div id="userCreatFaileddMessage" class="alert alert-danger d-none">
+                  We are sorry we were not able to create your account at this time <br>
+                  Please try again or contact us from our contact us page
+               </div> 
+            </div>	
+                	
+         </form> 
+       </div>
+       <div class="row"> 
          <div id="userCreatedMessage" class="alert alert-primary d-none">
             Your are almost ready to get started!<br>
             Check your email and look for our email to confirm your account and you can login with your email.
@@ -178,18 +155,12 @@
             We are sorry we were not able to create your account at this time <br>
             Please try again or contact us from our contact us page
          </div> 
-      </div>	    	
-  </div>
-
-
+      </div>	
+   </div>
 </div>
+
+ 
 
 <secureFooter></secureFooter>
 
-
-  <!-- Page Content -->
-  <!-- <div class="col">
-   <p class="small mt-3">By signing up, you are indicating that you have read and agree to the <a href="#" class="ps-hero__content__link">Terms of Use</a> and <a href="#">Privacy Policy</a>.
-   </p>
-
-</div> -->
+ 

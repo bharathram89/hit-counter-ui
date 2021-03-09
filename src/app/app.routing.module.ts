@@ -16,7 +16,7 @@ import { FeatureList } from './non_secure_pages/featureList/featureList.componen
 export const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    component: WelcomePage,
     pathMatch: 'full',
   },
   {

@@ -17,6 +17,14 @@ export class UserService {
       }) 
     }
 
+    createField(data){
+      return Observable.ajax({
+        method:'POST',
+        url:"https://"+config.host+"/field"+data, 
+        headers:{"x-api-key":config.apiKey}
+      }) 
+    }
+
     verifyGamer(data){
       return Observable.ajax({
         method:'GET',
